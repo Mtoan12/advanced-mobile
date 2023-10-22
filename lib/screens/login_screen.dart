@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:lettutor/localization_service.dart';
 import 'package:lettutor/widgets/change_language_button.dart';
 
 class LoginScreen extends StatefulWidget {
