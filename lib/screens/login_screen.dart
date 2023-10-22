@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/localization_service.dart';
+import 'package:lettutor/widgets/change_language_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   "assets/images/lettutor_logo.svg",
                   width: screenWidth * 0.4,
                 ),
-                changeLanguageButton()
+                const ChangeLanguageButton()
               ],
             ),
           ),
@@ -124,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const TextField(
                     decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.remove_red_eye_rounded),
+                        suffixIcon: Icon(Icons.remove_red_eye),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.grey, width: 2.0),
@@ -223,69 +224,69 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  Widget changeLanguageButton() {
-    return Center(
-        child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-          DropdownButton<String>(
-              selectedItemBuilder: (context) {
-                return LocalizationService.langs.map<Widget>((String value) {
-                  return Row(
-                    children: [
-                      const SizedBox(
-                        width: 12,
-                      ),
-                      CircleAvatar(
-                          radius: 12,
-                          child: SvgPicture.asset("assets/images/$lang.svg")),
-                      const SizedBox(
-                        width: 12,
-                      ),
-                    ],
-                  );
-                }).toList();
-              },
-              items: LocalizationService.langs
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SvgPicture.asset(
-                        "assets/images/$value.svg",
-                        height: 20,
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        value,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: value == lang
-                                ? FontWeight.w700
-                                : FontWeight.w500),
-                      )
-                    ],
-                  ),
-                );
-              }).toList(),
-              value: lang,
-              iconSize: 0.0,
-              underline: Container(
-                color: Colors.transparent,
-              ),
-              isExpanded: false,
-              style: const TextStyle(color: Colors.deepPurple),
-              onChanged: (newVal) {
-                setState(() {
-                  lang = newVal!;
-                  LocalizationService().changeLocale(lang);
-                });
-              })
-        ]));
-  }
+  // Widget changeLanguageButton() {
+  //   return Center(
+  //       child: Row(
+  //           crossAxisAlignment: CrossAxisAlignment.center,
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           children: [
+  //         DropdownButton<String>(
+  //             selectedItemBuilder: (context) {
+  //               return LocalizationService.langs.map<Widget>((String value) {
+  //                 return Row(
+  //                   children: [
+  //                     const SizedBox(
+  //                       width: 12,
+  //                     ),
+  //                     CircleAvatar(
+  //                         radius: 12,
+  //                         child: SvgPicture.asset("assets/images/$lang.svg")),
+  //                     const SizedBox(
+  //                       width: 12,
+  //                     ),
+  //                   ],
+  //                 );
+  //               }).toList();
+  //             },
+  //             items: LocalizationService.langs
+  //                 .map<DropdownMenuItem<String>>((String value) {
+  //               return DropdownMenuItem<String>(
+  //                 value: value,
+  //                 child: Row(
+  //                   mainAxisAlignment: MainAxisAlignment.start,
+  //                   children: [
+  //                     SvgPicture.asset(
+  //                       "assets/images/$value.svg",
+  //                       height: 20,
+  //                     ),
+  //                     const SizedBox(
+  //                       width: 8,
+  //                     ),
+  //                     Text(
+  //                       value,
+  //                       style: TextStyle(
+  //                           color: Colors.black,
+  //                           fontWeight: value == lang
+  //                               ? FontWeight.w700
+  //                               : FontWeight.w500),
+  //                     )
+  //                   ],
+  //                 ),
+  //               );
+  //             }).toList(),
+  //             value: lang,
+  //             iconSize: 0.0,
+  //             underline: Container(
+  //               color: Colors.transparent,
+  //             ),
+  //             isExpanded: false,
+  //             style: const TextStyle(color: Colors.deepPurple),
+  //             onChanged: (newVal) {
+  //               setState(() {
+  //                 lang = newVal!;
+  //                 LocalizationService().changeLocale(lang);
+  //               });
+  //             })
+  //       ]));
+  // }
 }
