@@ -14,6 +14,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String lang = "Vietnamese";
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -33,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 SvgPicture.asset(
                   "assets/images/lettutor_logo.svg",
-                  width: MediaQuery.of(context).size.height * 0.2,
+                  width: screenWidth * 0.4,
                 ),
                 changeLanguageButton()
               ],
@@ -51,33 +53,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Image.asset(
                     "assets/images/login_banner.png",
-                    height: 200,
+                    height: screenHeight * 0.25,
                   ),
-                  const SizedBox(
-                    height: 48,
+                  SizedBox(
+                    height: screenHeight * 0.02,
                   ),
                   Text(
                     "loginTitle".tr,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 32,
+                        fontSize: screenHeight * 0.035,
                         fontWeight: FontWeight.w700,
                         color: Colors.blue[700]),
                   ),
-                  const SizedBox(
-                    height: 14,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   Text(
                     "loginDescription".tr,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16,
+                    style: TextStyle(
+                      fontSize: screenHeight * 0.015,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: screenHeight * 0.005,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -87,8 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: screenHeight * 0.005,
                   ),
                   const TextField(
                     decoration: InputDecoration(
@@ -106,8 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         contentPadding:
                             EdgeInsets.symmetric(vertical: 12, horizontal: 8)),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -117,8 +119,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
-                  const SizedBox(
-                    height: 8,
+                  SizedBox(
+                    height: screenHeight * 0.005,
                   ),
                   const TextField(
                     decoration: InputDecoration(
@@ -135,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         contentPadding:
                             EdgeInsets.symmetric(vertical: 12, horizontal: 8)),
                   ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: screenHeight * 0.015,
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -147,8 +149,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.blue[500], fontWeight: FontWeight.w500),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: screenHeight * 0.012,
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -156,34 +158,37 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         backgroundColor: Colors.blue[500],
                         foregroundColor: Colors.white,
-                        minimumSize: const Size.fromHeight(50),
+                        minimumSize: Size.fromHeight(screenHeight * 0.05),
                       ),
                       onPressed: () {},
                       child: Text(
                         "loginButton".tr,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: screenHeight * 0.02),
                       )),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   Text(
                     "continueLabel".tr,
                     style: TextStyle(fontSize: 14),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        child:
-                            SvgPicture.asset("assets/images/facebook-logo.svg"),
+                        radius: screenHeight * 0.024,
+                        child: SvgPicture.asset(
+                          "assets/images/facebook-logo.svg",
+                        ),
                       ),
                       const SizedBox(
                         width: 24,
                       ),
                       CircleAvatar(
+                        radius: screenHeight * 0.024,
                         child:
                             SvgPicture.asset("assets/images/google-logo.svg"),
                       ),
@@ -191,13 +196,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 24,
                       ),
                       CircleAvatar(
+                        radius: screenHeight * 0.024,
                         child:
                             SvgPicture.asset("assets/images/mobile-logo.svg"),
                       )
                     ],
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: screenHeight * 0.01,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
