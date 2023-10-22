@@ -86,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "emailLabel".tr,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ),
                   SizedBox(
@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "passwordLabel".tr,
                       textAlign: TextAlign.start,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ),
                   SizedBox(
@@ -124,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const TextField(
                     decoration: InputDecoration(
+                        suffixIcon: Icon(Icons.remove_red_eye_rounded),
                         enabledBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Colors.grey, width: 2.0),
@@ -154,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
+                        shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(8))),
                         backgroundColor: Colors.blue[500],
                         foregroundColor: Colors.white,
@@ -170,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Text(
                     "continueLabel".tr,
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14),
                   ),
                   SizedBox(
                     height: screenHeight * 0.01,
