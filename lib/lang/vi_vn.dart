@@ -26,4 +26,6 @@ const Map<String, String> viVN = {
   "englishForBusiness": "Tiếng Anh cho công việc",
   "conversational": "Giao tiếp",
   "resetFilters": "Đặt lại bộ tìm kiếm",
+  "recommendedTutors": "Gia sư được đề xuất",
+  "book": "Đặt lịch",
 };

@@ -26,4 +26,6 @@ const Map<String, String> enUS = {
   "englishForBusiness": "English for business",
   "conversational": "Conversational",
   "resetFilters": "Reset Filters",
+  "recommendedTutors": "Recommended Tutors",
+  "book": "Book",
 };

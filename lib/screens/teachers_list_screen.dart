@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/filter_item.dart';
+import 'package:lettutor/widgets/teacher_card.dart';
 
 class TeachersListScreen extends StatefulWidget {
   const TeachersListScreen({super.key});
@@ -194,74 +196,110 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       Container(
                         decoration: BoxDecoration(
                             border: Border(
-                          bottom: BorderSide(width: 1, color: Colors.grey),
+                          bottom: BorderSide(
+                              width: 1, color: Colors.grey.withOpacity(0.3)),
                         )),
-                        child: Wrap(runSpacing: 8, spacing: 4, children: [
-                          Category(
-                            name: "all".tr,
-                            active: true,
-                          ),
-                          Category(
-                            name: "englishForKids".tr,
-                            active: false,
-                          ),
-                          Category(
-                            name: "englishForBusiness".tr,
-                            active: false,
-                          ),
-                          Category(
-                            name: "conversational".tr,
-                            active: false,
-                          ),
-                          Category(
-                            name: "STARTERS",
-                            active: false,
-                          ),
-                          Category(
-                            name: "MOVERS",
-                            active: false,
-                          ),
-                          Category(
-                            name: "FLYERS",
-                            active: false,
-                          ),
-                          Category(
-                            name: "KET",
-                            active: false,
-                          ),
-                          Category(
-                            name: "PET",
-                            active: false,
-                          ),
-                          Category(
-                            name: "IELTS",
-                            active: false,
-                          ),
-                          Category(
-                            name: "TOEFL",
-                            active: false,
-                          ),
-                          Category(
-                            name: "TOEIC",
-                            active: false,
-                          ),
-                          SizedBox(
-                            height: 32,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.only(
-                                        left: 10, right: 10, top: 2, bottom: 2),
-                                    backgroundColor: Colors.white,
-                                    foregroundColor: Colors.blue[300],
-                                    side: BorderSide(
-                                        width: 1, color: Colors.blue)),
-                                onPressed: () {},
-                                child: Text(
-                                  'resetFilters'.tr,
-                                )),
-                          )
-                        ]),
-                      )
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 28),
+                          child: Wrap(runSpacing: 8, spacing: 4, children: [
+                            FilterItem(
+                              name: "all".tr,
+                              active: true,
+                            ),
+                            FilterItem(
+                              name: "englishForKids".tr,
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "englishForBusiness".tr,
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "conversational".tr,
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "STARTERS",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "MOVERS",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "FLYERS",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "KET",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "PET",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "IELTS",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "TOEFL",
+                              active: false,
+                            ),
+                            FilterItem(
+                              name: "TOEIC",
+                              active: false,
+                            ),
+                            SizedBox(
+                              height: 32,
+                              child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      padding: EdgeInsets.only(
+                                          left: 10,
+                                          right: 10,
+                                          top: 2,
+                                          bottom: 2),
+                                      backgroundColor: Colors.white,
+                                      foregroundColor: Colors.blue[300],
+                                      side: BorderSide(
+                                          width: 1, color: Colors.blue)),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'resetFilters'.tr,
+                                  )),
+                            )
+                          ]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Text(
+                        "recommendedTutors".tr,
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      TeacherCard(
+                          imgUrl: "assets/images/teacher.jpg",
+                          hasLiked: false,
+                          name: "Keegan",
+                          national: "Tunisia",
+                          stars: 5,
+                          filters: [
+                            'englishForBusiness'.tr,
+                            'conversational'.tr,
+                            'englishForKids'.tr,
+                            'IELTS',
+                            'STARTERS',
+                          ],
+                          description:
+                              "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
+                      SizedBox(
+                        height: 120,
+                      ),
                     ]),
               )
             ]),
@@ -307,32 +345,5 @@ class Input extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(50))),
           ),
         ));
-  }
-}
-
-class Category extends StatefulWidget {
-  final String name;
-  final bool active;
-  const Category({super.key, required this.name, required this.active});
-
-  @override
-  State<Category> createState() => _CategoryState();
-}
-
-class _CategoryState extends State<Category> {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 32,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
-            backgroundColor: widget.active ? Colors.blue[50] : Colors.grey[200],
-            foregroundColor:
-                widget.active ? Colors.blue[700] : Colors.grey[700],
-          ),
-          onPressed: () {},
-          child: Text(widget.name)),
-    );
   }
 }
