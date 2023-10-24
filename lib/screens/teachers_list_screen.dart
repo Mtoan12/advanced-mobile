@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/filter_item.dart';
 import 'package:lettutor/widgets/teacher_card.dart';
+import 'package:number_paginator/number_paginator.dart';
 
 class TeachersListScreen extends StatefulWidget {
   const TeachersListScreen({super.key});
@@ -298,10 +297,37 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           description:
                               "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
                       SizedBox(
+                        height: 20,
+                      ),
+                      TeacherCard(
+                          imgUrl: "assets/images/teacher.jpg",
+                          hasLiked: false,
+                          name: "Keegan",
+                          national: "Tunisia",
+                          stars: 5,
+                          filters: [
+                            'englishForBusiness'.tr,
+                            'conversational'.tr,
+                            'englishForKids'.tr,
+                            'IELTS',
+                            'STARTERS',
+                          ],
+                          description:
+                              "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
+                      SizedBox(
+                        height: 28,
+                      ),
+                      NumberPaginator(
+                        numberPages: 1,
+                        onPageChange: (int index) {
+                          // handle page change...
+                        },
+                      ),
+                      SizedBox(
                         height: 120,
                       ),
                     ]),
-              )
+              ),
             ]),
           ),
         ),
