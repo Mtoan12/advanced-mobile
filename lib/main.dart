@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lettutor/localization_service.dart';
-import 'package:lettutor/screens/login_screen.dart';
-import 'package:lettutor/screens/teacher_detail_screen.dart';
-import 'package:lettutor/screens/teachers_list_screen.dart';
+import 'package:lettutor/screens/schedule_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TeacherDetailScreen(),
+      home: ScheduleScreen(),
     );
   }
 }

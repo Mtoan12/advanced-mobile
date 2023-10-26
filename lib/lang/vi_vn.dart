@@ -28,4 +28,14 @@ const Map<String, String> viVN = {
   "resetFilters": "Đặt lại bộ tìm kiếm",
   "recommendedTutors": "Gia sư được đề xuất",
   "book": "Đặt lịch",
+  "schedule": "Lịch đã đặt",
+  "scheduleDescription1": "Đây là danh sách những khung giờ bạn đã đặt",
+  "scheduleDescription2":
+      "Bạn có thể theo dõi khi nào buổi học bắt đầu, tham gia buổi học bằng một cú nhấp chuột hoặc có thể hủy buổi học trước 2 tiếng.",
+  "latestBook": "Latest Book",
+  "lesson": "buổi học",
+  "directMessage": "Nhắn tin",
+  "cancel": "Hủy",
+  "requestForLesson": "Yêu cầu cho buổi học",
+  "editRequest": "Chỉnh sửa yêu cầu"
 };

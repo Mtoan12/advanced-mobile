@@ -28,4 +28,14 @@ const Map<String, String> enUS = {
   "resetFilters": "Reset Filters",
   "recommendedTutors": "Recommended Tutors",
   "book": "Book",
+  "schedule": "Schedule",
+  "scheduleDescription1": "Here is a list of the sessions you have booked",
+  "scheduleDescription2":
+      "You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours",
+  "latestBook": "Latest Book",
+  "lesson": "Lesson",
+  "directMessage": "Direct Message",
+  "cancel": "Cancel",
+  "requestForLesson": "Request for lesson",
+  "editRequest": "dit Request"
 };
