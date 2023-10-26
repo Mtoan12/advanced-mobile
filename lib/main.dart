@@ -3,15 +3,11 @@ import 'package:device_preview/device_preview.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lettutor/localization_service.dart';
 import 'package:lettutor/screens/login_screen.dart';
+import 'package:lettutor/screens/teacher_detail_screen.dart';
 import 'package:lettutor/screens/teachers_list_screen.dart';
 
 void main() {
-  runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => MyApp(), // Wrap your app
-    ),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,14 +20,13 @@ class MyApp extends StatelessWidget {
       translations: LocalizationService(),
       locale: Locale('vi', 'VN'),
       fallbackLocale: Locale('vi', 'VN'),
-      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TeachersListScreen(),
+      home: TeacherDetailScreen(),
     );
   }
 }
