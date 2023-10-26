@@ -37,5 +37,6 @@ const Map<String, String> enUS = {
   "directMessage": "Direct Message",
   "cancel": "Cancel",
   "requestForLesson": "Request for lesson",
-  "editRequest": "dit Request"
+  "editRequest": "dit Request",
+  "goToMeeting": "Go to meeting",
 };

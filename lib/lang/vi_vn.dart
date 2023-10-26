@@ -37,5 +37,6 @@ const Map<String, String> viVN = {
   "directMessage": "Nhắn tin",
   "cancel": "Hủy",
   "requestForLesson": "Yêu cầu cho buổi học",
-  "editRequest": "Chỉnh sửa yêu cầu"
+  "editRequest": "Chỉnh sửa yêu cầu",
+  "goToMeeting": "Vào buổi học",
 };
