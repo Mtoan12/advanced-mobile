@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/widgets/comment.dart';
-import 'package:number_paginator/number_paginator.dart';
 
 class CommentsWidget extends StatefulWidget {
   const CommentsWidget({super.key});

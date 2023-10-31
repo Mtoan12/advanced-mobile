@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:lettutor/localization_service.dart';
-import 'package:lettutor/screens/teacher_detail_screen/teacher_detail_screen.dart';
+import 'package:lettutor/screens/schedule_screen/schedule_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TeacherDetailScreen(),
+      home: ScheduleScreen(),
     );
   }
 }

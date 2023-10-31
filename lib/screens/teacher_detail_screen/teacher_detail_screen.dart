@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_information.dart';
 import 'package:lettutor/widgets/appbar.dart';
-import 'package:lettutor/widgets/comment.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class TeacherDetailScreen extends StatefulWidget {

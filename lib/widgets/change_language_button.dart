@@ -87,6 +87,5 @@ class _ChangeLanguageButtonState extends State<ChangeLanguageButton> {
                 }),
           )
         ]));
-    ;
   }
 }
