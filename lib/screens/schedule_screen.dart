@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/schedule_card.dart';
@@ -30,10 +31,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.calendar_month,
-                    size: 96,
-                    color: Colors.blue,
+                  SvgPicture.asset(
+                    'assets/images/calendar-check.svg',
+                    width: 100,
                   ),
                   SizedBox(
                     height: 12,
