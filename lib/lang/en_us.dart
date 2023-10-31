@@ -39,4 +39,16 @@ const Map<String, String> enUS = {
   "requestForLesson": "Request for lesson",
   "editRequest": "dit Request",
   "goToMeeting": "Go to meeting",
+  "history": "History",
+  "historyDesc1": "The following is a list of lessons you have attended",
+  "historyDesc2": "You can review the details of the lessons you have attended",
+  "lessonTime": "Lesson Time:",
+  "NoRequestForLesson": "No request for lesson",
+  "tutorNotReview": "Tutor haven't reviewed yet",
+  "reviewFromTutor": "Review from tutor",
+  "addARating": "Add a Rating",
+  "report": "Report",
+  "edit": "Edit",
+  "session": "Session",
+  
 };

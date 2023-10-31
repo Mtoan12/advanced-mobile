@@ -39,4 +39,16 @@ const Map<String, String> viVN = {
   "requestForLesson": "Yêu cầu cho buổi học",
   "editRequest": "Chỉnh sửa yêu cầu",
   "goToMeeting": "Vào buổi học",
+  "history": "Lịch sử các buổi học",
+  "historyDesc1": "Đây là danh sách các bài học bạn đã tham gia",
+  "historyDesc2":
+      "Bạn có thể xem lại thông tin chi tiết về các buổi học đã tham gia đã tham gia",
+  "lessonTime": "Thời gian bài học:",
+  "NoRequestForLesson": "Không có yêu cầu cho buổi học",
+  "tutorNotReview": "Gia sư chưa có đánh giá",
+  "reviewFromTutor": "Đánh giá từ gia sư",
+  "addARating": "Đánh giá",
+  "report": "Báo cáo",
+  "edit": "Sửa",
+  "session": "Buổi",
 };

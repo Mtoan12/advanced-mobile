@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:lettutor/screens/schedule_screen/latest_book.dart';
-import 'package:lettutor/screens/schedule_screen/teacher_books.dart';
+import 'package:lettutor/screens/history_screen/history_cards.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:number_paginator/number_paginator.dart';
 
-class ScheduleScreen extends StatefulWidget {
-  const ScheduleScreen({super.key});
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({super.key});
 
   @override
-  State<ScheduleScreen> createState() => _ScheduleScreenState();
+  State<HistoryScreen> createState() => HistoryScreenState();
 }
 
-class _ScheduleScreenState extends State<ScheduleScreen> {
+class HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -33,14 +32,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SvgPicture.asset(
-                    'assets/images/calendar-check.svg',
+                    'assets/images/history.svg',
                     width: 100,
                   ),
                   SizedBox(
                     height: 12,
                   ),
                   Text(
-                    "schedule".tr,
+                    "history".tr,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                   ),
                   SizedBox(
@@ -58,11 +57,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "scheduleDescription1".tr,
+                              "historyDesc1".tr,
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "scheduleDescription2".tr,
+                              "historyDesc2".tr,
                               style: TextStyle(fontSize: 16),
                             ),
                           ],
@@ -71,18 +70,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   SizedBox(
                     height: 40,
                   ),
-                  LatestBookWidget(),
+                  HistoryCardsWidget(),
                   SizedBox(
-                    height: 36,
-                  ),
-                  TeacherBooksWidget(),
-                  SizedBox(
-                    height: 36,
+                    height: 24,
                   ),
                   NumberPaginator(numberPages: 1),
-                  SizedBox(
-                    height: 48,
-                  ),
                 ],
               ),
             ),
