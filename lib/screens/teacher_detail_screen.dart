@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/comment.dart';
-import 'package:lettutor/widgets/filter_item.dart';
+import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/widgets/video_player.dart';
 import 'package:number_paginator/number_paginator.dart';
 

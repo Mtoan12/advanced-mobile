@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor/widgets/filter_item.dart';
+import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 
 class TeacherCard extends StatelessWidget {
   final String imgUrl;
