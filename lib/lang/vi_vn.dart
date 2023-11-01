@@ -51,4 +51,11 @@ const Map<String, String> viVN = {
   "report": "Báo cáo",
   "edit": "Sửa",
   "session": "Buổi",
+  "discoverCourses": "Khám phá các khóa học",
+  "coursesDesc":
+      "LiveTutor đã xây dựng nên các khóa học của các lĩnh vực trong cuộc sống chất lượng, bài bản và khoa học nhất cho những người đang có nhu cầu trau dồi thêm kiến thức về các lĩnh vực.",
+  "course": "Khóa học",
+  "selectLevel": "Chọn cấp độ",
+  "selectCategory": "Chọn danh mục",
+  "sortByLevel": "Sắp xếp theo độ khó",
 };

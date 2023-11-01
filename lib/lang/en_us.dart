@@ -50,5 +50,11 @@ const Map<String, String> enUS = {
   "report": "Report",
   "edit": "Edit",
   "session": "Session",
-  
+  "discoverCourses": "Discover Courses",
+  "coursesDesc":
+      "LiveTutor has built the most quality, methodical and scientific courses in the fields of life for those who are in need of improving their knowledge of the fields.",
+  "course": "Course",
+  "selectLevel": "Select level",
+  "selectCategory": "Select Category",
+  "sortByLevel": "Sort by level",
 };
