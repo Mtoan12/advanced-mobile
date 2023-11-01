@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/screens/courses_screen/course_tab.dart';
 import 'package:lettutor/screens/courses_screen/courses_filters.dart';
-import 'package:lettutor/screens/history_screen/history_cards.dart';
+import 'package:lettutor/screens/courses_screen/courses_tabs.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:number_paginator/number_paginator.dart';
 
@@ -69,9 +70,13 @@ class CoursesScreenState extends State<CoursesScreen> {
                   ),
                   CoursesFiltersWidget(),
                   SizedBox(
+                    height: 24,
+                  ),
+                  CoursesTabsWidget(),
+                  SizedBox(
                     height: 40,
                   ),
-                  HistoryCardsWidget(),
+                  CourseTabWidget(),
                   SizedBox(
                     height: 24,
                   ),
