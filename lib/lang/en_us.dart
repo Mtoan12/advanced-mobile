@@ -57,4 +57,12 @@ const Map<String, String> enUS = {
   "selectLevel": "Select level",
   "selectCategory": "Select Category",
   "sortByLevel": "Sort by level",
+  "discover": "Discover",
+  "overview": "Overview",
+  "whyTakeThisCourse": "Why take this course",
+  "whatWillYouBeAbleToDo": "What will you be able to do",
+  "experienceLevel": "Experience Level",
+  "courseLength": "Course Length",
+  "topics": "Topics",
+  "listTopics": "List Topics",
 };

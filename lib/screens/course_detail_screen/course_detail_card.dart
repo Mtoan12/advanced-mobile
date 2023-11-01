@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CourseCardWidget extends StatefulWidget {
+class CourseDetailCardWidget extends StatefulWidget {
   final String imgUrl;
   final String name;
   final String desc;
-  final String level;
-  final int numberLessons;
 
-  const CourseCardWidget({
+  const CourseDetailCardWidget({
     super.key,
     required this.desc,
-    required this.level,
-    required this.numberLessons,
     required this.imgUrl,
     required this.name,
   });
 
   @override
-  State<CourseCardWidget> createState() => CourseCardWidgetState();
+  State<CourseDetailCardWidget> createState() => CourseDetailCardWidgetState();
 }
 
-class CourseCardWidgetState extends State<CourseCardWidget> {
+class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,13 +42,13 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
           height: 24,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 widget.name,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 12,
@@ -63,20 +60,17 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
               const SizedBox(
                 height: 24,
               ),
-              Row(
-                children: [
-                  Text(
-                    widget.level,
-                    style: TextStyle(fontSize: 14),
-                  ),
-                  Text(
-                    "${widget.numberLessons > 0 ? " - ${widget.numberLessons} Lessons" : ""}",
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
+              Container(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[700]),
+                      onPressed: () {},
+                      child: Text(
+                        "discover".tr,
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w500),
+                      )))
             ],
           ),
         ),

@@ -58,4 +58,12 @@ const Map<String, String> viVN = {
   "selectLevel": "Chọn cấp độ",
   "selectCategory": "Chọn danh mục",
   "sortByLevel": "Sắp xếp theo độ khó",
+  "discover": "Khám phá",
+  "overview": "Tổng quan",
+  "whyTakeThisCourse": "Tại sao bạn nên học khóa học này",
+  "whatWillYouBeAbleToDo": "Bạn có thể làm gì",
+  "experienceLevel": "Trình độ yêu cầu",
+  "courseLength": "Thời lượng khóa học",
+  "topics": "Chủ đề",
+  "listTopics": "Danh sách chủ đề",
 };

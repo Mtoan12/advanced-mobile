@@ -24,7 +24,8 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
           children: [
             Container(
               child: CircleAvatar(
-                backgroundImage: AssetImage("assets/images/teacher.jpg"),
+                backgroundImage: NetworkImage(
+                    "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg"),
                 radius: 56,
               ),
             ),

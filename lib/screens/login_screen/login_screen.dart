@@ -25,11 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
           foregroundColor: Colors.blue,
           title: Container(
             decoration: BoxDecoration(
+              color: Colors.white,
               boxShadow: [
                 BoxShadow(
                     color: Colors.black.withOpacity(0.3),
                     offset: const Offset(0, 60),
-                    blurRadius: 8)
+                    blurRadius: 10)
               ],
             ),
             child: Row(
@@ -53,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
+                  Image.network(
                     "assets/images/login_banner.png",
                     height: screenHeight * 0.25,
                   ),

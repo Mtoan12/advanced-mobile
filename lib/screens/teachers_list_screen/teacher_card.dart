@@ -52,7 +52,7 @@ class TeacherCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 40,
-                  backgroundImage: AssetImage(imgUrl),
+                  backgroundImage: NetworkImage(imgUrl),
                 ),
                 Text(
                   name,

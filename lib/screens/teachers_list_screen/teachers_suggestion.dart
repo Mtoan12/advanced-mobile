@@ -24,7 +24,8 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
           height: 8,
         ),
         TeacherCard(
-            imgUrl: "assets/images/teacher.jpg",
+            imgUrl:
+                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
             hasLiked: false,
             name: "Keegan",
             national: "Tunisia",
@@ -42,7 +43,8 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
           height: 20,
         ),
         TeacherCard(
-            imgUrl: "assets/images/teacher.jpg",
+            imgUrl:
+                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
             hasLiked: false,
             name: "Keegan",
             national: "Tunisia",
