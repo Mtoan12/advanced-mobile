@@ -4,6 +4,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/localization_service.dart';
 import 'package:lettutor/screens/lesson_detail_screen/lesson_detail_screen.dart';
+import 'package:lettutor/screens/video_call_screen/video_call_screen.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-      home: LessonDetailScreen(),
+      home: VideoCallScreen(),
     );
   }
 }
