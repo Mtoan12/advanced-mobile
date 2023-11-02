@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_card.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_info.dart';
+import 'package:lettutor/screens/course_detail_screen/course_topics.dart';
 import 'package:lettutor/widgets/appbar.dart';
 
 class CourseDetailScreen extends StatefulWidget {
@@ -43,7 +44,14 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                         "This course covers vocabulary at the CEFR A2 level. You will build confidence while learning to speak about a variety of common, everyday topics. In addition, you will build implicit grammar knowledge as your tutor models correct answers and corrects your mistakes.",
                     level: "Beginner",
                     numberTopic: 10,
-                  )
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  CourseTopicsWidget(),
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             ),

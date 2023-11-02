@@ -172,19 +172,6 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             ),
           ],
         ),
-        SizedBox(
-          height: 24,
-        ),
-        Text(
-          "listTopics".tr,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
       ]),
     );
   }
