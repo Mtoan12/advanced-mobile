@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_card.dart';
+import 'package:lettutor/screens/course_detail_screen/course_detail_info.dart';
 import 'package:lettutor/widgets/appbar.dart';
 
 class CourseDetailScreen extends StatefulWidget {
@@ -31,7 +32,18 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                   CourseDetailCardWidget(
                       desc: "Gain confidence speaking about familiar topics",
                       imgUrl: "assets/images/5e2b895e541a832674533c18.png",
-                      name: "Basic Conversation Topics")
+                      name: "Basic Conversation Topics"),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  CourseDetailInfoWidget(
+                    content1:
+                        "It can be intimidating to speak with a foreigner, no matter how much grammar and vocabulary you've mastered. If you have basic knowledge of English but have not spent much time speaking, this course will help you ease into your first English conversations.",
+                    content2:
+                        "This course covers vocabulary at the CEFR A2 level. You will build confidence while learning to speak about a variety of common, everyday topics. In addition, you will build implicit grammar knowledge as your tutor models correct answers and corrects your mistakes.",
+                    level: "Beginner",
+                    numberTopic: 10,
+                  )
                 ],
               ),
             ),

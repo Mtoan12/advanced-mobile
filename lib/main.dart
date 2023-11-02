@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/localization_service.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_screen.dart';
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        fontFamily: GoogleFonts.poppins().fontFamily,
       ),
       home: CourseDetailScreen(),
     );
