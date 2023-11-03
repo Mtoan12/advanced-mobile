@@ -3,6 +3,7 @@ import 'package:lettutor/screens/course_detail_screen/course_detail_card.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_info.dart';
 import 'package:lettutor/screens/course_detail_screen/course_topics.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/drawer.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   const CourseDetailScreen({super.key});
@@ -18,6 +19,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(),
+        endDrawer: DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(

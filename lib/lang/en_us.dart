@@ -37,7 +37,7 @@ const Map<String, String> enUS = {
   "directMessage": "Direct Message",
   "cancel": "Cancel",
   "requestForLesson": "Request for lesson",
-  "editRequest": "dit Request",
+  "editRequest": "Edit Request",
   "goToMeeting": "Go to meeting",
   "history": "History",
   "historyDesc1": "The following is a list of lessons you have attended",

@@ -16,7 +16,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "latestBook".tr,
+          "Latest Book".tr,
           style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
         ),
         SizedBox(

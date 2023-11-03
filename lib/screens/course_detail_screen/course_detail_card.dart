@@ -67,7 +67,7 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
                           backgroundColor: Colors.blue[700]),
                       onPressed: () {},
                       child: Text(
-                        "discover".tr,
+                        "Discover".tr,
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w500),
                       )))

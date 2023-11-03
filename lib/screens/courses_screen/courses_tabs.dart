@@ -31,7 +31,7 @@ class _CoursesTabsWidgetState extends State<CoursesTabsWidget> {
             )),
             padding: EdgeInsets.only(bottom: 12.0),
             child: Text(
-              "course".tr,
+              "Course".tr,
               style: TextStyle(
                   fontSize: 14,
                   color: Colors.blue[700],

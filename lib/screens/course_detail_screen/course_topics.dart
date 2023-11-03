@@ -16,7 +16,7 @@ class _CourseTopicsWidgetState extends State<CourseTopicsWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "listTopics".tr,
+          "List Topics".tr,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,

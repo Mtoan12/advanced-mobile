@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/screens/history_screen/history_cards.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class HistoryScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class HistoryScreenState extends State<HistoryScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(),
+        endDrawer: DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -39,7 +41,7 @@ class HistoryScreenState extends State<HistoryScreen> {
                     height: 12,
                   ),
                   Text(
-                    "history".tr,
+                    "History".tr,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                   ),
                   SizedBox(
@@ -57,11 +59,13 @@ class HistoryScreenState extends State<HistoryScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "historyDesc1".tr,
+                              "The following is a list of lessons you have attended"
+                                  .tr,
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "historyDesc2".tr,
+                              "You can review the details of the lessons you have attended"
+                                  .tr,
                               style: TextStyle(fontSize: 16),
                             ),
                           ],

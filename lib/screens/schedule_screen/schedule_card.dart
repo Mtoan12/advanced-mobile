@@ -66,7 +66,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                         style: TextStyle(fontSize: 12),
                       ),
                       Text(
-                        "directMessage".tr,
+                        "Direct Message".tr,
                         style: TextStyle(fontSize: 12, color: Colors.blue[500]),
                       )
                     ],
@@ -100,7 +100,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("cancel".tr),
+                              Text("Cancel".tr),
                             ],
                           ))
                     ],
@@ -124,12 +124,12 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                               width: 4,
                             ),
                             Text(
-                              "requestForLesson".tr,
+                              "Request for lesson".tr,
                               style: TextStyle(fontSize: 10),
                             ),
                           ],
                         ),
-                        Text("editRequest".tr,
+                        Text("Edit Request".tr,
                             style: TextStyle(fontSize: 10, color: Colors.blue))
                       ],
                     ),
@@ -174,7 +174,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                     SizedBox(
                       width: 4,
                     ),
-                    Text("goToMeeting".tr, style: TextStyle()),
+                    Text("Go to meeting".tr, style: TextStyle()),
                   ],
                 )),
           )

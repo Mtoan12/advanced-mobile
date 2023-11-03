@@ -3,6 +3,7 @@ import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class TeachersListScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: appBar(),
+      endDrawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(

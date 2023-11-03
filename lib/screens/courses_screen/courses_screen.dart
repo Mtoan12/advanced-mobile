@@ -5,6 +5,7 @@ import 'package:lettutor/screens/courses_screen/course_tab.dart';
 import 'package:lettutor/screens/courses_screen/courses_filters.dart';
 import 'package:lettutor/screens/courses_screen/courses_tabs.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class CoursesScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class CoursesScreenState extends State<CoursesScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(),
+        endDrawer: DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -41,7 +43,7 @@ class CoursesScreenState extends State<CoursesScreen> {
                     height: 12,
                   ),
                   Text(
-                    "discoverCourses".tr,
+                    "Discover Courses".tr,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                   ),
                   SizedBox(
@@ -59,7 +61,8 @@ class CoursesScreenState extends State<CoursesScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "coursesDesc".tr,
+                              "LiveTutor has built the most quality, methodical and scientific courses in the fields of life for those who are in need of improving their knowledge of the fields"
+                                  .tr,
                               style: TextStyle(fontSize: 16),
                             ),
                           ],

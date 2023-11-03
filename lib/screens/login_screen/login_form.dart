@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -17,7 +19,7 @@ class _LoginFormState extends State<LoginForm> {
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "emailLabel".tr,
+            "EMAIL".tr,
             textAlign: TextAlign.start,
             style: const TextStyle(color: Colors.grey),
           ),
@@ -45,7 +47,7 @@ class _LoginFormState extends State<LoginForm> {
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "passwordLabel".tr,
+            "PASSWORD".tr,
             textAlign: TextAlign.start,
             style: const TextStyle(color: Colors.grey),
           ),
@@ -73,7 +75,7 @@ class _LoginFormState extends State<LoginForm> {
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "forgotPassword".tr,
+            "Forgot Password?".tr,
             textAlign: TextAlign.start,
             style:
                 TextStyle(color: Colors.blue[500], fontWeight: FontWeight.w500),
@@ -90,9 +92,11 @@ class _LoginFormState extends State<LoginForm> {
               foregroundColor: Colors.white,
               minimumSize: Size.fromHeight(screenHeight * 0.05),
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed(AppRouterConstant.teachersListRouteName);
+            },
             child: Text(
-              "loginButton".tr,
+              "LOG IN".tr,
               style: TextStyle(fontSize: screenHeight * 0.02),
             )),
       ],

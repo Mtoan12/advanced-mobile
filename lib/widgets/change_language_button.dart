@@ -10,7 +10,7 @@ class ChangeLanguageButton extends StatefulWidget {
 }
 
 class _ChangeLanguageButtonState extends State<ChangeLanguageButton> {
-  String lang = "Vietnamese";
+  String lang = "English";
   @override
   Widget build(BuildContext context) {
     return Center(

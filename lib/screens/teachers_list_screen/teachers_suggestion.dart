@@ -17,7 +17,7 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "recommendedTutors".tr,
+          "Recommended Tutors".tr,
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
         SizedBox(
@@ -31,9 +31,9 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
             national: "Tunisia",
             stars: 5,
             filters: [
-              'englishForBusiness'.tr,
-              'conversational'.tr,
-              'englishForKids'.tr,
+              'English for business'.tr,
+              'Conversational'.tr,
+              'English for kids'.tr,
               'IELTS',
               'STARTERS',
             ],
@@ -50,9 +50,9 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
             national: "Tunisia",
             stars: 5,
             filters: [
-              'englishForBusiness'.tr,
-              'conversational'.tr,
-              'englishForKids'.tr,
+              'English for business'.tr,
+              'Conversational'.tr,
+              'English for kids'.tr,
               'IELTS',
               'STARTERS',
             ],

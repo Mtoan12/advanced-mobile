@@ -36,7 +36,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                 height: 40,
               ),
               Text(
-                "upcommingLesson".tr,
+                "Upcomming lesson".tr,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28,
@@ -51,7 +51,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                   Expanded(
                     child: Wrap(
                       children: [
-                        Text("timeLabel".tr,
+                        Text("Thu, 26 Oct 23 03:30 - 03:55".tr,
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -59,7 +59,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                         const SizedBox(
                           width: 2,
                         ),
-                        Text("timeRemainingLabel".tr,
+                        Text("(starts in 81:48:36)".tr,
                             style: TextStyle(
                                 color: Colors.yellow[200],
                                 fontSize: 18,
@@ -77,7 +77,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                             width: 4,
                           ),
                           Text(
-                            "enterLessonRoom".tr,
+                            "Enter lesson room".tr,
                             style: TextStyle(color: Colors.blue[400]),
                           )
                         ],
@@ -87,7 +87,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
               const SizedBox(
                 height: 16,
               ),
-              Text("totalTimeLabel".tr,
+              Text("Total lesson time is 507 hours 55 minutes".tr,
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: screenHeight * 0.02,
                   ),
                   Text(
-                    "loginTitle".tr,
+                    "Say hello to your English tutors",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: screenHeight * 0.035,
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: screenHeight * 0.01,
                   ),
                   Text(
-                    "loginDescription".tr,
+                    "Become fluent faster through one on one video chat lessons tailored to your goals.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: screenHeight * 0.015,
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: screenHeight * 0.01,
                   ),
                   Text(
-                    "continueLabel".tr,
+                    "Or continue with".tr,
                     style: const TextStyle(fontSize: 14),
                   ),
                   SizedBox(
@@ -103,12 +103,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("haveNoAccount".tr),
+                      Text("Not a member yet??".tr),
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.blue[500]),
                           onPressed: () {},
-                          child: Text("SignInLabel".tr))
+                          child: Text("Sign up".tr))
                     ],
                   )
                 ]),

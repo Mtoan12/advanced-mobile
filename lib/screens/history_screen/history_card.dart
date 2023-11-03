@@ -95,7 +95,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                             width: 4,
                           ),
                           Text(
-                            "directMessage".tr,
+                            "Direct Message".tr,
                             style: TextStyle(
                                 fontSize: 12, color: Colors.blue[500]),
                           ),
@@ -116,7 +116,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
-                  "${"lessonTime".tr} ${widget.lessonTime}",
+                  "${"Lesson Time".tr} ${widget.lessonTime}",
                   style: TextStyle(fontSize: 16),
                 )),
           ),
@@ -132,7 +132,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${widget.request.length == 0 ? "NoRequestForLesson".tr : "requestForLesson".tr}",
+                      "${widget.request.length == 0 ? "No request for lesson".tr : "Request for lesson".tr}",
                       style: TextStyle(fontSize: 12),
                     ),
                     SizedBox(
@@ -161,7 +161,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "${widget.review.length == 0 ? "tutorNotReview".tr : "reviewFromTutor".tr}",
+                      "${widget.review.length == 0 ? "Tutor haven't reviewed yet".tr : "Review from tutor".tr}",
                       style: TextStyle(fontSize: 12),
                     ),
                     SizedBox(
@@ -193,7 +193,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "${widget.rating == 0 ? "addARating".tr : "Rating"}",
+                          "${widget.rating == 0 ? "Add a Rating".tr : "Rating"}",
                           style:
                               TextStyle(fontSize: 12, color: Colors.blue[500]),
                         ),
@@ -208,7 +208,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                     Row(
                       children: [
                         Text(
-                          "${widget.rating != 0 ? "edit".tr : ""}",
+                          "${widget.rating != 0 ? "Edit".tr : ""}",
                           style: TextStyle(
                               fontSize: widget.rating == 0 ? 12 : 0,
                               color: Colors.blue[500]),
@@ -217,7 +217,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                           width: 16,
                         ),
                         Text(
-                          "report".tr,
+                          "Report".tr,
                           style:
                               TextStyle(fontSize: 12, color: Colors.blue[500]),
                         ),

@@ -21,7 +21,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
                 decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
-                    hintText: "course".tr,
+                    hintText: "Course".tr,
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(width: 1, color: Colors.blue)),
                     border: OutlineInputBorder(
@@ -54,7 +54,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
               children: [
                 Expanded(
                   child: InputFilterWidget(
-                    hintText: "selectLevel".tr,
+                    hintText: "Select level".tr,
                   ),
                 ),
                 SizedBox(
@@ -62,7 +62,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
                 ),
                 Expanded(
                     child: InputFilterWidget(
-                  hintText: "selectCategory".tr,
+                  hintText: "Select Category".tr,
                 )),
               ],
             ),
@@ -70,7 +70,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
               height: 12,
             ),
             InputFilterWidget(
-              hintText: "sortByLevel".tr,
+              hintText: "Sort by level".tr,
             ),
           ],
         )

@@ -17,7 +17,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "findATutor".tr,
+          "Find a tutor".tr,
           style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
         ),
         const SizedBox(
@@ -29,7 +29,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 160,
               height: 32,
               icon: Icon(null),
-              placeHolder: "enterTutorName".tr,
+              placeHolder: "Enter tutor name...".tr,
             ),
             SizedBox(
               width: 4,
@@ -38,7 +38,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 160,
               height: 32,
               icon: Icon(Icons.arrow_drop_down),
-              placeHolder: "selectTutorNationality".tr,
+              placeHolder: "Select tutor nationality".tr,
             ),
           ],
         ),
@@ -46,7 +46,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
           height: 8,
         ),
         Text(
-          "selectAvailableTutoringTime".tr,
+          "Select available tutoring time:".tr,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
         Wrap(
@@ -58,7 +58,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
                 Icons.calendar_month,
                 color: Colors.grey,
               ),
-              placeHolder: "selectADay".tr,
+              placeHolder: "Select a day".tr,
             ),
             SizedBox(
               width: 4,
@@ -67,7 +67,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 100,
               height: 32,
               icon: Icon(null),
-              placeHolder: "startTime".tr,
+              placeHolder: "Start time".tr,
             ),
             Input(
               width: 100,
@@ -76,7 +76,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
                 Icons.timelapse,
                 color: Colors.grey,
               ),
-              placeHolder: "endTime".tr,
+              placeHolder: "End Time".tr,
             ),
           ],
         ),
@@ -90,19 +90,19 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             padding: EdgeInsets.only(bottom: 28),
             child: Wrap(runSpacing: 8, spacing: 4, children: [
               FilterItem(
-                name: "all".tr,
+                name: "All".tr,
                 active: true,
               ),
               FilterItem(
-                name: "englishForKids".tr,
+                name: "English for kids".tr,
                 active: false,
               ),
               FilterItem(
-                name: "englishForBusiness".tr,
+                name: "English for business".tr,
                 active: false,
               ),
               FilterItem(
-                name: "conversational".tr,
+                name: "Conversational".tr,
                 active: false,
               ),
               FilterItem(
@@ -148,7 +148,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
                         side: BorderSide(width: 1, color: Colors.blue)),
                     onPressed: () {},
                     child: Text(
-                      'resetFilters'.tr,
+                      'Reset Filters'.tr,
                     )),
               )
             ]),

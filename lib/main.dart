@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp.router(
+    return MaterialApp.router(
       builder: DevicePreview.appBuilder,
-      translations: LocalizationService(),
-      locale: Locale('vi', 'VN'),
-      fallbackLocale: Locale('vi', 'VN'),
+      // translations: LocalizationService(),
+      locale: Locale('en', 'US'),
+      // fallbackLocale: Locale('vi', 'VN'),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -27,9 +27,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-      routeInformationParser: AppRouter().router.routeInformationParser,
-      routerDelegate: AppRouter().router.routerDelegate,
-      routeInformationProvider: AppRouter().router.routeInformationProvider,
+      routerConfig: AppRouter().router,
+      // routeInformationParser: AppRouter().router.routeInformationParser,
+      // routerDelegate: AppRouter().router.routerDelegate,
+      // routeInformationProvider: AppRouter().router.routeInformationProvider,
     );
   }
 }

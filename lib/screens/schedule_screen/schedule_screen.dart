@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:lettutor/screens/schedule_screen/latest_book.dart';
 import 'package:lettutor/screens/schedule_screen/teacher_books.dart';
 import 'package:lettutor/widgets/appbar.dart';
+import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
 
 class ScheduleScreen extends StatefulWidget {
@@ -20,6 +21,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(),
+        endDrawer: DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -40,7 +42,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     height: 12,
                   ),
                   Text(
-                    "schedule".tr,
+                    "Schedule".tr,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
                   ),
                   SizedBox(
@@ -58,11 +60,13 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "scheduleDescription1".tr,
+                              "Here is a list of the sessions you have booked"
+                                  .tr,
                               style: TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "scheduleDescription2".tr,
+                              "You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours"
+                                  .tr,
                               style: TextStyle(fontSize: 16),
                             ),
                           ],

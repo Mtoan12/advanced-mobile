@@ -178,9 +178,9 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
               child: Wrap(runSpacing: 8, spacing: 4, children: [
-                FilterItem(name: "englishForBusiness".tr, active: true),
-                FilterItem(name: "conversational".tr, active: true),
-                FilterItem(name: "englishForKids".tr, active: true),
+                FilterItem(name: "English For Business".tr, active: true),
+                FilterItem(name: "Conversational".tr, active: true),
+                FilterItem(name: "English For Kids".tr, active: true),
                 FilterItem(name: "IELTS", active: true),
                 FilterItem(name: "STARTERS", active: true),
                 FilterItem(name: "MOVERS", active: true),

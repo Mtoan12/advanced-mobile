@@ -30,7 +30,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
-          "overview".tr,
+          "Overview".tr,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -50,7 +50,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             ),
             Expanded(
               child: Text(
-                "whyTakeThisCourse".tr,
+                "Why take this course".tr,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
@@ -88,7 +88,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             ),
             Expanded(
               child: Text(
-                "whatWillYouBeAbleToDo".tr,
+                "What will you be able to do".tr,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
@@ -116,7 +116,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
           height: 24,
         ),
         Text(
-          "experienceLevel".tr,
+          "Experience Level".tr,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -146,7 +146,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
           height: 24,
         ),
         Text(
-          "courseLength".tr,
+          "Course Length".tr,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
@@ -166,7 +166,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             ),
             Expanded(
               child: Text(
-                "${widget.numberTopic} ${"topics".tr}",
+                "${widget.numberTopic} ${"Topics".tr}",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ),

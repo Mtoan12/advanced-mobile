@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lettutor/widgets/change_language_button.dart';
@@ -10,6 +12,7 @@ PreferredSizeWidget appBar() {
       backgroundColor: Colors.white,
       foregroundColor: Colors.blue,
       title: Container(
+        width: double.maxFinite,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -19,26 +22,19 @@ PreferredSizeWidget appBar() {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SvgPicture.asset(
-              "assets/images/lettutor_logo.svg",
-              width: 200,
+            Expanded(
+              child: SvgPicture.asset(
+                "assets/images/lettutor_logo.svg",
+                width: 200,
+              ),
             ),
             Row(children: [
               ChangeLanguageButton(),
               SizedBox(
                 width: 8,
               ),
-              CircleAvatar(
-                radius: 24, // Đặt kích thước lớn hơn
-                backgroundColor:
-                    Colors.grey.withOpacity(0.3), // Màu nền với độ trong suốt
-                child: Icon(
-                  Icons.menu,
-                  color: Colors.grey,
-                ),
-              )
             ]),
           ],
         ),
