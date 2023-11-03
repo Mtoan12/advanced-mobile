@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_information.dart';
+import 'package:lettutor/screens/teachers_list_screen/book_table.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:number_paginator/number_paginator.dart';
 
@@ -35,6 +36,10 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                   height: 30,
                 ),
                 NumberPaginator(numberPages: 1),
+                SizedBox(
+                  height: 40,
+                ),
+                // BookTableWidget(),
                 SizedBox(
                   height: 120,
                 ),

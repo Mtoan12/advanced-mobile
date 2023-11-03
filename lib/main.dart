@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/localization_service.dart';
-import 'package:lettutor/screens/lesson_detail_screen/lesson_detail_screen.dart';
-import 'package:lettutor/screens/video_call_screen/video_call_screen.dart';
+import 'package:lettutor/router/app_router.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return GetMaterialApp.router(
       builder: DevicePreview.appBuilder,
       translations: LocalizationService(),
       locale: Locale('vi', 'VN'),
@@ -28,7 +27,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
-      home: VideoCallScreen(),
+      routeInformationParser: AppRouter().router.routeInformationParser,
+      routerDelegate: AppRouter().router.routerDelegate,
+      routeInformationProvider: AppRouter().router.routeInformationProvider,
     );
   }
 }
