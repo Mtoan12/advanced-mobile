@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/login_screen/login_form.dart';
 import 'package:lettutor/screens/login_screen/login_icons.dart';
 import 'package:lettutor/widgets/change_language_button.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,6 +22,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
+    AuthProvider authProvider = context.watch<AuthProvider>();
+
+    if (authProvider.user != null) {
+      context.goNamed(AppRouterConstant.teachersListRouteName);
+    }
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -54,9 +63,11 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.network(
-                    "assets/images/login_banner.png",
-                    height: screenHeight * 0.25,
+                  Expanded(
+                    child: Image.network(
+                      "assets/images/login_banner.png",
+                      height: screenHeight * 0.25,
+                    ),
                   ),
                   SizedBox(
                     height: screenHeight * 0.02,
