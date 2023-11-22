@@ -117,7 +117,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.blue[500]),
-                          onPressed: () {},
+                          onPressed: () {
+                            context.goNamed(AppRouterConstant.loginRouteName);
+                          },
                           child: Text("Log in"))
                     ],
                   )

@@ -118,7 +118,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.blue[500]),
-                          onPressed: () {},
+                          onPressed: () {
+                            context
+                                .goNamed(AppRouterConstant.registerRouteName);
+                          },
                           child: Text("Sign up".tr))
                     ],
                   )
