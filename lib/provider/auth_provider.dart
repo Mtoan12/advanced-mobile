@@ -38,6 +38,11 @@ class AuthProvider extends ChangeNotifier {
     } else {
       _users.add(User(email: email, password: password));
       user = _users.firstWhere((user) => user.email == user.email);
+
+      _users.forEach((element) {
+        print(element.email);
+        print(element.password);
+      });
     }
 
     notifyListeners();
