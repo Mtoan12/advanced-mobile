@@ -47,4 +47,16 @@ class AuthProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void forgotPassword({required String email}) {
+    print(email);
+    if (!isEmailExist(email)) {
+      print('here');
+      error = 'Email does not exist';
+    } else {
+      error = 'Email sent';
+    }
+
+    notifyListeners();
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 import 'package:provider/provider.dart';
 
 class LoginForm extends StatefulWidget {
@@ -117,11 +119,16 @@ class _LoginFormState extends State<LoginForm> {
           ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(
-              "Forgot Password?".tr,
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                  color: Colors.blue[500], fontWeight: FontWeight.w500),
+            child: TextButton(
+              child: Text(
+                "Forgot Password?".tr,
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                    color: Colors.blue[500], fontWeight: FontWeight.w500),
+              ),
+              onPressed: () {
+                context.goNamed(AppRouterConstant.forgotPasswordRouteName);
+              },
             ),
           ),
           SizedBox(
