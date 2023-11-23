@@ -12,18 +12,19 @@ class Store {
 
   final TEACHERS_LIST = [
     Teacher(
-        avatar: NetworkImage(
-            "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg"),
+        avatar:
+            "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
         country: "Tunisia",
         name: "Keegan",
         bio:
             "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.",
         specialties:
             "English for bussiness,Conversational,English for kids,IELTS,STARTERS",
-        rating: 4.102189781021898),
+        rating: 4.102189781021898,
+        isFavoriteTutor: true),
     Teacher(
-        avatar: NetworkImage(
-            "https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png"),
+        avatar:
+            "https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png",
         country: "Chad",
         name: "Cassandre Balistreri",
         bio: "Est et vel.",
@@ -31,8 +32,8 @@ class Store {
             "English for bussiness,Conversational,English for kids,IELTS,STARTERS",
         rating: 0),
     Teacher(
-        avatar: NetworkImage(
-            "https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png"),
+        avatar:
+            "https://www.alliancerehabmed.com/wp-content/uploads/icon-avatar-default.png",
         country: "Kiribati",
         name: "Chad Ankunding",
         bio: "Rem neque quidem aliquam magni quasi et.",

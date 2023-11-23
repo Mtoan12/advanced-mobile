@@ -137,7 +137,7 @@ class TeacherCard extends StatelessWidget {
                   right: 0,
                   child: Icon(
                     hasLiked ? Icons.favorite : Icons.favorite_border,
-                    color: Colors.blue,
+                    color: hasLiked ? Colors.red[400] : Colors.blue,
                     size: 32,
                   ))
             ],

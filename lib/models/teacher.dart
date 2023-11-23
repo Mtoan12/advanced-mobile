@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class Teacher {
   String? id;
-  NetworkImage avatar;
+  String avatar;
   String country;
   String name;
   String bio;

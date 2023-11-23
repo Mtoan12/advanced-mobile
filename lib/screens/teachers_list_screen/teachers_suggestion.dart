@@ -15,79 +15,39 @@ class TeachersSuggestionWidget extends StatefulWidget {
 class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Recommended Tutors".tr,
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(
-          height: 8,
-        ),
-        TeacherCard(
-            imgUrl:
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            hasLiked: false,
-            name: "Keegan",
-            national: "Tunisia",
-            stars: 5,
-            filters: [
-              'English for business'.tr,
-              'Conversational'.tr,
-              'English for kids'.tr,
-              'IELTS',
-              'STARTERS',
-            ],
-            description:
-                "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
-        SizedBox(
-          height: 20,
-        ),
-        TeacherCard(
-            imgUrl:
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            hasLiked: false,
-            name: "Keegan",
-            national: "Tunisia",
-            stars: 5,
-            filters: [
-              'English for business'.tr,
-              'Conversational'.tr,
-              'English for kids'.tr,
-              'IELTS',
-              'STARTERS',
-            ],
-            description:
-                "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
-      ],
-    );
+    return mainWidgets();
   }
 
-  Widget mainWidgets(List<String> strings) {
+  Widget mainWidgets() {
+    var teachers = widget.teachers;
+
     List<Widget> list = [];
-    for (var i = 0; i < widget.teachers.length; i++) {
+    list.add(Text(
+      "Recommended Tutors".tr,
+      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+    ));
+    list.add(SizedBox(
+      height: 8,
+    ));
+
+    for (Teacher teacher in teachers) {
       list.add(
         TeacherCard(
-            imgUrl:
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            hasLiked: false,
-            name: "Keegan",
-            national: "Tunisia",
-            stars: 5,
-            filters: [
-              'English for business'.tr,
-              'Conversational'.tr,
-              'English for kids'.tr,
-              'IELTS',
-              'STARTERS',
-            ],
-            description:
-                "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia."),
-          
+            imgUrl: teacher.avatar,
+            hasLiked: teacher.isFavoriteTutor ?? false,
+            name: teacher.name,
+            national: teacher.country,
+            stars: teacher.rating,
+            filters: teacher.specialties.split(','),
+            description: teacher.bio),
       );
-      
+      list.add(SizedBox(
+        height: 20,
+      ));
     }
-    return new Row(children: list);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: list,
+    );
   }
 }
