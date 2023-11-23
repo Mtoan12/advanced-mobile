@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AuthProvider authProvider = AuthProvider();
   TeachersListProvider teachersListProvider = TeachersListProvider();
+  SpecialtiesProvider specialtiesProvider = SpecialtiesProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +31,7 @@ class _MyAppState extends State<MyApp> {
         providers: [
           ChangeNotifierProvider(create: (context) => authProvider),
           ChangeNotifierProvider(create: (context) => teachersListProvider),
+          Provider(create: (context) => specialtiesProvider),
         ],
         child: MaterialApp.router(
           builder: DevicePreview.appBuilder,

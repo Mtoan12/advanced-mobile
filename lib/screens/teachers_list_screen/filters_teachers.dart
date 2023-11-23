@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/models/speciality.dart';
+import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/Input.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:provider/provider.dart';
 
 class FiltersTeachersWidget extends StatefulWidget {
   const FiltersTeachersWidget({super.key});
@@ -13,6 +16,8 @@ class FiltersTeachersWidget extends StatefulWidget {
 class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
   @override
   Widget build(BuildContext context) {
+    SpecialtiesProvider specialtiesProvider =
+        context.watch<SpecialtiesProvider>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,74 +92,50 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             bottom: BorderSide(width: 1, color: Colors.grey.withOpacity(0.3)),
           )),
           child: Padding(
-            padding: EdgeInsets.only(bottom: 28),
-            child: Wrap(runSpacing: 8, spacing: 4, children: [
-              FilterItem(
-                name: "All".tr,
-                active: true,
-              ),
-              FilterItem(
-                name: "English for kids".tr,
-                active: false,
-              ),
-              FilterItem(
-                name: "English for business".tr,
-                active: false,
-              ),
-              FilterItem(
-                name: "Conversational".tr,
-                active: false,
-              ),
-              FilterItem(
-                name: "STARTERS",
-                active: false,
-              ),
-              FilterItem(
-                name: "MOVERS",
-                active: false,
-              ),
-              FilterItem(
-                name: "FLYERS",
-                active: false,
-              ),
-              FilterItem(
-                name: "KET",
-                active: false,
-              ),
-              FilterItem(
-                name: "PET",
-                active: false,
-              ),
-              FilterItem(
-                name: "IELTS",
-                active: false,
-              ),
-              FilterItem(
-                name: "TOEFL",
-                active: false,
-              ),
-              FilterItem(
-                name: "TOEIC",
-                active: false,
-              ),
-              SizedBox(
-                height: 32,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.only(
-                            left: 10, right: 10, top: 2, bottom: 2),
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.blue[300],
-                        side: BorderSide(width: 1, color: Colors.blue)),
-                    onPressed: () {},
-                    child: Text(
-                      'Reset Filters'.tr,
-                    )),
-              )
-            ]),
-          ),
+              padding: EdgeInsets.only(bottom: 28),
+              child: specialitiesWidget(context)),
         )
       ],
+    );
+  }
+
+  Widget specialitiesWidget(BuildContext context) {
+    SpecialtiesProvider specialtiesProvider =
+        context.watch<SpecialtiesProvider>();
+    var specialities = specialtiesProvider.specialities;
+
+    List<Widget> list = [];
+    list.add(
+      FilterItem(
+        name: "All".tr,
+        active: true,
+      ),
+    );
+    for (Specialty speciality in specialities) {
+      list.add(
+        FilterItem(
+          name: speciality.name!,
+          active: false,
+        ),
+      );
+    }
+    list.add(SizedBox(
+      height: 32,
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.blue[300],
+              side: BorderSide(width: 1, color: Colors.blue)),
+          onPressed: () {},
+          child: Text(
+            'Reset Filters'.tr,
+          )),
+    ));
+    return Wrap(
+      runSpacing: 8,
+      spacing: 4,
+      children: list,
     );
   }
 }

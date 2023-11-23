@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
@@ -23,6 +24,12 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
     TeachersListProvider teachersListProvider =
         context.watch<TeachersListProvider>();
+    SpecialtiesProvider specialtiesProvider =
+        context.watch<SpecialtiesProvider>();
+
+    specialtiesProvider.specialities.forEach((element) {
+      print(element.name);
+    });
     return Scaffold(
       appBar: appBar(),
       endDrawer: DrawerWidget(),
