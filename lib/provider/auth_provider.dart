@@ -6,7 +6,7 @@ class AuthProvider extends ChangeNotifier {
     User(email: "mail@gmail.com", password: "123"),
     User(email: "mail2@gmail.com", password: "1234")
   ];
-  User? user;
+  User? user = User(email: "mail@gmail.com", password: "123");
   String error = '';
 
   AuthProvider();

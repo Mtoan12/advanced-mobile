@@ -7,7 +7,7 @@ import 'package:lettutor/screens/courses_screen/courses_screen.dart';
 import 'package:lettutor/screens/history_screen/history_screen.dart';
 import 'package:lettutor/screens/lesson_detail_screen/lesson_detail_screen.dart';
 import 'package:lettutor/screens/login_screen/login_screen.dart';
-import 'package:lettutor/screens/register_screen/forgot_password_screen/forgot_password_screen.dart';
+import 'package:lettutor/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:lettutor/screens/register_screen/register_screen.dart';
 import 'package:lettutor/screens/schedule_screen/schedule_screen.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_detail_screen.dart';

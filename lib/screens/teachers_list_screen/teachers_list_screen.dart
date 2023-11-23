@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
+import 'package:provider/provider.dart';
 
 class TeachersListScreen extends StatefulWidget {
   const TeachersListScreen({super.key});
@@ -18,6 +20,9 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+
+    TeachersListProvider teachersListProvider =
+        context.watch<TeachersListProvider>();
     return Scaffold(
       appBar: appBar(),
       endDrawer: DrawerWidget(),
@@ -45,7 +50,8 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       SizedBox(
                         height: 24,
                       ),
-                      TeachersSuggestionWidget(),
+                      TeachersSuggestionWidget(
+                          teachers: teachersListProvider.teachers),
                       SizedBox(
                         height: 28,
                       ),
