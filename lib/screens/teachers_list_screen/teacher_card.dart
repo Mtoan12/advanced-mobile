@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lettutor/models/speciality.dart';
+import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:provider/provider.dart';
 
 class TeacherCard extends StatelessWidget {
   final String imgUrl;
@@ -25,6 +28,10 @@ class TeacherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SpecialtiesProvider specialtiesProvider =
+        context.watch<SpecialtiesProvider>();
+    List<Specialty> specialties = specialtiesProvider.specialties;
+
     return GestureDetector(
       onTap: () => context.goNamed(AppRouterConstant.teacherDetailRouteName),
       child: Container(
@@ -92,16 +99,19 @@ class TeacherCard extends StatelessWidget {
                   SizedBox(
                     height: 24,
                   ),
-                  Wrap(
-                      runSpacing: 8,
-                      spacing: 4,
-                      children: filters.map((filter) {
-                        return FilterItem(
-                          name: filter,
-                          active: true,
-                          onPressed: () {},
-                        );
-                      }).toList()),
+                  filters.isNotEmpty
+                      ? Wrap(
+                          runSpacing: 8,
+                          spacing: 4,
+                          children: filters.map((filter) {
+                            return FilterItem(
+                              name:
+                                  specialtiesProvider.getSpecialtyName(filter),
+                              active: true,
+                              onPressed: () {},
+                            );
+                          }).toList())
+                      : Container(),
                   SizedBox(
                     height: 24,
                   ),

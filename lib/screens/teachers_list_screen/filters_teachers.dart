@@ -19,8 +19,6 @@ class FiltersTeachersWidget extends StatefulWidget {
 class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
   @override
   Widget build(BuildContext context) {
-    SpecialtiesProvider specialtiesProvider =
-        context.watch<SpecialtiesProvider>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -96,16 +94,16 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
           )),
           child: Padding(
               padding: EdgeInsets.only(bottom: 28),
-              child: specialitiesWidget(context)),
+              child: specialtiesWidget(context)),
         )
       ],
     );
   }
 
-  Widget specialitiesWidget(BuildContext context) {
+  Widget specialtiesWidget(BuildContext context) {
     SpecialtiesProvider specialtiesProvider =
         context.watch<SpecialtiesProvider>();
-    var specialities = specialtiesProvider.specialities;
+    var specialities = specialtiesProvider.specialties;
 
     List<Widget> list = [];
     list.add(
@@ -136,7 +134,11 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               backgroundColor: Colors.white,
               foregroundColor: Colors.blue[300],
               side: BorderSide(width: 1, color: Colors.blue)),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              widget.changeSpecActive("All");
+            });
+          },
           child: Text(
             'Reset Filters'.tr,
           )),

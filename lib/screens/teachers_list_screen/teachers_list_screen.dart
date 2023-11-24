@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
@@ -18,12 +19,7 @@ class TeachersListScreen extends StatefulWidget {
 
 class _TeachersListScreenState extends State<TeachersListScreen> {
   String specActive = 'All';
-
-  void changeSpecActive(String spec) {
-    setState(() {
-      specActive = spec;
-    });
-  }
+  String search = '';
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +28,17 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
     TeachersListProvider teachersListProvider =
         context.watch<TeachersListProvider>();
-    SpecialtiesProvider specialtiesProvider =
-        context.watch<SpecialtiesProvider>();
 
-    specialtiesProvider.specialities.forEach((element) {
-      print(element.name);
-    });
+    // teachersListProvider.filterTeachers(search, specActive);
+
+    List<Teacher> teachers = teachersListProvider.teachers;
+
+    void changeSpecActive(String spec) {
+      // setState(() {
+      //   specActive = spec;
+      // });
+    }
+
     return Scaffold(
       appBar: appBar(),
       endDrawer: DrawerWidget(),
@@ -66,8 +67,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       SizedBox(
                         height: 24,
                       ),
-                      TeachersSuggestionWidget(
-                          teachers: teachersListProvider.teachers),
+                      TeachersSuggestionWidget(teachers: teachers),
                       SizedBox(
                         height: 28,
                       ),
