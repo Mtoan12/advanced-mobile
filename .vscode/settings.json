@@ -1,3 +1,4 @@
 {
-    "cSpell.words": ["lettutor"]
+    "cSpell.words": ["lettutor"],
+    "editor.inlineSuggest.showToolbar": "onHover"
 }

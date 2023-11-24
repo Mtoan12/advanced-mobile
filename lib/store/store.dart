@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:lettutor/models/teacher.dart';
 
 class Store {

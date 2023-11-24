@@ -119,10 +119,10 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
       list.add(
         FilterItem(
           onPressed: () {
-            widget.changeSpecActive(speciality.name!);
+            widget.changeSpecActive(speciality.key!);
           },
           name: speciality.name!,
-          active: speciality.name == widget.spec,
+          active: speciality.key == widget.spec,
         ),
       );
     }

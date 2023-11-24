@@ -14,7 +14,7 @@ class TeachersListProvider extends ChangeNotifier {
     var list = json.decode(teachersJson) as List<dynamic>;
     teachers = list.map((e) => Teacher.fromJson(e)).toList();
   }
-  void filterTeachers(String search, String spec) {
+  List<Teacher> filterTeachers(String search, String spec) {
     List<Teacher> filteredTeachers = teachers;
     if (search != '') {
       filteredTeachers = filteredTeachers
@@ -27,7 +27,6 @@ class TeachersListProvider extends ChangeNotifier {
           .where((teacher) => teacher.specialties!.contains(spec))
           .toList();
     }
-    teachers = filteredTeachers;
-    notifyListeners();
+    return filteredTeachers;
   }
 }

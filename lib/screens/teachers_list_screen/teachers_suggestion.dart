@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
-import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/teacher_card.dart';
-import 'package:provider/provider.dart';
 
 class TeachersSuggestionWidget extends StatefulWidget {
   final List<Teacher> teachers;

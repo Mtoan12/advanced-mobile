@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/teacher.dart';
-import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
@@ -18,7 +18,7 @@ class TeachersListScreen extends StatefulWidget {
 }
 
 class _TeachersListScreenState extends State<TeachersListScreen> {
-  String specActive = 'All';
+  String specKeyActive = 'All';
   String search = '';
 
   @override
@@ -29,14 +29,14 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     TeachersListProvider teachersListProvider =
         context.watch<TeachersListProvider>();
 
-    // teachersListProvider.filterTeachers(search, specActive);
-
     List<Teacher> teachers = teachersListProvider.teachers;
 
-    void changeSpecActive(String spec) {
-      // setState(() {
-      //   specActive = spec;
-      // });
+    Utils utils = Utils();
+    teachers = utils.filterTeachers(teachers, search, specKeyActive);
+    void changeSpecActive(String specKey) {
+      setState(() {
+        specKeyActive = specKey;
+      });
     }
 
     return Scaffold(
@@ -63,7 +63,8 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       FiltersTeachersWidget(
-                          spec: specActive, changeSpecActive: changeSpecActive),
+                          spec: specKeyActive,
+                          changeSpecActive: changeSpecActive),
                       SizedBox(
                         height: 24,
                       ),
