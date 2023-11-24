@@ -96,7 +96,11 @@ class TeacherCard extends StatelessWidget {
                       runSpacing: 8,
                       spacing: 4,
                       children: filters.map((filter) {
-                        return FilterItem(name: filter, active: true);
+                        return FilterItem(
+                          name: filter,
+                          active: true,
+                          onPressed: () {},
+                        );
                       }).toList()),
                   SizedBox(
                     height: 24,

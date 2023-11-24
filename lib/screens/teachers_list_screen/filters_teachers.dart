@@ -7,7 +7,10 @@ import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:provider/provider.dart';
 
 class FiltersTeachersWidget extends StatefulWidget {
-  const FiltersTeachersWidget({super.key});
+  final String spec;
+  final Function(String spec) changeSpecActive;
+  const FiltersTeachersWidget(
+      {super.key, required this.spec, required this.changeSpecActive});
 
   @override
   State<FiltersTeachersWidget> createState() => _FiltersTeachersWidgetState();
@@ -107,15 +110,21 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
     List<Widget> list = [];
     list.add(
       FilterItem(
+        onPressed: () {
+          widget.changeSpecActive("All");
+        },
         name: "All".tr,
-        active: true,
+        active: widget.spec == "All",
       ),
     );
     for (Specialty speciality in specialities) {
       list.add(
         FilterItem(
+          onPressed: () {
+            widget.changeSpecActive(speciality.name!);
+          },
           name: speciality.name!,
-          active: false,
+          active: speciality.name == widget.spec,
         ),
       );
     }

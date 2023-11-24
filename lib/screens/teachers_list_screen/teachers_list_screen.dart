@@ -17,6 +17,14 @@ class TeachersListScreen extends StatefulWidget {
 }
 
 class _TeachersListScreenState extends State<TeachersListScreen> {
+  String specActive = 'All';
+
+  void changeSpecActive(String spec) {
+    setState(() {
+      specActive = spec;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -53,7 +61,8 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      FiltersTeachersWidget(),
+                      FiltersTeachersWidget(
+                          spec: specActive, changeSpecActive: changeSpecActive),
                       SizedBox(
                         height: 24,
                       ),

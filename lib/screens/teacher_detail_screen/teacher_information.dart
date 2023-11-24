@@ -143,10 +143,9 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Wrap(
-                  runSpacing: 8,
-                  spacing: 8,
-                  children: [FilterItem(name: "BA", active: false)]),
+              child: Wrap(runSpacing: 8, spacing: 8, children: [
+                FilterItem(name: "BA", active: false, onPressed: () {})
+              ]),
             ),
             SizedBox(
               height: 24,
@@ -160,10 +159,9 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Wrap(
-                  runSpacing: 8,
-                  spacing: 8,
-                  children: [FilterItem(name: "English", active: true)]),
+              child: Wrap(runSpacing: 8, spacing: 8, children: [
+                FilterItem(name: "English", active: true, onPressed: () {})
+              ]),
             ),
             SizedBox(
               height: 24,
@@ -178,17 +176,24 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
               child: Wrap(runSpacing: 8, spacing: 4, children: [
-                FilterItem(name: "English For Business".tr, active: true),
-                FilterItem(name: "Conversational".tr, active: true),
-                FilterItem(name: "English For Kids".tr, active: true),
-                FilterItem(name: "IELTS", active: true),
-                FilterItem(name: "STARTERS", active: true),
-                FilterItem(name: "MOVERS", active: true),
-                FilterItem(name: "FLYERS", active: true),
-                FilterItem(name: "KET", active: true),
-                FilterItem(name: "PET", active: true),
-                FilterItem(name: "TOEFL", active: true),
-                FilterItem(name: "TOEIC", active: true),
+                FilterItem(
+                    name: "English For Business".tr,
+                    active: true,
+                    onPressed: () {}),
+                FilterItem(
+                    name: "Conversational".tr, active: true, onPressed: () {}),
+                FilterItem(
+                    name: "English For Kids".tr,
+                    active: true,
+                    onPressed: () {}),
+                FilterItem(name: "IELTS", active: true, onPressed: () {}),
+                FilterItem(name: "STARTERS", active: true, onPressed: () {}),
+                FilterItem(name: "MOVERS", active: true, onPressed: () {}),
+                FilterItem(name: "FLYERS", active: true, onPressed: () {}),
+                FilterItem(name: "KET", active: true, onPressed: () {}),
+                FilterItem(name: "PET", active: true, onPressed: () {}),
+                FilterItem(name: "TOEFL", active: true, onPressed: () {}),
+                FilterItem(name: "TOEIC", active: true, onPressed: () {}),
               ]),
             ),
             SizedBox(

@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class FilterItem extends StatefulWidget {
   final String name;
   final bool active;
-  const FilterItem({super.key, required this.name, required this.active});
+  final Function() onPressed;
+  const FilterItem(
+      {super.key,
+      required this.name,
+      required this.active,
+      required this.onPressed});
 
   @override
   State<FilterItem> createState() => _FilterItemState();
@@ -21,7 +26,7 @@ class _FilterItemState extends State<FilterItem> {
             foregroundColor:
                 widget.active ? Colors.blue[700] : Colors.grey[700],
           ),
-          onPressed: () {},
+          onPressed: widget.onPressed,
           child: Text(widget.name)),
     );
   }

@@ -7,5 +7,4 @@ Store store = Store();
 class TeachersListProvider extends ChangeNotifier {
   List<Teacher> teachers = store.TEACHERS_LIST;
 
-  
 }
