@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:lettutor/widgets/stars.dart';
 import 'package:provider/provider.dart';
 
 class TeacherCard extends StatelessWidget {
@@ -67,33 +69,16 @@ class TeacherCard extends StatelessWidget {
                     name,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   ),
-                  Text(national,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                   Row(
                     children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow[600],
-                      ),
+                      // SvgPicture.network(
+                      //     "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${national}.svg"),
+                      Text(national,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400)),
                     ],
                   ),
+                  StarsWidget(rating: stars),
                   SizedBox(
                     height: 24,
                   ),
