@@ -35,7 +35,7 @@ class Teacher {
     bio = json['bio'];
     isNative = json['isNative'];
     specialties = json['specialties'];
-    rating = json['rating'];
+    rating = json['rating'] ?? 0.0;
     userId = json['userId'];
     schedulesTimes = json['schedulesTimes'];
     isFavoriteTutor = json['isFavoriteTutor'] ?? false;

@@ -13,6 +13,14 @@ class TeachersListProvider extends ChangeNotifier {
   TeachersListProvider() {
     var list = json.decode(teachersJson) as List<dynamic>;
     teachers = list.map((e) => Teacher.fromJson(e)).toList();
+
+    teachers.sort((a, b) {
+      if (a.isFavoriteTutor != b.isFavoriteTutor) {
+        return a.isFavoriteTutor! ? 1 : -1;
+      } else {
+        return (a.rating! - b.rating!) > 0 ? -1 : 1;
+      }
+    });
   }
 
   List<Teacher> filterTeachers(String search, String spec) {
