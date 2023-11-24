@@ -14,6 +14,7 @@ class TeachersListProvider extends ChangeNotifier {
     var list = json.decode(teachersJson) as List<dynamic>;
     teachers = list.map((e) => Teacher.fromJson(e)).toList();
   }
+
   List<Teacher> filterTeachers(String search, String spec) {
     List<Teacher> filteredTeachers = teachers;
     if (search != '') {
@@ -28,5 +29,16 @@ class TeachersListProvider extends ChangeNotifier {
           .toList();
     }
     return filteredTeachers;
+  }
+
+  void toggleLikeTeacher(String id) {
+    teachers = teachers.map((teacher) {
+      if (teacher.id == id) {
+        print(teacher.name);
+        teacher.isFavoriteTutor = !teacher.isFavoriteTutor!;
+      }
+      return teacher;
+    }).toList();
+    notifyListeners();
   }
 }

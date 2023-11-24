@@ -33,6 +33,7 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
     for (Teacher teacher in teachers) {
       list.add(
         TeacherCard(
+            id: teacher.id ?? '',
             imgUrl: teacher.avatar ?? '',
             hasLiked: teacher.isFavoriteTutor ?? false,
             name: teacher.name ?? '',

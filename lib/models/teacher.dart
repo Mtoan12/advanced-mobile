@@ -38,7 +38,7 @@ class Teacher {
     rating = json['rating'];
     userId = json['userId'];
     schedulesTimes = json['schedulesTimes'];
-    isFavoriteTutor = json['isFavoriteTutor'];
+    isFavoriteTutor = json['isFavoriteTutor'] ?? false;
     price = json['price'];
   }
 }

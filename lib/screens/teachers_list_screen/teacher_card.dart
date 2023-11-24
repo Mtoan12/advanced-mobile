@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
+import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:provider/provider.dart';
 
 class TeacherCard extends StatelessWidget {
+  final String id;
   final String imgUrl;
   final bool hasLiked;
   final String name;
@@ -25,12 +26,15 @@ class TeacherCard extends StatelessWidget {
       required this.national,
       required this.stars,
       required this.filters,
-      required this.description});
+      required this.description,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
     SpecialtiesProvider specialtiesProvider =
         context.watch<SpecialtiesProvider>();
+    TeachersListProvider teachersListProvider =
+        context.watch<TeachersListProvider>();
 
     return GestureDetector(
       onTap: () => context.goNamed(AppRouterConstant.teacherDetailRouteName),
@@ -132,10 +136,16 @@ class TeacherCard extends StatelessWidget {
               ),
               Positioned(
                   right: 0,
-                  child: Icon(
-                    hasLiked ? Icons.favorite : Icons.favorite_border,
-                    color: hasLiked ? Colors.red[400] : Colors.blue,
-                    size: 32,
+                  child: TextButton(
+                    onPressed: () {
+                      print(id);
+                      teachersListProvider.toggleLikeTeacher(id);
+                    },
+                    child: Icon(
+                      hasLiked ? Icons.favorite : Icons.favorite_border,
+                      color: hasLiked ? Colors.red[400] : Colors.blue,
+                      size: 32,
+                    ),
                   ))
             ],
           ),
