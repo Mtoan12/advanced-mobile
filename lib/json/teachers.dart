@@ -24,7 +24,7 @@ String teachersJson = '''[
             "rating": 1.2,
             "userId": "fe326500-f050-4539-83fa-80f58a72019f",
             "schedulesTimes": null,
-            "isFavoriteTutor": true,
+            "isFavoriteTutor": false,
             "price": 0
         },
         {
@@ -52,7 +52,7 @@ String teachersJson = '''[
             "rating": null,
             "userId": "7214c889-a46f-44ee-b916-02dde3c81052",
             "schedulesTimes": null,
-            "isFavoriteTutor": true,
+            "isFavoriteTutor": false,
             "price": 0
         },
         {
@@ -66,7 +66,7 @@ String teachersJson = '''[
             "rating": null,
             "userId": "5a681fa4-2a31-4aa8-9d17-86a1b0f3c8c8",
             "schedulesTimes": null,
-            "isFavoriteTutor": true,
+            "isFavoriteTutor": false,
             "price": 0
         },
         {
@@ -80,7 +80,7 @@ String teachersJson = '''[
             "rating": 4.5,
             "userId": "efe28207-f161-4f6e-94f1-12279048b88a",
             "schedulesTimes": null,
-            "isFavoriteTutor": true,
+            "isFavoriteTutor": false,
             "price": 0
         },
         {

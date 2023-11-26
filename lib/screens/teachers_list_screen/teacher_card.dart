@@ -138,7 +138,6 @@ class TeacherCard extends StatelessWidget {
                   right: 0,
                   child: TextButton(
                     onPressed: () {
-                      print(id);
                       teachersListProvider.toggleLikeTeacher(id);
                     },
                     child: Icon(

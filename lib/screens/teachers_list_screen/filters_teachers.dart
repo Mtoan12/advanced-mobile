@@ -9,8 +9,15 @@ import 'package:provider/provider.dart';
 class FiltersTeachersWidget extends StatefulWidget {
   final String spec;
   final Function(String spec) changeSpecActive;
+  final String search;
+  final Function(String search) handleSearch;
+
   const FiltersTeachersWidget(
-      {super.key, required this.spec, required this.changeSpecActive});
+      {super.key,
+      required this.spec,
+      required this.changeSpecActive,
+      required this.handleSearch,
+      required this.search});
 
   @override
   State<FiltersTeachersWidget> createState() => _FiltersTeachersWidgetState();
@@ -33,16 +40,20 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
           children: [
             Input(
               width: 160,
-              height: 32,
-              icon: Icon(null),
+              height: 40,
+              icon: Icon(Icons.search_outlined),
               placeHolder: "Enter tutor name...".tr,
+              value: widget.search,
+              handleChange: widget.handleSearch,
             ),
             SizedBox(
               width: 4,
             ),
             Input(
+              value: '',
+              handleChange: (String value) {},
               width: 160,
-              height: 32,
+              height: 40,
               icon: Icon(Icons.arrow_drop_down),
               placeHolder: "Select tutor nationality".tr,
             ),
@@ -58,8 +69,10 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
         Wrap(
           children: [
             Input(
+              value: '',
+              handleChange: (String value) {},
               width: 144,
-              height: 32,
+              height: 40,
               icon: Icon(
                 Icons.calendar_month,
                 color: Colors.grey,
@@ -70,14 +83,18 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 4,
             ),
             Input(
+              value: '',
+              handleChange: (String value) {},
               width: 100,
-              height: 32,
+              height: 40,
               icon: Icon(null),
               placeHolder: "Start time".tr,
             ),
             Input(
+              value: '',
+              handleChange: (String value) {},
               width: 100,
-              height: 32,
+              height: 40,
               icon: Icon(
                 Icons.timelapse,
                 color: Colors.grey,
@@ -127,7 +144,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
       );
     }
     list.add(SizedBox(
-      height: 32,
+      height: 40,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
@@ -137,6 +154,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
           onPressed: () {
             setState(() {
               widget.changeSpecActive("All");
+              widget.handleSearch("");
             });
           },
           child: Text(

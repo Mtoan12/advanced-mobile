@@ -33,9 +33,16 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
     Utils utils = Utils();
     teachers = utils.filterTeachers(teachers, search, specKeyActive);
+
     void changeSpecActive(String specKey) {
       setState(() {
         specKeyActive = specKey;
+      });
+    }
+
+    void handleSearch(String search) {
+      setState(() {
+        this.search = search;
       });
     }
 
@@ -64,7 +71,9 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                     children: [
                       FiltersTeachersWidget(
                           spec: specKeyActive,
-                          changeSpecActive: changeSpecActive),
+                          changeSpecActive: changeSpecActive,
+                          search: search,
+                          handleSearch: handleSearch),
                       SizedBox(
                         height: 24,
                       ),
