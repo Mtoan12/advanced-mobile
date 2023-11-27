@@ -1,10 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lettutor/widgets/video_player.dart';
+import 'package:lettutor/models/course.dart';
+import 'package:lettutor/models/user.dart';
+import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:lettutor/widgets/stars.dart';
+import 'package:lettutor/widgets/video_player.dart';
+import 'package:provider/provider.dart';
 
 class TeacherInformationWidget extends StatefulWidget {
-  const TeacherInformationWidget({super.key});
+  String? bio;
+  User? user;
+  double? rating;
+  bool isFavorite;
+  String? videoUrl;
+  String? education;
+  String? languages;
+  String? specialties;
+  List<Course> courses;
+  String? interests;
+  String? experience;
+
+  TeacherInformationWidget(
+      {super.key,
+      this.bio,
+      this.user,
+      this.rating,
+      this.isFavorite = false,
+      this.videoUrl,
+      this.education,
+      this.languages,
+      this.specialties,
+      required this.courses,
+      this.interests,
+      this.experience});
 
   @override
   State<TeacherInformationWidget> createState() =>
@@ -14,6 +43,13 @@ class TeacherInformationWidget extends StatefulWidget {
 class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
   @override
   Widget build(BuildContext context) {
+    SpecialtiesProvider specialtiesProvider =
+        context.watch<SpecialtiesProvider>();
+
+    List<String> educations = widget.education.toString().split(",");
+    List<String> languages = widget.languages.toString().split(",");
+    List<String> specialties = widget.specialties.toString().split(",");
+
     var screenWidth = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,10 +58,10 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            Expanded(
               child: CircleAvatar(
                 backgroundImage: NetworkImage(
-                    "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg"),
+                    widget.user?.avatar ?? "https://picsum.photos/200/300"),
                 radius: 56,
               ),
             ),
@@ -37,38 +73,15 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  "Keegan",
+                  widget.user?.name ?? "",
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow[600],
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow[600],
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow[600],
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow[600],
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.grey[200],
-                    ),
-                  ],
-                ),
+                StarsWidget(rating: widget.rating ?? 0),
                 SizedBox(
                   height: 12,
                 ),
                 Text(
-                  "Tunisia",
+                  widget.user?.country ?? "",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -81,7 +94,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
         Align(
             alignment: Alignment.topLeft,
             child: Text(
-              "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.",
+              widget.bio ?? "",
               style: TextStyle(fontSize: 16),
             )),
         SizedBox(
@@ -93,11 +106,16 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.favorite_border, color: Colors.blue),
+                widget.isFavorite
+                    ? Icon(Icons.favorite, color: Colors.red[400])
+                    : Icon(Icons.favorite_border, color: Colors.blue),
                 Text(
                   "Favorite",
                   style: TextStyle(
-                      color: Colors.blue[500], fontWeight: FontWeight.w500),
+                      color: widget.isFavorite
+                          ? Colors.red[400]
+                          : Colors.blue[500],
+                      fontWeight: FontWeight.w500),
                 )
               ],
             ),
@@ -123,7 +141,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
         SizedBox(
           height: 300,
           child: VideoPlayerWidget(
-            videoUrl:
+            videoUrl: widget.videoUrl ??
                 "https://api.app.lettutor.com/video/4d54d3d7-d2a9-42e5-97a2-5ed38af5789avideo1627913015871.mp4",
           ),
         ),
@@ -143,9 +161,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Wrap(runSpacing: 8, spacing: 8, children: [
-                FilterItem(name: "BA", active: false, onPressed: () {})
-              ]),
+              child: educations.isNotEmpty
+                  ? Wrap(
+                      runSpacing: 8,
+                      spacing: 4,
+                      children: educations.map((item) {
+                        return FilterItem(
+                          name: item,
+                          active: false,
+                          onPressed: () {},
+                        );
+                      }).toList())
+                  : Container(),
             ),
             SizedBox(
               height: 24,
@@ -159,9 +186,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Wrap(runSpacing: 8, spacing: 8, children: [
-                FilterItem(name: "English", active: true, onPressed: () {})
-              ]),
+              child: languages.isNotEmpty
+                  ? Wrap(
+                      runSpacing: 8,
+                      spacing: 4,
+                      children: languages.map((item) {
+                        return FilterItem(
+                          name: item,
+                          active: true,
+                          onPressed: () {},
+                        );
+                      }).toList())
+                  : Container(),
             ),
             SizedBox(
               height: 24,
@@ -175,26 +211,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             ),
             Padding(
               padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Wrap(runSpacing: 8, spacing: 4, children: [
-                FilterItem(
-                    name: "English For Business".tr,
-                    active: true,
-                    onPressed: () {}),
-                FilterItem(
-                    name: "Conversational".tr, active: true, onPressed: () {}),
-                FilterItem(
-                    name: "English For Kids".tr,
-                    active: true,
-                    onPressed: () {}),
-                FilterItem(name: "IELTS", active: true, onPressed: () {}),
-                FilterItem(name: "STARTERS", active: true, onPressed: () {}),
-                FilterItem(name: "MOVERS", active: true, onPressed: () {}),
-                FilterItem(name: "FLYERS", active: true, onPressed: () {}),
-                FilterItem(name: "KET", active: true, onPressed: () {}),
-                FilterItem(name: "PET", active: true, onPressed: () {}),
-                FilterItem(name: "TOEFL", active: true, onPressed: () {}),
-                FilterItem(name: "TOEIC", active: true, onPressed: () {}),
-              ]),
+              child: specialties.isNotEmpty
+                  ? Wrap(
+                      runSpacing: 8,
+                      spacing: 4,
+                      children: specialties.map((item) {
+                        return FilterItem(
+                          name: specialtiesProvider.getSpecialtyName(item),
+                          active: true,
+                          onPressed: () {},
+                        );
+                      }).toList())
+                  : Container(),
             ),
             SizedBox(
               height: 24,
@@ -207,44 +235,34 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
               height: 8,
             ),
             Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.03),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Basic Conservation Topics: ",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "Tìm hiểu",
-                        style: TextStyle(
-                            color: Colors.blue[500],
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Life in the Internet Age: ",
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "Tìm hiểu",
-                        style: TextStyle(
-                            color: Colors.blue[500],
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                padding: EdgeInsets.only(left: screenWidth * 0.03),
+                child: widget.courses.isNotEmpty
+                    ? Column(
+                        children: widget.courses
+                            .map((course) => Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        course.name ?? "",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      "Tìm hiểu",
+                                      style: TextStyle(
+                                          color: Colors.blue[500],
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ))
+                            .toList())
+                    : Container()),
             SizedBox(
               height: 24,
             ),
@@ -258,7 +276,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.03),
                 child: Text(
-                  "I loved the weather, the scenery amd the laid back filestyle of the locals.",
+                  widget.interests ?? "",
                   style: TextStyle(
                       color: Colors.grey[500], fontWeight: FontWeight.w500),
                 )),
@@ -275,7 +293,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             Padding(
                 padding: EdgeInsets.only(left: screenWidth * 0.03),
                 child: Text(
-                  "I have more than 10 years of teaching english experience",
+                  widget.experience ?? "",
                   style: TextStyle(
                       color: Colors.grey[500], fontWeight: FontWeight.w500),
                 )),

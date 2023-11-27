@@ -47,7 +47,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     }
 
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       endDrawer: DrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(

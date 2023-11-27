@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/widgets/change_language_button.dart';
 
-PreferredSizeWidget appBar() {
+PreferredSizeWidget appBar(BuildContext context) {
   return PreferredSize(
     preferredSize: Size.fromHeight(70),
     child: AppBar(
@@ -23,9 +25,14 @@ PreferredSizeWidget appBar() {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: SvgPicture.asset(
-                "assets/images/lettutor_logo.svg",
-                width: 200,
+              child: GestureDetector(
+                onTap: () {
+                  context.goNamed(AppRouterConstant.teachersListRouteName);
+                },
+                child: SvgPicture.asset(
+                  "assets/images/lettutor_logo.svg",
+                  width: 200,
+                ),
               ),
             ),
             Row(children: [

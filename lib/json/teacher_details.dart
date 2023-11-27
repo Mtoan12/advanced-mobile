@@ -66,7 +66,7 @@ String teacherDetailsJson = '''[{
             }
         ]
     },
-    "isFavorite": false,
+    "isFavorite": true,
     "avgRating": 4.102189781021898,
     "totalFeedback": 137
 },
@@ -97,7 +97,7 @@ String teacherDetailsJson = '''[{
         "studentGroupId": null,
         "courses": []
     },
-    "isFavorite": false,
+    "isFavorite": true,
     "avgRating": 0,
     "totalFeedback": 0
 }

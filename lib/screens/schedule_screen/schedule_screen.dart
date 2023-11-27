@@ -20,7 +20,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-        appBar: appBar(),
+        appBar: appBar(context),
         endDrawer: DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
