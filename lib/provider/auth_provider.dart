@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lettutor/models/user.dart';
+import 'package:lettutor/models/auth.dart';
 
 class AuthProvider extends ChangeNotifier {
-  List<User> _users = [
-    User(email: "mail@gmail.com", password: "123"),
-    User(email: "mail2@gmail.com", password: "1234")
+  List<Auth> _users = [
+    Auth(email: "mail@gmail.com", password: "123"),
+    Auth(email: "mail2@gmail.com", password: "1234")
   ];
-  User? user = User(email: "mail@gmail.com", password: "123");
+  Auth? user = Auth(email: "mail@gmail.com", password: "123");
   String error = '';
 
   AuthProvider();
@@ -16,7 +16,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   bool isPasswordCorrect(String email, String password) {
-    User findUser = _users.firstWhere((user) => user.email == email);
+    Auth findUser = _users.firstWhere((user) => user.email == email);
     return findUser.password == password;
   }
 
@@ -36,7 +36,7 @@ class AuthProvider extends ChangeNotifier {
     if (isEmailExist(email)) {
       error = 'Email already exists';
     } else {
-      _users.add(User(email: email, password: password));
+      _users.add(Auth(email: email, password: password));
       user = _users.firstWhere((user) => user.email == user.email);
 
       _users.forEach((element) {
