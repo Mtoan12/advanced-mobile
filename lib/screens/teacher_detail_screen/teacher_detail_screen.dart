@@ -27,7 +27,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
 
     Map<String, dynamic> qparams =
         GoRouterState.of(context).uri.queryParameters;
-    String? id = qparams['id'];
+    String? id = qparams['id'] ?? '4d54d3d7-d2a9-42e5-97a2-5ed38af5789a';
 
     Tutor? tutor = tutorProvider.getTutorById(id);
 
@@ -58,6 +58,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                         experience: tutor.experience,
                         courses: tutor.user?.courses ?? [],
                         interests: tutor.interests,
+                        id: id,
                       ),
                       CommentsWidget(),
                       SizedBox(

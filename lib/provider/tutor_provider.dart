@@ -17,4 +17,13 @@ class TutorProvider extends ChangeNotifier {
     if (id == null) return null;
     return tutors.firstWhereOrNull((element) => element.user!.id == id);
   }
+
+  void toggleLikeTeacher(String? id) {
+    if (id == null) return;
+    Tutor? tutor = getTutorById(id);
+    if (tutor != null) {
+      tutor.isFavorite = !tutor.isFavorite!;
+      notifyListeners();
+    }
+  }
 }

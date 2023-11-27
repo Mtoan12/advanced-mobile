@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:lettutor/models/course.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
+import 'package:lettutor/provider/tutor_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:lettutor/widgets/video_player.dart';
@@ -20,6 +21,7 @@ class TeacherInformationWidget extends StatefulWidget {
   List<Course> courses;
   String? interests;
   String? experience;
+  String? id;
 
   TeacherInformationWidget(
       {super.key,
@@ -33,7 +35,8 @@ class TeacherInformationWidget extends StatefulWidget {
       this.specialties,
       required this.courses,
       this.interests,
-      this.experience});
+      this.experience,
+      this.id});
 
   @override
   State<TeacherInformationWidget> createState() =>
@@ -41,10 +44,14 @@ class TeacherInformationWidget extends StatefulWidget {
 }
 
 class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
+  bool value1 = false;
+  bool value2 = false;
+  bool value3 = false;
   @override
   Widget build(BuildContext context) {
     SpecialtiesProvider specialtiesProvider =
         context.watch<SpecialtiesProvider>();
+    TutorProvider tutorProvider = context.watch<TutorProvider>();
 
     List<String> educations = widget.education.toString().split(",");
     List<String> languages = widget.languages.toString().split(",");
@@ -103,35 +110,156 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                widget.isFavorite
-                    ? Icon(Icons.favorite, color: Colors.red[400])
-                    : Icon(Icons.favorite_border, color: Colors.blue),
-                Text(
-                  "Favorite",
-                  style: TextStyle(
-                      color: widget.isFavorite
-                          ? Colors.red[400]
-                          : Colors.blue[500],
-                      fontWeight: FontWeight.w500),
-                )
-              ],
+            GestureDetector(
+              onTap: () => tutorProvider.toggleLikeTeacher(widget.id!),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  widget.isFavorite
+                      ? Icon(Icons.favorite, color: Colors.red[400])
+                      : Icon(Icons.favorite_border, color: Colors.blue),
+                  Text(
+                    "Favorite",
+                    style: TextStyle(
+                        color: widget.isFavorite
+                            ? Colors.red[400]
+                            : Colors.blue[500],
+                        fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
             ),
             SizedBox(
               width: 20,
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.error_outline, color: Colors.blue),
-                Text(
-                  "Report",
-                  style: TextStyle(
-                      color: Colors.blue[500], fontWeight: FontWeight.w500),
-                )
-              ],
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 360,
+                      width: screenWidth,
+                      color: Colors.white,
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Text(
+                              'Report ${widget.user?.name ?? ""}',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text(
+                              "Help us understand what's happening",
+                              style: TextStyle(fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Column(
+                              children: [
+                                CheckboxListTile(
+                                  title: Text("This tutor is annoying me"),
+                                  value: value1,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      value1 = newValue!;
+                                    });
+                                  },
+                                  controlAffinity: ListTileControlAffinity
+                                      .leading, //  <-- leading Checkbox
+                                ),
+                                CheckboxListTile(
+                                  title: Text(
+                                      "This profile is pretending be someone or is fake"),
+                                  value: value2,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      value2 = newValue!;
+                                    });
+                                  },
+                                  controlAffinity: ListTileControlAffinity
+                                      .leading, //  <-- leading Checkbox
+                                ),
+                                CheckboxListTile(
+                                  title: Text("Inappropriate profile photo"),
+                                  value: value3,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      value3 = newValue!;
+                                    });
+                                  },
+                                  controlAffinity: ListTileControlAffinity
+                                      .leading, //  <-- leading Checkbox
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.white,
+                                      foregroundColor: Colors.blue[500],
+                                      side: BorderSide(color: Colors.blue),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    child: Text('Cancel'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.blue[500],
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    child: Text('Submit'),
+                                    onPressed: () => Navigator.pop(context),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, color: Colors.blue),
+                  Text(
+                    "Report",
+                    style: TextStyle(
+                        color: Colors.blue[500], fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
             )
           ],
         ),
