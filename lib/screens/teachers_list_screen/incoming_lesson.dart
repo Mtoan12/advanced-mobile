@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/utils/utils.dart';
 
 class IncomingLessonWidget extends StatefulWidget {
-  const IncomingLessonWidget({super.key});
+  final int totalTime;
+  const IncomingLessonWidget({super.key, required this.totalTime});
 
   @override
   State<IncomingLessonWidget> createState() => _IncomingLessonWidgetState();
 }
 
 class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
+  Utils utils = Utils();
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
         width: screenWidth,
         decoration: BoxDecoration(
@@ -87,7 +91,8 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
               const SizedBox(
                 height: 16,
               ),
-              Text("Total lesson time is 507 hours 55 minutes".tr,
+              Text(
+                  'Total lesson time is ${utils.convertTime(widget.totalTime)}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

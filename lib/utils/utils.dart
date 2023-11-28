@@ -25,4 +25,13 @@ class Utils {
 
     return formatted;
   }
+
+  String convertTime(int totalMinutes) {
+    int hours = totalMinutes ~/ 60;
+    int minutes = totalMinutes % 60;
+
+    String formatted = '$hours hours $minutes minutes';
+
+    return formatted;
+  }
 }
