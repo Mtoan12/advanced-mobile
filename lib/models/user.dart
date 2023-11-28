@@ -22,14 +22,14 @@ class User {
   });
 
   User.fromJson(Map<String, dynamic> json) {
-    var courseList = json['courses'] as List;
+    var courseList = json['courses'] != null ? json['courses'] as List : [];
     courses = courseList.map((course) => Course.fromJson(course)).toList();
-    id = json['id'];
-    level = json['level'];
-    avatar = json['avatar'];
-    name = json['name'];
-    country = json['country'];
-    language = json['language'];
-    isPublicRecord = json['isPublicRecord'];
+    id = json['id'] ?? '';
+    level = json['level'] ?? '';
+    avatar = json['avatar'] ?? '';
+    name = json['name'] ?? '';
+    country = json['country'] ?? '';
+    language = json['language'] ?? '';
+    isPublicRecord = json['isPublicRecord'] ?? false;
   }
 }

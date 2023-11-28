@@ -1,7 +1,7 @@
 String teachersJson = '''[
         {
             "avatar": "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            "country": "TN",
+            "country": "Tunisia",
             "id": "4d54d3d7-d2a9-42e5-97a2-5ed38af5789a",
             "name": "Keegan",
             "bio": "I am passionate about running and fitness, I often compete in trail/mountain running events and I love pushing myself. I am training to one day take part in ultra-endurance events. I also enjoy watching rugby on the weekends, reading and watching podcasts on Youtube. My most memorable life experience would be living in and traveling around Southeast Asia.",
