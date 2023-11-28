@@ -5,7 +5,7 @@ class Review {
   String? bookingId;
   String? firstId;
   String? secondId;
-  int? rating;
+  double? rating;
   String? content;
   String? createdAt;
   String? updatedAt;

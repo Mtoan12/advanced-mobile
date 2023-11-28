@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:lettutor/models/teacher.dart';
 
 class Utils {
@@ -16,5 +17,12 @@ class Utils {
       }).toList();
     }
     return filteredTeachers;
+  }
+
+  String formatDate(String date) {
+    final DateFormat formatter = DateFormat('dd-MM-yyyy');
+    final String formatted = formatter.format(DateTime.parse(date));
+
+    return formatted;
   }
 }

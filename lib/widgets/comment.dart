@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/widgets/stars.dart';
 
 class CommentWidget extends StatelessWidget {
   final String imgUrl;
   final String username;
   final String date;
-  final int stars;
+  final double stars;
   final String content;
 
   const CommentWidget(
@@ -47,30 +48,7 @@ class CommentWidget extends StatelessWidget {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow[600],
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow[600],
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow[600],
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow[600],
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow[600],
-                  ),
-                ],
-              ),
+              StarsWidget(rating: stars),
               Text(content)
             ],
           ),
