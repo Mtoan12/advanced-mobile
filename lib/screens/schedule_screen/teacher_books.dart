@@ -18,7 +18,7 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
   Widget build(BuildContext context) {
     ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
     // var schedules = scheduleProvider.schedules;
-    var schedules = scheduleProvider.upcomingSchedules();
+    var schedules = scheduleProvider.getUpcomingSchedules();
 
     return Column(
       children: schedules

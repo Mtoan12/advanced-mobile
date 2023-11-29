@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/models/schedule.dart';
+import 'package:lettutor/provider/schedult_provider.dart';
 import 'package:lettutor/screens/history_screen/history_card.dart';
+import 'package:lettutor/utils/utils.dart';
+import 'package:provider/provider.dart';
 
 class HistoryCardsWidget extends StatefulWidget {
   const HistoryCardsWidget({super.key});
@@ -9,40 +13,38 @@ class HistoryCardsWidget extends StatefulWidget {
 }
 
 class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
+  Utils utils = Utils();
   @override
   Widget build(BuildContext context) {
+    ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
+    List<Schedule> historySchedules = scheduleProvider.getHistorySchedules();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        HistoryCardWidget(
-          imgUrl:
-              "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-          name: "Keegan",
-          national: "Tunisia",
-          lessonTime: "19:30 - 19:55",
-          date: "T3, 31 Thg 10 23",
-          updateTime: "1 hour ago",
-          request: "",
-          review: "",
-          rating: 0,
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        HistoryCardWidget(
-          imgUrl:
-              "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-          name: "Keegan",
-          national: "Tunisia",
-          lessonTime: "00:00 - 00:25",
-          date: "T2, 23 Thg 10 23",
-          updateTime: "1 week ago",
-          request: "Hello World...",
-          review:
-              "Lesson status: Completed\nBehavior (⭐⭐⭐⭐⭐): aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nListening:\nSpeaking (⭐⭐⭐⭐⭐):\nVocabulary (⭐⭐⭐⭐⭐):\nOverall comment: Good",
-          rating: 5,
-        )
-      ],
+      children: historySchedules
+          .map((schedule) => Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: HistoryCardWidget(
+                  imgUrl: schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo
+                          ?.avatar ??
+                      '',
+                  name: schedule
+                          .scheduleDetailInfo?.scheduleInfo?.tutorInfo?.name ??
+                      '',
+                  national: schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo
+                          ?.country ??
+                      '',
+                  lessonTime:
+                      "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}",
+                  date: utils.convertDate(
+                      schedule.scheduleDetailInfo?.scheduleInfo?.date ?? ''),
+                  updateTime: utils.convertDate(schedule.updatedAt ?? ''),
+                  request: schedule.studentRequest ?? '',
+                  review: schedule.tutorReview ?? '',
+                  rating: 0,
+                ),
+              ))
+          .toList(),
     );
   }
 }
