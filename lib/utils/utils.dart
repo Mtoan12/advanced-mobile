@@ -54,4 +54,19 @@ class Utils {
 
     return formattedDate;
   }
+
+  String levelsMap(String levelNumber) {
+    Map<String, String> levels = {
+      '0': 'Any Level',
+      '1': 'Beginner',
+      '2': 'Upper-Beginner',
+      '3': 'Pre-Intermediate',
+      '4': 'Intermediate',
+      '5': 'Upper-Intermediate',
+      '6': 'Pre-Advanced',
+      '7': 'Advanced',
+    };
+
+    return levels[levelNumber]!;
+  }
 }

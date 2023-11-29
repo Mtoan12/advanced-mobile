@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/provider/course_provider.dart';
 import 'package:lettutor/provider/review_provider.dart';
 import 'package:lettutor/provider/schedult_provider.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
   TutorProvider tutorProvider = TutorProvider();
   ReviewProvider reviewProvider = ReviewProvider();
   ScheduleProvider scheduleProvider = ScheduleProvider();
+  CourseProvider courseProvider = CourseProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,12 @@ class _MyAppState extends State<MyApp> {
           Provider(create: (context) => specialtiesProvider),
           ChangeNotifierProvider(create: (context) => tutorProvider),
           ChangeNotifierProvider(create: (context) => reviewProvider),
-          ChangeNotifierProvider(create: (context) => scheduleProvider),
+          ChangeNotifierProvider(
+            create: (context) => scheduleProvider,
+          ),
+          ChangeNotifierProvider(
+            create: (context) => courseProvider,
+          ),
         ],
         child: MaterialApp.router(
           builder: DevicePreview.appBuilder,
