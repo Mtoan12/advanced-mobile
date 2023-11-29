@@ -42,6 +42,18 @@ class User {
     country = json['country'] ?? '';
     language = json['language'] ?? '';
     isPublicRecord = json['isPublicRecord'] ?? false;
+    email = json['email'] ?? '';
+    phone = json['phone'] ?? '';
+    role = json['role'] ?? '';
+    birthday =
+        json['birthday'] != null ? DateTime.parse(json['birthday']) : null;
+    isActivated = json['isActivated'] ?? false;
+    // tutorInfo =
+    //     json['tutorInfo'] != null ? Tutor.fromJson(json['tutorInfo']) : null;
+    // requireNote = json['requireNote'] ?? '';
+    // studySchedule = json['studySchedule'] ?? '';
+    // avgRating = json['avgRating'] ?? 0;
+    // testPreparations = json['testPreparations'] ?? '';
   }
 }
 

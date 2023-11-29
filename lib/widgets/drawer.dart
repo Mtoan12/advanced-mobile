@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,10 @@ class DrawerWidget extends StatelessWidget {
     if (authProvider.user == null) {
       context.goNamed(AppRouterConstant.loginRouteName);
     }
+
+    UserProvider userProvider = context.watch<UserProvider>();
+    User user = userProvider.user;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -35,11 +41,14 @@ class DrawerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  backgroundImage:
-                      NetworkImage('https://picsum.photos/250?image=9'),
+                  backgroundImage: NetworkImage(user.avatar ?? ''),
                 ),
                 SizedBox(width: 8),
-                Expanded(child: Text(authProvider.user!.email)),
+                Expanded(
+                    child: Text(
+                  user.name ?? '',
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                )),
               ],
             ),
             onTap: () {
