@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/provider/schedult_provider.dart';
 import 'package:lettutor/screens/schedule_screen/schedule_card.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class TeacherBooksWidget extends StatefulWidget {
@@ -11,39 +12,39 @@ class TeacherBooksWidget extends StatefulWidget {
 }
 
 class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
+  Utils utils = Utils();
+
   @override
   Widget build(BuildContext context) {
     ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
     var schedules = scheduleProvider.schedules;
+
     var scheduleInfos = schedules
         .map((schedule) => schedule.scheduleDetailInfo?.scheduleInfo!)
         .toList();
-    print(scheduleInfos);
+
     return Column(
-      children: [
-        ScheduleCardWidget(
-            date: "T6, 27 Thg 10 23",
-            lessonsQuantity: 1,
-            imgUrl:
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            name: "Keegan",
-            national: "Tunisia",
-            time: "05:30 - 05:55",
-            request: "Tôi muốn học"),
-        SizedBox(
-          height: 24,
-        ),
-        ScheduleCardWidget(
-            date: "T7, 28 Thg 10 23",
-            lessonsQuantity: 1,
-            imgUrl:
-                "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg",
-            name: "Keegan",
-            national: "Tunisia",
-            time: "15:30 - 15:55",
-            request:
-                "Currently there are no requests for this class. Please write down any requests for the teacher."),
-      ],
+      children: schedules
+          .map((schedule) => Padding(
+                padding: const EdgeInsets.only(bottom: 24.0),
+                child: ScheduleCardWidget(
+                    date: utils.convertDate(
+                        schedule.scheduleDetailInfo?.scheduleInfo?.date ?? ''),
+                    lessonsQuantity: schedule.convertedLesson ?? 0,
+                    imgUrl: schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo
+                            ?.avatar ??
+                        '',
+                    name: schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo
+                            ?.name ??
+                        '',
+                    national: schedule.scheduleDetailInfo?.scheduleInfo
+                            ?.tutorInfo?.country ??
+                        '',
+                    time:
+                        "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}}",
+                    request: schedule.studentRequest ?? ''),
+              ))
+          .toList(),
     );
   }
 }
