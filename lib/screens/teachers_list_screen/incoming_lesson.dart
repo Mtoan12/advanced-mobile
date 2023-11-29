@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 import 'package:lettutor/utils/utils.dart';
 
 class IncomingLessonWidget extends StatefulWidget {
@@ -12,6 +13,22 @@ class IncomingLessonWidget extends StatefulWidget {
 
 class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
   Utils utils = Utils();
+
+  var jitsiMeet = JitsiMeet();
+  void join() {
+    var options = JitsiMeetConferenceOptions(
+      serverURL: "https://meet.jit.si",
+      room: "jitsiIsAwesomeWithFlutter",
+      configOverrides: {
+        "startWithAudioMuted": false,
+        "startWithVideoMuted": false,
+        "subject": "Jitsi with Flutter",
+      },
+      featureFlags: {"unsaferoomwarning.enabled": false},
+    );
+    jitsiMeet.join(options);
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -72,7 +89,9 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                     ),
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        join();
+                      },
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/provider/schedult_provider.dart';
 import 'package:lettutor/screens/schedule_screen/schedule_card.dart';
+import 'package:provider/provider.dart';
 
 class TeacherBooksWidget extends StatefulWidget {
   const TeacherBooksWidget({super.key});
@@ -11,6 +13,12 @@ class TeacherBooksWidget extends StatefulWidget {
 class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
   @override
   Widget build(BuildContext context) {
+    ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
+    var schedules = scheduleProvider.schedules;
+    var scheduleInfos = schedules
+        .map((schedule) => schedule.scheduleDetailInfo?.scheduleInfo!)
+        .toList();
+    print(scheduleInfos);
     return Column(
       children: [
         ScheduleCardWidget(

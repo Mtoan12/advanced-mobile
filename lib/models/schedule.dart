@@ -1,28 +1,28 @@
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
 
 class Schedule {
-  int createdAtTimeStamp;
-  int updatedAtTimeStamp;
-  String id;
-  String userId;
-  String scheduleDetailId;
-  String tutorMeetingLink;
-  String studentMeetingLink;
+  int? createdAtTimeStamp;
+  int? updatedAtTimeStamp;
+  String? id;
+  String? userId;
+  String? scheduleDetailId;
+  String? tutorMeetingLink;
+  String? studentMeetingLink;
   dynamic googleMeetLink;
-  String studentRequest;
+  String? studentRequest;
   dynamic tutorReview;
   dynamic scoreByTutor;
-  String createdAt;
-  String updatedAt;
+  String? createdAt;
+  String? updatedAt;
   dynamic recordUrl;
   dynamic cancelReasonId;
   dynamic lessonPlanId;
   dynamic cancelNote;
   dynamic calendarId;
-  bool isDeleted;
-  bool isTrial;
-  int convertedLesson;
-  ScheduleDetailInfo scheduleDetailInfo;
+  bool? isDeleted;
+  bool? isTrial;
+  int? convertedLesson;
+  ScheduleDetailInfo? scheduleDetailInfo;
 
   Schedule({
     required this.createdAtTimeStamp,
@@ -51,27 +51,27 @@ class Schedule {
 
   factory Schedule.fromJson(Map<String, dynamic> json) {
     return Schedule(
-      createdAtTimeStamp: json['createdAtTimeStamp'],
-      updatedAtTimeStamp: json['updatedAtTimeStamp'],
-      id: json['id'],
-      userId: json['userId'],
-      scheduleDetailId: json['scheduleDetailId'],
-      tutorMeetingLink: json['tutorMeetingLink'],
-      studentMeetingLink: json['studentMeetingLink'],
-      googleMeetLink: json['googleMeetLink'],
-      studentRequest: json['studentRequest'],
-      tutorReview: json['tutorReview'],
-      scoreByTutor: json['scoreByTutor'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      recordUrl: json['recordUrl'],
-      cancelReasonId: json['cancelReasonId'],
-      lessonPlanId: json['lessonPlanId'],
-      cancelNote: json['cancelNote'],
-      calendarId: json['calendarId'],
-      isDeleted: json['isDeleted'],
-      isTrial: json['isTrial'],
-      convertedLesson: json['convertedLesson'],
+      createdAtTimeStamp: json['createdAtTimeStamp'] ?? 0,
+      updatedAtTimeStamp: json['updatedAtTimeStamp'] ?? 0,
+      id: json['id'] ?? '',
+      userId: json['userId'] ?? '',
+      scheduleDetailId: json['scheduleDetailId'] ?? '',
+      tutorMeetingLink: json['tutorMeetingLink'] ?? '',
+      studentMeetingLink: json['studentMeetingLink'] ?? '',
+      googleMeetLink: json['googleMeetLink'] ?? '',
+      studentRequest: json['studentRequest'] ?? '',
+      tutorReview: json['tutorReview'] ?? '',
+      scoreByTutor: json['scoreByTutor'] ?? '',
+      createdAt: json['createdAt'] ?? '',
+      updatedAt: json['updatedAt'] ?? '',
+      recordUrl: json['recordUrl'] ?? '',
+      cancelReasonId: json['cancelReasonId'] ?? '',
+      lessonPlanId: json['lessonPlanId'] ?? '',
+      cancelNote: json['cancelNote'] ?? '',
+      calendarId: json['calendarId'] ?? '',
+      isDeleted: json['isDeleted'] ?? false,
+      isTrial: json['isTrial'] ?? false,
+      convertedLesson: json['convertedLesson'] ?? 0,
       scheduleDetailInfo:
           ScheduleDetailInfo.fromJson(json['scheduleDetailInfo']),
     );

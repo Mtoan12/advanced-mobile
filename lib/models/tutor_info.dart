@@ -1,30 +1,30 @@
 class TutorInfo {
-  String id;
-  String level;
-  String email;
+  String? id;
+  String? level;
+  String? email;
   dynamic google;
   dynamic facebook;
   dynamic apple;
-  String avatar;
-  String name;
-  String country;
-  String phone;
-  String language;
-  String birthday;
-  bool requestPassword;
-  bool isActivated;
+  String? avatar;
+  String? name;
+  String? country;
+  String? phone;
+  String? language;
+  String? birthday;
+  bool? requestPassword;
+  bool? isActivated;
   dynamic isPhoneActivated;
   dynamic requireNote;
-  int timezone;
+  int? timezone;
   dynamic phoneAuth;
-  bool isPhoneAuthActivated;
-  String studySchedule;
-  bool canSendMessage;
-  bool isPublicRecord;
+  bool? isPhoneAuthActivated;
+  String? studySchedule;
+  bool? canSendMessage;
+  bool? isPublicRecord;
   dynamic caredByStaffId;
   dynamic zaloUserId;
-  String createdAt;
-  String updatedAt;
+  String? createdAt;
+  String? updatedAt;
   dynamic deletedAt;
   dynamic studentGroupId;
 
@@ -61,34 +61,34 @@ class TutorInfo {
 
   factory TutorInfo.fromJson(Map<String, dynamic> json) {
     return TutorInfo(
-      id: json['id'],
-      level: json['level'],
-      email: json['email'],
-      google: json['google'],
-      facebook: json['facebook'],
-      apple: json['apple'],
-      avatar: json['avatar'],
-      name: json['name'],
-      country: json['country'],
-      phone: json['phone'],
-      language: json['language'],
-      birthday: json['birthday'],
-      requestPassword: json['requestPassword'],
-      isActivated: json['isActivated'],
-      isPhoneActivated: json['isPhoneActivated'],
-      requireNote: json['requireNote'],
-      timezone: json['timezone'],
-      phoneAuth: json['phoneAuth'],
-      isPhoneAuthActivated: json['isPhoneAuthActivated'],
-      studySchedule: json['studySchedule'],
-      canSendMessage: json['canSendMessage'],
-      isPublicRecord: json['isPublicRecord'],
-      caredByStaffId: json['caredByStaffId'],
-      zaloUserId: json['zaloUserId'],
-      createdAt: json['createdAt'],
-      updatedAt: json['updatedAt'],
-      deletedAt: json['deletedAt'],
-      studentGroupId: json['studentGroupId'],
+      id: json['id'] ?? '',
+      level: json['level'] ?? '',
+      email: json['email'] ?? '',
+      google: json['google'] ?? '',
+      facebook: json['facebook'] ?? '',
+      apple: json['apple'] ?? '',
+      avatar: json['avatar'] ?? '',
+      name: json['name'] ?? '',
+      country: json['country'] ?? '',
+      phone: json['phone'] ?? '',
+      language: json['language'] ?? '',
+      birthday: json['birthday'] ?? '',
+      requestPassword: json['requestPassword'] ?? false,
+      isActivated: json['isActivated'] ?? false,
+      isPhoneActivated: json['isPhoneActivated'] ?? '',
+      requireNote: json['requireNote'] ?? '',
+      timezone: json['timezone'] ?? 0,
+      phoneAuth: json['phoneAuth'] ?? '',
+      isPhoneAuthActivated: json['isPhoneAuthActivated'] ?? false,
+      studySchedule: json['studySchedule'] ?? '',
+      canSendMessage: json['canSendMessage'] ?? false,
+      isPublicRecord: json['isPublicRecord'] ?? false,
+      caredByStaffId: json['caredByStaffId'] ?? '',
+      zaloUserId: json['zaloUserId'] ?? '',
+      createdAt: json['createdAt'] ?? '',
+      updatedAt: json['updatedAt'] ?? '',
+      deletedAt: json['deletedAt'] ?? '',
+      studentGroupId: json['studentGroupId'] ?? '',
     );
   }
 }
