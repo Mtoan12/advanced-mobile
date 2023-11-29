@@ -29,7 +29,6 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
     CourseProvider courseProvider = context.watch<CourseProvider>();
     var course = courseProvider.getCourseById(id);
     var courseTopics = course?.topics ?? [];
-    
 
     Utils utils = Utils();
 
@@ -64,7 +63,9 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  CourseTopicsWidget(),
+                  CourseTopicsWidget(
+                    topics: courseTopics,
+                  ),
                   SizedBox(
                     height: 40,
                   ),

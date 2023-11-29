@@ -14,6 +14,7 @@ class CourseTopicsWidget extends StatefulWidget {
 class _CourseTopicsWidgetState extends State<CourseTopicsWidget> {
   @override
   Widget build(BuildContext context) {
+    int number = 0;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,40 +28,18 @@ class _CourseTopicsWidgetState extends State<CourseTopicsWidget> {
         SizedBox(
           height: 20,
         ),
-        CourseTopicWidget(
-          number: 1,
-          name: "Foods You Love",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        CourseTopicWidget(
-          number: 2,
-          name: "Your Job",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        CourseTopicWidget(
-          number: 3,
-          name: "Playing and Watching Sports",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        CourseTopicWidget(
-          number: 4,
-          name: "The Best Pet",
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        CourseTopicWidget(
-          number: 5,
-          name: "Having Fun in Your Free Time",
-        ),
-        SizedBox(
-          height: 20,
+        Column(
+          children: widget.topics
+              .map(
+                (topic) => Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: CourseTopicWidget(
+                    number: ++number,
+                    name: topic.name ?? "",
+                  ),
+                ),
+              )
+              .toList(),
         ),
       ],
     );
