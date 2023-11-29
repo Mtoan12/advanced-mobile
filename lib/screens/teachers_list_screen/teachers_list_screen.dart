@@ -20,8 +20,7 @@ class TeachersListScreen extends StatefulWidget {
 class _TeachersListScreenState extends State<TeachersListScreen> {
   String specKeyActive = 'All';
   String search = '';
-
-
+  String national = '';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,11 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     List<Teacher> teachers = teachersListProvider.teachers;
 
     Utils utils = Utils();
-    teachers = utils.filterTeachers(teachers, search, specKeyActive);
+    teachers = utils.filterTeachers(
+        teachers: teachers,
+        national: national,
+        search: search,
+        specKey: specKeyActive);
 
     void changeSpecActive(String specKey) {
       setState(() {
@@ -45,6 +48,12 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     void handleSearch(String search) {
       setState(() {
         this.search = search;
+      });
+    }
+
+    void handleNationalChange(String national) {
+      setState(() {
+        this.national = national;
       });
     }
 
@@ -77,7 +86,9 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           spec: specKeyActive,
                           changeSpecActive: changeSpecActive,
                           search: search,
-                          handleSearch: handleSearch),
+                          handleSearch: handleSearch,
+                          national: national,
+                          handleNationalChange: handleNationalChange),
                       SizedBox(
                         height: 24,
                       ),

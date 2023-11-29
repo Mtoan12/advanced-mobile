@@ -11,13 +11,17 @@ class FiltersTeachersWidget extends StatefulWidget {
   final Function(String spec) changeSpecActive;
   final String search;
   final Function(String search) handleSearch;
+  final String national;
+  final Function(String national) handleNationalChange;
 
   const FiltersTeachersWidget(
       {super.key,
       required this.spec,
       required this.changeSpecActive,
       required this.handleSearch,
-      required this.search});
+      required this.search,
+      required this.national,
+      required this.handleNationalChange});
 
   @override
   State<FiltersTeachersWidget> createState() => _FiltersTeachersWidgetState();
@@ -50,8 +54,8 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 4,
             ),
             Input(
-              value: '',
-              handleChange: (String value) {},
+              value: widget.national,
+              handleChange: widget.handleNationalChange,
               width: 160,
               height: 40,
               icon: Icon(Icons.arrow_drop_down),
@@ -155,6 +159,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             setState(() {
               widget.changeSpecActive("All");
               widget.handleSearch("");
+              widget.handleNationalChange("");
             });
           },
           child: Text(

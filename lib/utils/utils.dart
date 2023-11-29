@@ -3,14 +3,26 @@ import 'package:lettutor/models/teacher.dart';
 
 class Utils {
   List<Teacher> filterTeachers(
-      List<Teacher> teachers, String search, String specKey) {
+      {required List<Teacher> teachers,
+      required String search,
+      required String national,
+      required String specKey}) {
     List<Teacher> filteredTeachers = teachers;
+
     if (search != '') {
       filteredTeachers = filteredTeachers
           .where((teacher) =>
               teacher.name!.toLowerCase().contains(search.toLowerCase()))
           .toList();
     }
+
+    if (national != '') {
+      filteredTeachers = filteredTeachers
+          .where((teacher) =>
+              teacher.country!.toLowerCase().contains(national.toLowerCase()))
+          .toList();
+    }
+
     if (specKey != 'All') {
       filteredTeachers = filteredTeachers.where((teacher) {
         return teacher.specialties!.contains(specKey);

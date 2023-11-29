@@ -17,19 +17,28 @@ class TeachersListProvider extends ChangeNotifier {
     teachers = sortTeachers(teachers);
   }
 
-  List<Teacher> filterTeachers(String search, String spec) {
+  List<Teacher> filterTeachers(String search, String national, String spec) {
     List<Teacher> filteredTeachers = teachers;
+
     if (search != '') {
       filteredTeachers = filteredTeachers
           .where((teacher) =>
               teacher.name!.toLowerCase().contains(search.toLowerCase()))
           .toList();
     }
+
+    if (national != '') {
+      filteredTeachers = filteredTeachers
+          .where((teacher) => teacher.country!.contains(national))
+          .toList();
+    }
+
     if (spec != 'All') {
       filteredTeachers = filteredTeachers
           .where((teacher) => teacher.specialties!.contains(spec))
           .toList();
     }
+
     return filteredTeachers;
   }
 
