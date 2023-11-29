@@ -48,10 +48,8 @@ class Utils {
   }
 
   String convertDate(String date) {
-    // Parse the input string to obtain a DateTime object
-    DateTime parsedDate = DateFormat("yyyy-dd-MM").parse(date);
+    DateTime parsedDate = DateFormat("yyyy-MM-dd").parse(date);
 
-    // Format the DateTime object to the desired output format
     String formattedDate = DateFormat("E, dd MMM yy").format(parsedDate);
 
     return formattedDate;

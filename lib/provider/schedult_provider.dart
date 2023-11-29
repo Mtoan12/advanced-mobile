@@ -12,4 +12,11 @@ class ScheduleProvider extends ChangeNotifier {
 
     schedules = list.map((e) => Schedule.fromJson(e)).toList();
   }
+
+  List<Schedule> upcomingSchedules() {
+    DateTime now = DateTime.now();
+    return schedules
+        .where((schedule) => DateTime.parse(schedule.createdAt!).isAfter(now))
+        .toList();
+  }
 }

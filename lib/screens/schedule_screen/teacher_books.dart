@@ -17,11 +17,8 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
   @override
   Widget build(BuildContext context) {
     ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
-    var schedules = scheduleProvider.schedules;
-
-    var scheduleInfos = schedules
-        .map((schedule) => schedule.scheduleDetailInfo?.scheduleInfo!)
-        .toList();
+    // var schedules = scheduleProvider.schedules;
+    var schedules = scheduleProvider.upcomingSchedules();
 
     return Column(
       children: schedules
@@ -41,7 +38,7 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
                             ?.tutorInfo?.country ??
                         '',
                     time:
-                        "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}}",
+                        "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}",
                     request: schedule.studentRequest ?? ''),
               ))
           .toList(),
