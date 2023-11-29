@@ -46,32 +46,36 @@ class DrawerWidget extends StatelessWidget {
               context.goNamed(AppRouterConstant.teachersListRouteName);
             },
           ),
-          ListTile(
-            title: const Text('Tutor'),
-            onTap: () {
-              context.goNamed(AppRouterConstant.teachersListRouteName);
-            },
-          ),
-          ListTile(
-            title: const Text('Schedule'),
-            onTap: () {
-              context.goNamed(AppRouterConstant.scheduleRouteName);
-            },
-          ),
-          ListTile(
-            title: const Text('History'),
-            onTap: () {
-              context.goNamed(AppRouterConstant.historyRouteName);
-            },
-          ),
-          ListTile(
-            title: const Text('Courses'),
-            onTap: () {
-              context.goNamed(AppRouterConstant.coursesRouteName);
-            },
-          ),
+          LinkWidget(context, Icons.group_outlined, "Tutor",
+              AppRouterConstant.teachersListRouteName),
+          LinkWidget(context, Icons.event_available_outlined, "Schedule",
+              AppRouterConstant.scheduleRouteName),
+          LinkWidget(context, Icons.history_outlined, "History",
+              AppRouterConstant.historyRouteName),
+          LinkWidget(context, Icons.school_outlined, "Courses",
+              AppRouterConstant.coursesRouteName),
+          LinkWidget(context, Icons.logout_outlined, "Logout",
+              AppRouterConstant.coursesRouteName),
         ],
       ),
+    );
+  }
+
+  Widget LinkWidget(
+      BuildContext context, IconData icon, String title, String routeName) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: Colors.blue,
+        size: 32,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(fontWeight: FontWeight.w700),
+      ),
+      onTap: () {
+        context.goNamed(routeName);
+      },
     );
   }
 }
