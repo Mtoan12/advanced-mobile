@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 
 class CourseCardWidget extends StatefulWidget {
+  final String id;
   final String imgUrl;
   final String name;
   final String desc;
@@ -11,6 +12,7 @@ class CourseCardWidget extends StatefulWidget {
 
   const CourseCardWidget({
     super.key,
+    required this.id,
     required this.desc,
     required this.level,
     required this.numberLessons,
@@ -27,7 +29,8 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.goNamed(AppRouterConstant.courseDetailRouteName);
+        context.pushNamed(AppRouterConstant.courseDetailRouteName,
+            queryParameters: {'id': widget.id});
       },
       child: Container(
         width: double.maxFinite,

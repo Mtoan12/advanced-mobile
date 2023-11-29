@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/provider/course_provider.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_card.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_info.dart';
 import 'package:lettutor/screens/course_detail_screen/course_topics.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   const CourseDetailScreen({super.key});
@@ -17,6 +21,18 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+
+    Map<String, dynamic> qparams =
+        GoRouterState.of(context).uri.queryParameters;
+    String id = qparams['id'] ?? '964bed84-6450-49ee-92d5-e8c565864bd9';
+
+    CourseProvider courseProvider = context.watch<CourseProvider>();
+    var course = courseProvider.getCourseById(id);
+    var courseTopics = course?.topics ?? [];
+    
+
+    Utils utils = Utils();
+
     return Scaffold(
         appBar: appBar(context),
         endDrawer: DrawerWidget(),
@@ -33,19 +49,17 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CourseDetailCardWidget(
-                      desc: "Gain confidence speaking about familiar topics",
-                      imgUrl: "assets/images/5e2b895e541a832674533c18.png",
-                      name: "Basic Conversation Topics"),
+                      desc: course?.description ?? "",
+                      imgUrl: course?.imageUrl ?? "",
+                      name: course?.name ?? ""),
                   SizedBox(
                     height: 40,
                   ),
                   CourseDetailInfoWidget(
-                    content1:
-                        "It can be intimidating to speak with a foreigner, no matter how much grammar and vocabulary you've mastered. If you have basic knowledge of English but have not spent much time speaking, this course will help you ease into your first English conversations.",
-                    content2:
-                        "This course covers vocabulary at the CEFR A2 level. You will build confidence while learning to speak about a variety of common, everyday topics. In addition, you will build implicit grammar knowledge as your tutor models correct answers and corrects your mistakes.",
-                    level: "Beginner",
-                    numberTopic: 10,
+                    content1: course?.reason ?? "",
+                    content2: course?.purpose ?? "",
+                    level: utils.levelsMap(course?.level ?? ""),
+                    numberTopic: course?.topics.length ?? 0,
                   ),
                   SizedBox(
                     height: 24,

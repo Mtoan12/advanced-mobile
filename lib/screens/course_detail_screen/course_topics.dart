@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/models/topic.dart';
 import 'package:lettutor/screens/course_detail_screen/course_topic.dart';
 
 class CourseTopicsWidget extends StatefulWidget {
-  const CourseTopicsWidget({super.key});
+  final List<Topic> topics;
+  const CourseTopicsWidget({super.key, required this.topics});
 
   @override
   State<CourseTopicsWidget> createState() => _CourseTopicsWidgetState();
