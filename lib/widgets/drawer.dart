@@ -45,8 +45,7 @@ class DrawerWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    backgroundImage:
-                        NetworkImage("assets/images/default-avatar.png"),
+                    backgroundImage: NetworkImage(user.avatar!),
                   ),
                   SizedBox(width: 8),
                   Expanded(

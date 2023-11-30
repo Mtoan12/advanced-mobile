@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/widgets/TextINput.dart';

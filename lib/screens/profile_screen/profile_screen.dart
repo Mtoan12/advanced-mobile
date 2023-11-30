@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/screens/profile_screen/profile_form.dart';
@@ -14,9 +17,9 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  File? image;
   @override
   Widget build(BuildContext context) {
-    var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     UserProvider userProvider = context.watch<UserProvider>();
     User user = userProvider.user;
@@ -51,10 +54,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundImage:
-                            NetworkImage(userProvider.user.avatar ?? ""),
+                      GestureDetector(
+                        onTap: () {
+                          getImage();
+                        },
+                        child: CircleAvatar(
+                            radius: 50,
+                            backgroundImage:
+                                NetworkImage(userProvider.user.avatar!)),
                       ),
                       SizedBox(
                         height: 10,
@@ -83,5 +90,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ));
+  }
+
+  Future getImage() async {
+    final selectedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      image = File(selectedFile!.path);
+    });
   }
 }

@@ -3,7 +3,7 @@ String userJson = '''
         "id": "f569c202-7bbf-4620-af77-ecc1419a6b28",
         "email": "tranminhtoan1280@gmail.com",
         "name": "",
-        "avatar": "",
+        "avatar": "https://lh3.googleusercontent.com/a/ACg8ocK4o9WXWQ3pNDRGzmlbIbu2CzBapUdzoLiYvVnOImdU=s96-c",
         "country": "",
         "phone": "",
         "roles": [
