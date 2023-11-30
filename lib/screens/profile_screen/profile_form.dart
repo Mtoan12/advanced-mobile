@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/user.dart';
+import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/widgets/TextINput.dart';
+import 'package:provider/provider.dart';
 
 class ProfileFormWidget extends StatefulWidget {
   final User user;
@@ -12,12 +14,30 @@ class ProfileFormWidget extends StatefulWidget {
 
 class _ProfileFormWidgetState extends State<ProfileFormWidget> {
   final TextEditingController nameEditingController = TextEditingController();
+  final TextEditingController emailEditingController = TextEditingController();
+  final TextEditingController countryEditingController =
+      TextEditingController();
+  final TextEditingController phoneEditingController = TextEditingController();
+
+  final TextEditingController wantToLearnEditingController =
+      TextEditingController();
+  final TextEditingController studyScheduleEditingController =
+      TextEditingController();
+
+  DateTime birthday = DateTime.now();
   String dropdownValue = "Pre A1 (Beginner)";
 
   @override
   void initState() {
     super.initState();
     nameEditingController.text = widget.user.name ?? "";
+    emailEditingController.text = widget.user.email ?? "";
+    countryEditingController.text = widget.user.country ?? "";
+    phoneEditingController.text = widget.user.phone ?? "";
+    wantToLearnEditingController.text = widget.user.requireNote ?? "";
+    studyScheduleEditingController.text = widget.user.studySchedule ?? "";
+
+    birthday = widget.user.birthday ?? DateTime.now();
 
     if (widget.user.level == '') {
       dropdownValue = "Pre A1 (Beginner)";
@@ -34,6 +54,8 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
 
   @override
   Widget build(BuildContext context) {
+    UserProvider userProvider = context.watch<UserProvider>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -87,7 +109,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       SizedBox(
                         width: double.infinity,
                         child: TextInput(
-                          controller: nameEditingController,
+                          controller: emailEditingController,
                           placeHolder: "Enter your email",
                         ),
                       ),
@@ -107,7 +129,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       SizedBox(
                         width: double.infinity,
                         child: TextInput(
-                          controller: nameEditingController,
+                          controller: countryEditingController,
                           placeHolder: "Enter your country",
                         ),
                       ),
@@ -127,7 +149,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       SizedBox(
                         width: double.infinity,
                         child: TextInput(
-                          controller: nameEditingController,
+                          controller: phoneEditingController,
                           placeHolder: "Enter your phone number",
                         ),
                       ),
@@ -148,7 +170,12 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                         width: double.infinity,
                         child: InputDatePickerFormField(
                           acceptEmptyDate: true,
-                          initialDate: widget.user.birthday,
+                          initialDate: birthday,
+                          onDateSaved: (value) {
+                            setState(() {
+                              birthday = value;
+                            });
+                          },
                           firstDate: DateTime(1900),
                           lastDate: DateTime(2100),
                         ),
@@ -206,7 +233,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       SizedBox(
                         width: double.infinity,
                         child: TextInput(
-                          controller: nameEditingController,
+                          controller: wantToLearnEditingController,
                           placeHolder: "Want to learn",
                         ),
                       ),
@@ -227,7 +254,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                         width: double.infinity,
                         child: TextInput(
                           maxLine: 4,
-                          controller: nameEditingController,
+                          controller: studyScheduleEditingController,
                           placeHolder:
                               "Note the time of the week you want to study on LetTutor",
                         ),
@@ -242,7 +269,29 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue[700]),
-                          onPressed: () {},
+                          onPressed: () {
+                            String name = nameEditingController.text;
+                            String email = emailEditingController.text;
+                            String country = countryEditingController.text;
+                            String phone = phoneEditingController.text;
+                            String requiredNote =
+                                wantToLearnEditingController.text;
+                            String studySchedule =
+                                studyScheduleEditingController.text;
+
+                            userProvider.updateProfile(
+                                name: name,
+                                email: email,
+                                country: country,
+                                phone: phone,
+                                birthday: birthday,
+                                level: dropdownValue,
+                                requireNote: requiredNote,
+                                studySchedule: studySchedule);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Saved')),
+                            );
+                          },
                           child: Text(
                             "Save change",
                             style: TextStyle(

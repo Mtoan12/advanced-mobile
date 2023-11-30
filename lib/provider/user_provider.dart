@@ -18,6 +18,25 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider() {
     user = User.fromJson(json.decode(userJson));
-    print(user.name);
+  }
+
+  void updateProfile(
+      {required String name,
+      required String email,
+      required String phone,
+      required String country,
+      required DateTime birthday,
+      required String level,
+      required String requireNote,
+      required String studySchedule}) {
+    user.name = name;
+    user.email = email;
+    user.phone = phone;
+    user.country = country;
+    user.birthday = birthday;
+    user.level = level;
+    user.requireNote = requireNote;
+    user.studySchedule = studySchedule;
+    notifyListeners();
   }
 }

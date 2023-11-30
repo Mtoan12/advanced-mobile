@@ -20,7 +20,7 @@ class TextInput extends StatelessWidget {
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(50)),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
           borderSide: BorderSide(width: 3, color: Colors.blue),
         ),
         hintText: placeHolder,
