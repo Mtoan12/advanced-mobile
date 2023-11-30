@@ -10,4 +10,5 @@ class AppRouterConstant {
   static String scheduleRouteName = "schedule";
   static String teacherDetailRouteName = "teacherDetail";
   static String videoCallRouteName = "videoCall";
+  static String profileRouteName = "profile";
 }

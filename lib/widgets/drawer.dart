@@ -37,19 +37,25 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(user.avatar ?? ''),
-                ),
-                SizedBox(width: 8),
-                Expanded(
-                    child: Text(
-                  user.name ?? '',
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                )),
-              ],
+            title: GestureDetector(
+              onTap: () {
+                context.goNamed(AppRouterConstant.profileRouteName);
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    backgroundImage:
+                        NetworkImage("assets/images/default-avatar.png"),
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                      child: Text(
+                    user.name!.isNotEmpty ? user.name ?? '' : user.email ?? '',
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  )),
+                ],
+              ),
             ),
             onTap: () {
               context.goNamed(AppRouterConstant.teachersListRouteName);
@@ -63,8 +69,7 @@ class DrawerWidget extends StatelessWidget {
               AppRouterConstant.historyRouteName),
           LinkWidget(context, Icons.school_outlined, "Courses",
               AppRouterConstant.coursesRouteName),
-          LinkWidget(context, Icons.logout_outlined, "Logout",
-              AppRouterConstant.coursesRouteName),
+          LinkWidget(context, Icons.logout_outlined, "Logout", ''),
         ],
       ),
     );
@@ -83,6 +88,11 @@ class DrawerWidget extends StatelessWidget {
         style: TextStyle(fontWeight: FontWeight.w700),
       ),
       onTap: () {
+        if (routeName.isEmpty) {
+          context.read<AuthProvider>().logout();
+          context.goNamed(AppRouterConstant.loginRouteName);
+          return;
+        }
         context.goNamed(routeName);
       },
     );
