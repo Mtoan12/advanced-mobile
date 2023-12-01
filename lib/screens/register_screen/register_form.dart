@@ -16,9 +16,18 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController passwordEditingController =
       TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+    _formKey.currentState?.reset();
+  }
+
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
+
     var screenHeight = MediaQuery.of(context).size.height;
 
     return Form(
@@ -105,13 +114,13 @@ class _RegisterFormState extends State<RegisterForm> {
           SizedBox(
             height: screenHeight * 0.015,
           ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              authProvider.error,
-              style: TextStyle(color: Colors.red[400]),
-            ),
-          ),
+          // Align(
+          //   alignment: Alignment.centerLeft,
+          //   child: Text(
+          //     authProvider.error,
+          //     style: TextStyle(color: Colors.red[400]),
+          //   ),
+          // ),
           SizedBox(
             height: screenHeight * 0.012,
           ),
@@ -129,7 +138,12 @@ class _RegisterFormState extends State<RegisterForm> {
                       email: emailEditingController.text,
                       password: passwordEditingController.text);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
+                    SnackBar(
+                      content: Text(
+                        authProvider.error,
+                        style: TextStyle(color: Colors.red[400]),
+                      ),
+                    ),
                   );
                 }
               },

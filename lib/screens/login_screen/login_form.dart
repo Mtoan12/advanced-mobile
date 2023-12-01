@@ -18,11 +18,19 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailEditingController = TextEditingController();
   final TextEditingController passwordEditingController =
       TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+    _formKey.currentState?.reset();
+  }
+
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
-    var screenHeight = MediaQuery.of(context).size.height;
 
+    var screenHeight = MediaQuery.of(context).size.height;
     return Form(
       key: _formKey,
       child: Column(
@@ -107,13 +115,13 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             height: screenHeight * 0.015,
           ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              authProvider.error,
-              style: TextStyle(color: Colors.red[400]),
-            ),
-          ),
+          // Align(
+          //   alignment: Alignment.centerLeft,
+          //   child: Text(
+          //     authProvider.error,
+          //     style: TextStyle(color: Colors.red[400]),
+          //   ),
+          // ),
           SizedBox(
             height: screenHeight * 0.015,
           ),
@@ -127,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
                     color: Colors.blue[500], fontWeight: FontWeight.w500),
               ),
               onPressed: () {
-                context.goNamed(AppRouterConstant.forgotPasswordRouteName);
+                context.pushNamed(AppRouterConstant.forgotPasswordRouteName);
               },
             ),
           ),
@@ -151,7 +159,12 @@ class _LoginFormState extends State<LoginForm> {
                   //   context.goNamed(AppRouterConstant.teachersListRouteName);
                   // }
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
+                    SnackBar(
+                      content: Text(
+                        authProvider.error,
+                        style: TextStyle(color: Colors.red[400]),
+                      ),
+                    ),
                   );
                 }
               },

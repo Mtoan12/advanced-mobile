@@ -11,6 +11,11 @@ class AuthProvider extends ChangeNotifier {
 
   AuthProvider();
 
+  void setError(String error) {
+    this.error = error;
+    notifyListeners();
+  }
+
   bool isEmailExist(String email) {
     return _users.any((user) => user.email == email);
   }
@@ -26,6 +31,7 @@ class AuthProvider extends ChangeNotifier {
     } else if (!isPasswordCorrect(email, password)) {
       error = 'Invalid email or password';
     } else {
+      error = '';
       user = _users.firstWhere((user) => user.email == user.email);
     }
 
@@ -36,6 +42,7 @@ class AuthProvider extends ChangeNotifier {
     if (isEmailExist(email)) {
       error = 'Email already exists';
     } else {
+      error = '';
       _users.add(Auth(email: email, password: password));
       user = _users.firstWhere((user) => user.email == user.email);
 

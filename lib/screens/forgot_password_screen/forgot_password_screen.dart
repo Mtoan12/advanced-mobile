@@ -16,8 +16,15 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    super.initState();
+    _formKey.currentState?.reset();
+  }
+
+  @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
+    
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
