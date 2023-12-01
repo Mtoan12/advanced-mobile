@@ -48,7 +48,9 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   CircleAvatar(
-                    backgroundImage: NetworkImage(widget.imgUrl),
+                    backgroundImage: NetworkImage(widget.imgUrl != ''
+                        ? widget.imgUrl
+                        : "https://sandbox.api.lettutor.com/avatar/4d54d3d7-d2a9-42e5-97a2-5ed38af5789aavatar1684484879187.jpg"),
                     radius: 32,
                   ),
                   const SizedBox(
@@ -57,12 +59,12 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                   Column(
                     children: [
                       Text(
-                        widget.name,
+                        widget.name != '' ? widget.name : "Keegan",
                         style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       Text(
-                        widget.national,
+                        widget.national != '' ? widget.national : "TN",
                         style: const TextStyle(fontSize: 12),
                       ),
                       Text(

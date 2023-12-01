@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/schedule.dart';
-import 'package:lettutor/provider/schedult_provider.dart';
+import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/screens/history_screen/history_card.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:provider/provider.dart';

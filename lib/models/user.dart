@@ -1,5 +1,5 @@
 import 'package:lettutor/models/course.dart';
-import 'package:lettutor/models/tutor.dart';
+import 'package:lettutor/models/tutor_info.dart';
 
 class User {
   String? id;
@@ -12,7 +12,7 @@ class User {
   String? language;
   DateTime? birthday;
   bool? isActivated;
-  Tutor? tutorInfo;
+  TutorInfo? tutorInfo;
   String? requireNote;
   String? studySchedule;
   double? avgRating;

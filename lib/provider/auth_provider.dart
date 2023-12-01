@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:lettutor/models/auth.dart';
 
 class AuthProvider extends ChangeNotifier {
-  List<Auth> _users = [
+  final List<Auth> _users = [
     Auth(email: "mail@gmail.com", password: "123"),
     Auth(email: "mail2@gmail.com", password: "1234")
   ];
-  Auth? user = Auth(email: "mail@gmail.com", password: "123");
+  Auth? user;
   String error = '';
 
   AuthProvider();
