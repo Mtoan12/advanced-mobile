@@ -45,12 +45,12 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             Input(
               width: 160,
               height: 40,
-              icon: Icon(Icons.search_outlined),
+              icon: const Icon(Icons.search_outlined),
               placeHolder: "Enter tutor name...".tr,
               value: widget.search,
               handleChange: widget.handleSearch,
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Input(
@@ -58,17 +58,17 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               handleChange: widget.handleNationalChange,
               width: 160,
               height: 40,
-              icon: Icon(Icons.arrow_drop_down),
+              icon: const Icon(Icons.arrow_drop_down),
               placeHolder: "Select tutor nationality".tr,
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Text(
           "Select available tutoring time:".tr,
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
         Wrap(
           children: [
@@ -77,13 +77,13 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               handleChange: (String value) {},
               width: 144,
               height: 40,
-              icon: Icon(
+              icon: const Icon(
                 Icons.calendar_month,
                 color: Colors.grey,
               ),
               placeHolder: "Select a day".tr,
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Input(
@@ -91,7 +91,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               handleChange: (String value) {},
               width: 100,
               height: 40,
-              icon: Icon(null),
+              icon: const Icon(null),
               placeHolder: "Start time".tr,
             ),
             Input(
@@ -99,7 +99,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               handleChange: (String value) {},
               width: 100,
               height: 40,
-              icon: Icon(
+              icon: const Icon(
                 Icons.timelapse,
                 color: Colors.grey,
               ),
@@ -107,14 +107,14 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             ),
           ],
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Container(
           decoration: BoxDecoration(
               border: Border(
             bottom: BorderSide(width: 1, color: Colors.grey.withOpacity(0.3)),
           )),
           child: Padding(
-              padding: EdgeInsets.only(bottom: 28),
+              padding: const EdgeInsets.only(bottom: 28),
               child: specialtiesWidget(context)),
         )
       ],
@@ -151,10 +151,11 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
       height: 40,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
+              padding:
+                  const EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
               backgroundColor: Colors.white,
               foregroundColor: Colors.blue[300],
-              side: BorderSide(width: 1, color: Colors.blue)),
+              side: const BorderSide(width: 1, color: Colors.blue)),
           onPressed: () {
             setState(() {
               widget.changeSpecActive("All");

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LessonTopicWidget extends StatefulWidget {
@@ -32,13 +31,13 @@ class _LessonTopicWidgetState extends State<LessonTopicWidget> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         height: 48,
         decoration: BoxDecoration(
           color: widget.active || isHovered
               ? Colors.grey.withOpacity(0.2)
               : Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: SizedBox(
           width: double.maxFinite,
@@ -50,14 +49,15 @@ class _LessonTopicWidgetState extends State<LessonTopicWidget> {
                 children: [
                   Text(
                     "${widget.number}.",
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Text(
-                    "${widget.name}",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    widget.name,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                 ]),
           ),

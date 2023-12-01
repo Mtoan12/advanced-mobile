@@ -19,7 +19,7 @@ class LessonDetailScreenState extends State<LessonDetailScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -28,7 +28,7 @@ class LessonDetailScreenState extends State<LessonDetailScreen> {
             ),
             child: Padding(
               padding: EdgeInsets.all(screenWidth * 0.03),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

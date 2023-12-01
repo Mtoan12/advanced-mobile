@@ -60,14 +60,14 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   SizedBox(
                     height: screenHeight * 0.05,
                   ),
-                  Text(
+                  const Text(
                     "Reset Password",
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
-                  Text(
+                  const Text(
                     "Please enter your email address to search for your account.",
                     textAlign: TextAlign.center,
                   ),
@@ -78,12 +78,12 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                       key: _formKey,
                       child: Column(
                         children: [
-                          Align(
+                          const Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               "Email",
                               textAlign: TextAlign.start,
-                              style: const TextStyle(color: Colors.grey),
+                              style: TextStyle(color: Colors.grey),
                             ),
                           ),
                           SizedBox(

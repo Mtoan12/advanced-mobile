@@ -81,9 +81,9 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name",
+                      const Text("Name",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -95,15 +95,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Email Address",
+                      const Text("Email Address",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -115,15 +115,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Country",
+                      const Text("Country",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -135,15 +135,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Phone Number",
+                      const Text("Phone Number",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -155,15 +155,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Birthday",
+                      const Text("Birthday",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -182,15 +182,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("My Level",
+                      const Text("My Level",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -219,15 +219,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                           )),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Want to learn",
+                      const Text("Want to learn",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -239,15 +239,15 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Study Schedule",
+                      const Text("Study Schedule",
                           style: TextStyle(fontWeight: FontWeight.w600)),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       SizedBox(
@@ -261,7 +261,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -292,7 +292,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                               const SnackBar(content: Text('Saved')),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             "Save change",
                             style: TextStyle(
                                 color: Colors.white,

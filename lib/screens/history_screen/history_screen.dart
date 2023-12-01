@@ -20,7 +20,7 @@ class HistoryScreenState extends State<HistoryScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -37,14 +37,15 @@ class HistoryScreenState extends State<HistoryScreen> {
                     'assets/images/history.svg',
                     width: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Text(
                     "History".tr,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w800),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -54,31 +55,31 @@ class HistoryScreenState extends State<HistoryScreen> {
                                   color: Colors.grey.withOpacity(0.3),
                                   width: 3))),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "The following is a list of lessons you have attended"
                                   .tr,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               "You can review the details of the lessons you have attended"
                                   .tr,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  HistoryCardsWidget(),
-                  SizedBox(
+                  const HistoryCardsWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
-                  NumberPaginator(numberPages: 1),
+                  const NumberPaginator(numberPages: 1),
                 ],
               ),
             ),

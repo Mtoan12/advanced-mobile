@@ -15,7 +15,7 @@ import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(DevicePreview(enabled: true, builder: (context) => MyApp()));
+  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
 }
 
 typedef LoginCallback = void Function(int _appState);

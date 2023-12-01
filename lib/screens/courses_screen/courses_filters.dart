@@ -19,12 +19,12 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
             Flexible(
               child: TextField(
                 decoration: InputDecoration(
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 10),
                     hintText: "Course".tr,
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(width: 1, color: Colors.blue)),
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                         borderSide: BorderSide(
                       width: 1,
                       color: Colors.grey,
@@ -37,7 +37,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle, border: Border.all(width: 1)),
               child: IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   // Xử lý sự kiện khi nhấn vào biểu tượng tìm kiếm
                 },
@@ -45,7 +45,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Column(
@@ -57,7 +57,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
                     hintText: "Select level".tr,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 Expanded(
@@ -66,7 +66,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
                 )),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             InputFilterWidget(
@@ -93,15 +93,16 @@ class _InputFilterWidgetState extends State<InputFilterWidget> {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-          suffixIcon: Icon(
+          suffixIcon: const Icon(
             Icons.expand_more,
             color: Colors.grey,
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10),
           hintText: widget.hintText,
-          focusedBorder: OutlineInputBorder(
+          focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(width: 1, color: Colors.blue)),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
               borderSide: BorderSide(
             width: 1,
             color: Colors.grey,

@@ -19,59 +19,59 @@ class _VideoCallControllerWidgetState extends State<VideoCallControllerWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               Icons.mic,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.videocam_off_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.screen_share_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.mode_comment_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.front_hand_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.crop_free_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
-            Icon(
+            const Icon(
               Icons.more_horiz_outlined,
               color: Colors.white,
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Container(
               color: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.all(7.5),
+              child: const Padding(
+                padding: EdgeInsets.all(7.5),
                 child: Icon(
                   Icons.call_end_outlined,
                   color: Colors.white,

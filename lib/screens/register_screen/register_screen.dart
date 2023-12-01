@@ -94,18 +94,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(
                     height: screenHeight * 0.005,
                   ),
-                  RegisterForm(),
+                  const RegisterForm(),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
-                  Text(
+                  const Text(
                     "Or continue with",
-                    style: const TextStyle(fontSize: 14),
+                    style: TextStyle(fontSize: 14),
                   ),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
-                  LoginIcons(),
+                  const LoginIcons(),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
@@ -113,14 +113,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Already have an account?"),
+                      const Text("Already have an account?"),
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.blue[500]),
                           onPressed: () {
                             context.goNamed(AppRouterConstant.loginRouteName);
                           },
-                          child: Text("Log in"))
+                          child: const Text("Log in"))
                     ],
                   )
                 ]),

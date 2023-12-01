@@ -9,7 +9,7 @@ class StarsWidget extends StatelessWidget {
     List<Widget> list = [];
 
     if (rating == 0) {
-      list.add(Text(
+      list.add(const Text(
         "No reviews yet",
         style: TextStyle(
             fontSize: 14,

@@ -41,7 +41,7 @@ class TeacherCard extends StatelessWidget {
           queryParameters: {'id': id}),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -52,15 +52,15 @@ class TeacherCard extends StatelessWidget {
                 blurRadius: 1.0,
                 spreadRadius: 2.0,
               ), //BoxShadow
-              BoxShadow(
+              const BoxShadow(
                 color: Colors.white,
-                offset: const Offset(0.0, 0.0),
+                offset: Offset(0.0, 0.0),
                 blurRadius: 0.0,
                 spreadRadius: 0.0,
               ),
             ]),
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Stack(
             children: [
               Column(
@@ -72,19 +72,20 @@ class TeacherCard extends StatelessWidget {
                   ),
                   Text(
                     name,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w500),
                   ),
                   Row(
                     children: [
                       // SvgPicture.network(
                       //     "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${national}.svg"),
                       Text(national,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w400)),
                     ],
                   ),
                   StarsWidget(rating: stars),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   filters.isNotEmpty
@@ -100,16 +101,16 @@ class TeacherCard extends StatelessWidget {
                             );
                           }).toList())
                       : Container(),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   Text(
                     description,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Align(
@@ -119,14 +120,14 @@ class TeacherCard extends StatelessWidget {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.blue[500],
-                                side: BorderSide(color: Colors.blue)),
+                                side: const BorderSide(color: Colors.blue)),
                             onPressed: () {},
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Icon(Icons.calendar_today),
-                                SizedBox(
+                                const Icon(Icons.calendar_today),
+                                const SizedBox(
                                   width: 4,
                                 ),
                                 Text("book".tr),

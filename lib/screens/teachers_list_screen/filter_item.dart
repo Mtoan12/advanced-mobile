@@ -21,7 +21,8 @@ class _FilterItemState extends State<FilterItem> {
       height: 32,
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
+            padding:
+                const EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 2),
             backgroundColor: widget.active ? Colors.blue[50] : Colors.grey[200],
             foregroundColor:
                 widget.active ? Colors.blue[700] : Colors.grey[700],

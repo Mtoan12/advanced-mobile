@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lettutor/models/course.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
@@ -72,7 +71,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                 radius: 56,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Column(
@@ -81,30 +80,32 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
               children: [
                 Text(
                   widget.user?.name ?? "",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.w600),
                 ),
                 StarsWidget(rating: widget.rating ?? 0),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 Text(
                   widget.user?.country ?? "",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Align(
             alignment: Alignment.topLeft,
             child: Text(
               widget.bio ?? "",
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             )),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
@@ -117,7 +118,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                 children: [
                   widget.isFavorite
                       ? Icon(Icons.favorite, color: Colors.red[400])
-                      : Icon(Icons.favorite_border, color: Colors.blue),
+                      : const Icon(Icons.favorite_border, color: Colors.blue),
                   Text(
                     "Favorite",
                     style: TextStyle(
@@ -129,7 +130,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 20,
             ),
             GestureDetector(
@@ -147,28 +148,29 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Text(
                               'Report ${widget.user?.name ?? ""}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.w700),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 4,
                             ),
-                            Text(
+                            const Text(
                               "Help us understand what's happening",
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8,
                             ),
                             Column(
                               children: [
                                 CheckboxListTile(
-                                  title: Text("This tutor is annoying me"),
+                                  title:
+                                      const Text("This tutor is annoying me"),
                                   value: value1,
                                   onChanged: (newValue) {
                                     setState(() {
@@ -179,7 +181,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                       .leading, //  <-- leading Checkbox
                                 ),
                                 CheckboxListTile(
-                                  title: Text(
+                                  title: const Text(
                                       "This profile is pretending be someone or is fake"),
                                   value: value2,
                                   onChanged: (newValue) {
@@ -191,7 +193,8 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                       .leading, //  <-- leading Checkbox
                                 ),
                                 CheckboxListTile(
-                                  title: Text("Inappropriate profile photo"),
+                                  title:
+                                      const Text("Inappropriate profile photo"),
                                   value: value3,
                                   onChanged: (newValue) {
                                     setState(() {
@@ -203,7 +206,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                 ),
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Expanded(
@@ -215,16 +218,17 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       foregroundColor: Colors.blue[500],
-                                      side: BorderSide(color: Colors.blue),
+                                      side:
+                                          const BorderSide(color: Colors.blue),
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
                                     ),
-                                    child: Text('Cancel'),
+                                    child: const Text('Cancel'),
                                     onPressed: () => Navigator.pop(context),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 4,
                                   ),
                                   ElevatedButton(
@@ -236,7 +240,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                     ),
-                                    child: Text('Submit'),
+                                    child: const Text('Submit'),
                                     onPressed: () => Navigator.pop(context),
                                   ),
                                 ],
@@ -252,7 +256,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, color: Colors.blue),
+                  const Icon(Icons.error_outline, color: Colors.blue),
                   Text(
                     "Report",
                     style: TextStyle(
@@ -263,7 +267,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 32,
         ),
         SizedBox(
@@ -273,18 +277,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                 "https://api.app.lettutor.com/video/4d54d3d7-d2a9-42e5-97a2-5ed38af5789avideo1627913015871.mp4",
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         Align(
           alignment: Alignment.centerLeft,
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
+            const Text(
               "Học vấn",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -302,14 +306,14 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                       }).toList())
                   : Container(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Ngôn ngữ",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -327,14 +331,14 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                       }).toList())
                   : Container(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Chuyên ngành",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -352,14 +356,14 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                       }).toList())
                   : Container(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Khóa học tham khảo",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -373,12 +377,12 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                     Expanded(
                                       child: Text(
                                         course.name ?? "",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 8,
                                     ),
                                     Text(
@@ -391,14 +395,14 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                 ))
                             .toList())
                     : Container()),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Sở thích",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -408,14 +412,14 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                   style: TextStyle(
                       color: Colors.grey[500], fontWeight: FontWeight.w500),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Kinh nghiệm giảng dạy",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Padding(
@@ -425,7 +429,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                   style: TextStyle(
                       color: Colors.grey[500], fontWeight: FontWeight.w500),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
           ]),

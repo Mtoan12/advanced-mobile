@@ -11,7 +11,7 @@ class HistoryCardsWidget extends StatefulWidget {
 class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         HistoryCardWidget(

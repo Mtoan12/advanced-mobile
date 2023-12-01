@@ -24,7 +24,7 @@ class CommentWidget extends StatelessWidget {
         CircleAvatar(
           backgroundImage: NetworkImage(imgUrl),
         ),
-        SizedBox(
+        const SizedBox(
           width: 12,
         ),
         SizedBox(
@@ -39,7 +39,7 @@ class CommentWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.grey[600], fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 8,
                   ),
                   Text(

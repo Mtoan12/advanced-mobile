@@ -17,9 +17,9 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
       children: [
         Text(
           "Latest Book".tr,
-          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
+          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         Container(
@@ -38,7 +38,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
                           color: Colors.grey.withOpacity(0.1)),
                       width: screenWidth * 0.25,
                       height: 48,
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         "Name",
                         style: TextStyle(fontSize: 12),
@@ -64,7 +64,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
                           color: Colors.grey.withOpacity(0.1)),
                       width: screenWidth * 0.15,
                       height: 48,
-                      child: Center(
+                      child: const Center(
                           child: Text("Page", style: TextStyle(fontSize: 12)))),
                   Container(
                       decoration: BoxDecoration(
@@ -76,7 +76,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
                       ),
                       width: screenWidth * 0.1,
                       height: 48,
-                      child: Center(
+                      child: const Center(
                           child: Text("0", style: TextStyle(fontSize: 12)))),
                 ],
               ),
@@ -93,7 +93,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
                           color: Colors.grey.withOpacity(0.1)),
                       width: screenWidth * 0.25,
                       height: 48,
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         "Description",
                         style: TextStyle(fontSize: 12),
@@ -113,7 +113,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
                       ))),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               )
             ],

@@ -17,7 +17,7 @@ class _ScheduleTableState extends State<ScheduleTable> {
           columnSpacing: 12,
           horizontalMargin: 12,
           minWidth: 600,
-          columns: [
+          columns: const [
             DataColumn2(
               label: Text('Column A'),
               size: ColumnSize.L,

@@ -44,18 +44,18 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
       width: double.maxFinite,
       decoration: BoxDecoration(color: Colors.grey.withOpacity(0.3)),
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             widget.date,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
           Text(widget.updateTime),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -65,21 +65,21 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                     backgroundImage: NetworkImage(widget.imgUrl),
                     radius: 32,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Column(
                     children: [
                       Text(
                         widget.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       Row(
                         children: [
                           Text(
                             widget.national,
-                            style: TextStyle(fontSize: 12),
+                            style: const TextStyle(fontSize: 12),
                           ),
                         ],
                       ),
@@ -91,7 +91,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                             color: Colors.blue[500],
                             size: 20,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 4,
                           ),
                           Text(
@@ -107,25 +107,25 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   "${"Lesson Time".tr} ${widget.lessonTime}",
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -133,7 +133,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   children: [
                     Text(
                       "${widget.request.length == 0 ? "No request for lesson".tr : "Request for lesson".tr}",
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                     SizedBox(
                       height: widget.request.length == 0 ? 0 : 20,
@@ -149,12 +149,12 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   ],
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 1,
           ),
           Container(
             width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -162,7 +162,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   children: [
                     Text(
                       "${widget.review.length == 0 ? "Tutor haven't reviewed yet".tr : "Review from tutor".tr}",
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                     SizedBox(
                       height: widget.review.length == 0 ? 0 : 20,
@@ -178,12 +178,12 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                   ],
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 1,
           ),
           Container(
             width: double.maxFinite,
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Row(
@@ -213,7 +213,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                               fontSize: widget.rating == 0 ? 12 : 0,
                               color: Colors.blue[500]),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 16,
                         ),
                         Text(

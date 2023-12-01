@@ -22,14 +22,14 @@ class _CoursesTabsWidgetState extends State<CoursesTabsWidget> {
       child: Row(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border: Border(
               bottom: BorderSide(
                 color: Colors.blue,
                 width: 2.0,
               ),
             )),
-            padding: EdgeInsets.only(bottom: 12.0),
+            padding: const EdgeInsets.only(bottom: 12.0),
             child: Text(
               "Course".tr,
               style: TextStyle(
@@ -38,22 +38,22 @@ class _CoursesTabsWidgetState extends State<CoursesTabsWidget> {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 24,
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 12.0),
-            child: Text(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: const Text(
               "E-book",
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 24,
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 12.0),
-            child: Text(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: const Text(
               "Interactive E-book",
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
             ),

@@ -34,14 +34,14 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
 
     return Scaffold(
       appBar: appBar(context),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
             left: screenWidth * 0.05,
             right: screenHeight * 0.05,
           ),
-          child: Container(
+          child: SizedBox(
             width: screenWidth,
             child: tutor != null
                 ? Column(
@@ -61,12 +61,12 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                         interests: tutor.interests,
                         id: id,
                       ),
-                      CommentsWidget(),
-                      SizedBox(
+                      const CommentsWidget(),
+                      const SizedBox(
                         height: 30,
                       ),
-                      NumberPaginator(numberPages: 1),
-                      SizedBox(
+                      const NumberPaginator(numberPages: 1),
+                      const SizedBox(
                         height: 40,
                       ),
                       SizedBox(
@@ -76,7 +76,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                           child: table(),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 120,
                       ),
                     ],
@@ -96,7 +96,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
         height: 64,
         decoration: BoxDecoration(
           color: Colors.grey[100],
-          border: Border(
+          border: const Border(
             right: BorderSide(
               color: Colors.black,
               width: 1,
@@ -105,60 +105,60 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
         ),
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("01/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("02/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("03/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("04/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("05/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("06/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
       Container(
-        child: Align(
+        height: 64,
+        color: Colors.white,
+        child: const Align(
           alignment: Alignment.center,
           child: Text("07/12"),
         ),
-        height: 64,
-        color: Colors.white,
       ),
     ]);
     rows.add(TableRow(children: header));
@@ -213,25 +213,27 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
     for (var i = 0; i < times.length; i++) {
       List<Widget> row = [];
       row.add(Container(
-        child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              times[i],
-              style: TextStyle(fontWeight: FontWeight.w700),
-            )),
         height: 64,
         decoration: BoxDecoration(
           color: Colors.grey[100],
-          border: Border(
+          border: const Border(
             right: BorderSide(
               color: Colors.black,
               width: 1,
             ),
           ),
         ),
+        child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              times[i],
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            )),
       ));
       for (var j = 0; j < 7; j++) {
         row.add(Container(
+          height: 64,
+          color: Colors.white,
           child: Align(
             alignment: Alignment.center,
             child: ButtonWidget(
@@ -251,25 +253,25 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
-                              Text(
+                              const Text(
                                 "Booking Detail",
                                 style: TextStyle(fontWeight: FontWeight.w700),
                               ),
                               Wrap(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 16,
                                   ),
-                                  Text("Booking Time: ",
+                                  const Text("Booking Time: ",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700)),
                                   Text(
                                     "${times[i]} ${utils.convertDate(DateTime(now.year, now.month, now.day + j).toString())}",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w600),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w600),
                                   ),
                                 ],
                               )
@@ -281,8 +283,6 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                   );
                 }),
           ),
-          height: 64,
-          color: Colors.white,
         ));
       }
       rows.add(TableRow(children: row));

@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: screenHeight * 0.005,
                   ),
-                  LoginForm(),
+                  const LoginForm(),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),
-                  LoginIcons(),
+                  const LoginIcons(),
                   SizedBox(
                     height: screenHeight * 0.01,
                   ),

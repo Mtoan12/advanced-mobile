@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/router/app_router_constant.dart';
@@ -34,21 +33,21 @@ class _CourseTopicWidgetState extends State<CourseTopicWidget> {
           context.goNamed(AppRouterConstant.lessonDetailRouteName);
         },
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           height: 140,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(12)),
+            borderRadius: const BorderRadius.all(Radius.circular(12)),
             boxShadow: isHovered
                 ? [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.grey,
                       blurRadius: 5,
                       offset: Offset(0, 2),
                     ),
                   ]
                 : [
-                    BoxShadow(
+                    const BoxShadow(
                       color: Colors.grey,
                       blurRadius: 1,
                       offset: Offset(0, 1),
@@ -65,12 +64,12 @@ class _CourseTopicWidgetState extends State<CourseTopicWidget> {
                   children: [
                     Text(
                       "${widget.number}.",
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     Text(
                       "${widget.name}",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w600),
                     ),
                   ]),
             ),

@@ -20,12 +20,12 @@ class _CourseTopicsWidgetState extends State<CourseTopicsWidget> {
       children: [
         Text(
           "List Topics".tr,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Column(

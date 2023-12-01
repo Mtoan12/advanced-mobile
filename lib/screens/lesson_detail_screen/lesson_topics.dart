@@ -17,52 +17,52 @@ class LessonTopicsWidgetState extends State<LessonTopicsWidget> {
       children: [
         Text(
           "listTopics".tr,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        LessonTopicWidget(
+        const LessonTopicWidget(
           active: true,
           number: 1,
           name: "Foods You Love",
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        LessonTopicWidget(
+        const LessonTopicWidget(
           active: false,
           number: 2,
           name: "Your Job",
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        LessonTopicWidget(
+        const LessonTopicWidget(
           active: false,
           number: 3,
           name: "Playing and Watching Sports",
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        LessonTopicWidget(
+        const LessonTopicWidget(
           active: false,
           number: 4,
           name: "The Best Pet",
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
-        LessonTopicWidget(
+        const LessonTopicWidget(
           active: false,
           number: 5,
           name: "Having Fun in Your Free Time",
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
       ],

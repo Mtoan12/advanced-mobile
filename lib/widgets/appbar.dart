@@ -6,7 +6,7 @@ import 'package:lettutor/widgets/change_language_button.dart';
 
 PreferredSizeWidget appBar(BuildContext context) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(70),
+    preferredSize: const Size.fromHeight(70),
     child: AppBar(
       elevation: 0,
       backgroundColor: Colors.white,
@@ -35,7 +35,7 @@ PreferredSizeWidget appBar(BuildContext context) {
                 ),
               ),
             ),
-            Row(children: [
+            const Row(children: [
               ChangeLanguageButton(),
               SizedBox(
                 width: 8,

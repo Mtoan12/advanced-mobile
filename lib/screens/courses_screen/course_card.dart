@@ -41,7 +41,7 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 2,
               blurRadius: 5,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
           borderRadius: BorderRadius.circular(20),
@@ -60,7 +60,8 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
               children: [
                 Text(
                   widget.name,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
                   height: 12,
@@ -76,11 +77,11 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
                   children: [
                     Text(
                       widget.level,
-                      style: TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14),
                     ),
                     Text(
                       "${widget.numberLessons > 0 ? " - ${widget.numberLessons} Lessons" : ""}",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                       ),
                     ),

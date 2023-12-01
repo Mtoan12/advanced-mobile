@@ -22,11 +22,11 @@ class _CommentsWidgetState extends State<CommentsWidget> {
     return Align(
       alignment: Alignment.centerLeft,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(
+        const Text(
           "Người khác đánh giá",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         Column(

@@ -13,7 +13,7 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[800],
-        body: Stack(
+        body: const Stack(
           children: [
             Center(
               child: CircleAvatar(
@@ -23,10 +23,10 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
               ),
             ),
             Positioned(
-              child: VideoCallControllerWidget(),
               bottom: 20,
               left: 40,
               right: 40,
+              child: VideoCallControllerWidget(),
             ),
           ],
         ));

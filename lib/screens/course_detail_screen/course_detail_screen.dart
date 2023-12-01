@@ -34,7 +34,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
 
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -51,7 +51,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                       desc: course?.description ?? "",
                       imgUrl: course?.imageUrl ?? "",
                       name: course?.name ?? ""),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   CourseDetailInfoWidget(
@@ -60,13 +60,13 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                     level: utils.levelsMap(course?.level ?? ""),
                     numberTopic: course?.topics.length ?? 0,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   CourseTopicsWidget(
                     topics: courseTopics,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                 ],

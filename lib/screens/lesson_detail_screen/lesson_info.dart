@@ -31,14 +31,14 @@ class LessonInfoWidgetState extends State<LessonInfoWidget> {
         children: [
           Text(
             widget.name,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
           ),
           const SizedBox(
             height: 12,
           ),
           Text(
             widget.desc,
-            style: TextStyle(
+            style:const  TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
             ),

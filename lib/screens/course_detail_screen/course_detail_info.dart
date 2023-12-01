@@ -31,12 +31,12 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           "Overview".tr,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         Row(
@@ -45,36 +45,37 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
               Icons.help_outline,
               color: Colors.red[700],
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Expanded(
               child: Text(
                 "Why take this course".tr,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Expanded(
               child: Text(
                 widget.content1,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
@@ -83,46 +84,47 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
               Icons.help_outline,
               color: Colors.red[700],
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Expanded(
               child: Text(
                 "What will you be able to do".tr,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 12,
             ),
             Expanded(
               child: Text(
                 widget.content2,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                 ),
               ),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         Text(
           "Experience Level".tr,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
@@ -131,28 +133,29 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
               Icons.group_outlined,
               color: Colors.blue[700],
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Expanded(
               child: Text(
                 widget.level,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 24,
         ),
         Text(
           "Course Length".tr,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Row(
@@ -161,13 +164,14 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
               Icons.book_outlined,
               color: Colors.blue[700],
             ),
-            SizedBox(
+            const SizedBox(
               width: 4,
             ),
             Expanded(
               child: Text(
                 "${widget.numberTopic} ${"Topics".tr}",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ),
           ],

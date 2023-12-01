@@ -21,7 +21,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -38,14 +38,15 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     'assets/images/calendar-check.svg',
                     width: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Text(
                     "Schedule".tr,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w800),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -55,36 +56,36 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                   color: Colors.grey.withOpacity(0.3),
                                   width: 3))),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "Here is a list of the sessions you have booked"
                                   .tr,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             Text(
                               "You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours"
                                   .tr,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  LatestBookWidget(),
-                  SizedBox(
+                  const LatestBookWidget(),
+                  const SizedBox(
                     height: 36,
                   ),
-                  TeacherBooksWidget(),
-                  SizedBox(
+                  const TeacherBooksWidget(),
+                  const SizedBox(
                     height: 36,
                   ),
-                  NumberPaginator(numberPages: 1),
-                  SizedBox(
+                  const NumberPaginator(numberPages: 1),
+                  const SizedBox(
                     height: 48,
                   ),
                 ],

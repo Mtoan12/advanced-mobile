@@ -29,7 +29,7 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
             color: Colors.grey.withOpacity(0.5),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
         borderRadius: BorderRadius.circular(20),
@@ -48,7 +48,8 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
             children: [
               Text(
                 widget.name,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 12,
@@ -68,7 +69,7 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
                       onPressed: () {},
                       child: Text(
                         "Discover".tr,
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.w500),
                       )))
             ],

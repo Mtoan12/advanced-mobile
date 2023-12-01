@@ -30,7 +30,7 @@ class Input extends StatelessWidget {
           // key: Key(value),
           // initialValue: value,
           controller: textEditingController,
-          style: TextStyle(fontSize: 12),
+          style: const TextStyle(fontSize: 12),
           decoration: InputDecoration(
             suffixIcon: IconButton(
               icon: icon,
@@ -38,15 +38,15 @@ class Input extends StatelessWidget {
                 handleChange(textEditingController.text);
               },
             ),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(width: 3, color: Colors.blue),
             ),
             hintText: placeHolder,
-            hintStyle: TextStyle(fontSize: 10),
+            hintStyle: const TextStyle(fontSize: 10),
             hoverColor: Colors.blue,
-            contentPadding: EdgeInsets.only(top: 0, bottom: 0, left: 12),
-            border: OutlineInputBorder(
+            contentPadding: const EdgeInsets.only(top: 0, bottom: 0, left: 12),
+            border: const OutlineInputBorder(
                 borderSide: BorderSide(width: 3, color: Colors.blue),
                 borderRadius: BorderRadius.all(Radius.circular(50))),
           ),

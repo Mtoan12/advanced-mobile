@@ -26,7 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -63,21 +63,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             backgroundImage:
                                 NetworkImage(userProvider.user.avatar!)),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         userProvider.user.name ?? "",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text('Account ID: ${userProvider.user.id}'),
-                      SizedBox(
+                      const SizedBox(
                         height: 48,
                       ),
                       ProfileFormWidget(

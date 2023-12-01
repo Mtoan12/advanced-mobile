@@ -24,7 +24,7 @@ class DrawerWidget extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
@@ -47,11 +47,11 @@ class DrawerWidget extends StatelessWidget {
                   CircleAvatar(
                     backgroundImage: NetworkImage(user.avatar!),
                   ),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Expanded(
                       child: Text(
                     user.name!.isNotEmpty ? user.name ?? '' : user.email ?? '',
-                    style: TextStyle(fontWeight: FontWeight.w700),
+                    style: const TextStyle(fontWeight: FontWeight.w700),
                   )),
                 ],
               ),
@@ -84,7 +84,7 @@ class DrawerWidget extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: TextStyle(fontWeight: FontWeight.w700),
+        style: const TextStyle(fontWeight: FontWeight.w700),
       ),
       onTap: () {
         if (routeName.isEmpty) {

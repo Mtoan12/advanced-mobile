@@ -30,18 +30,18 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
       width: double.maxFinite,
       decoration: BoxDecoration(color: Colors.grey.withOpacity(0.3)),
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             widget.date,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
           Text(
             "${widget.lessonsQuantity} buổi học",
-            style: TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16),
           ),
           Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -51,19 +51,19 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                     backgroundImage: NetworkImage(widget.imgUrl),
                     radius: 32,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 12,
                   ),
                   Column(
                     children: [
                       Text(
                         widget.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                       Text(
                         widget.national,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       ),
                       Text(
                         "Direct Message".tr,
@@ -75,11 +75,11 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -91,13 +91,14 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                       TextButton(
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.red,
-                              side: BorderSide(width: 1, color: Colors.red)),
+                              side: const BorderSide(
+                                  width: 1, color: Colors.red)),
                           onPressed: () {},
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(Icons.cancel),
-                              SizedBox(
+                              const Icon(Icons.cancel),
+                              const SizedBox(
                                 width: 4,
                               ),
                               Text("Cancel".tr),
@@ -105,7 +106,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                           ))
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -119,18 +120,19 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                       children: [
                         Row(
                           children: [
-                            Icon(Icons.expand_more_outlined),
-                            SizedBox(
+                            const Icon(Icons.expand_more_outlined),
+                            const SizedBox(
                               width: 4,
                             ),
                             Text(
                               "Request for lesson".tr,
-                              style: TextStyle(fontSize: 10),
+                              style: const TextStyle(fontSize: 10),
                             ),
                           ],
                         ),
                         Text("Edit Request".tr,
-                            style: TextStyle(fontSize: 10, color: Colors.blue))
+                            style: const TextStyle(
+                                fontSize: 10, color: Colors.blue))
                       ],
                     ),
                   ),
@@ -145,11 +147,11 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                             bottom: BorderSide(
                                 color: Colors.grey.withOpacity(0.2)))),
                     child: Column(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Text(widget.request),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ]),
@@ -158,23 +160,23 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Center(
             child: TextButton(
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.blue,
-                    side: BorderSide(width: 1, color: Colors.blue)),
+                    side: const BorderSide(width: 1, color: Colors.blue)),
                 onPressed: () {},
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 4,
                     ),
-                    Text("Go to meeting".tr, style: TextStyle()),
+                    Text("Go to meeting".tr, style: const TextStyle()),
                   ],
                 )),
           )

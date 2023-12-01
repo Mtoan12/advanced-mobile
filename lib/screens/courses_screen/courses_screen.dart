@@ -28,7 +28,7 @@ class CoursesScreenState extends State<CoursesScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: appBar(context),
-        endDrawer: DrawerWidget(),
+        endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -45,14 +45,15 @@ class CoursesScreenState extends State<CoursesScreen> {
                     'assets/images/course.svg',
                     width: 100,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Text(
                     "Discover Courses".tr,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w800),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Container(
@@ -62,36 +63,36 @@ class CoursesScreenState extends State<CoursesScreen> {
                                   color: Colors.grey.withOpacity(0.3),
                                   width: 3))),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 8),
+                        padding: const EdgeInsets.only(left: 8),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               "LiveTutor has built the most quality, methodical and scientific courses in the fields of life for those who are in need of improving their knowledge of the fields"
                                   .tr,
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
-                  CoursesFiltersWidget(),
-                  SizedBox(
+                  const CoursesFiltersWidget(),
+                  const SizedBox(
                     height: 24,
                   ),
-                  CoursesTabsWidget(),
-                  SizedBox(
+                  const CoursesTabsWidget(),
+                  const SizedBox(
                     height: 40,
                   ),
                   CourseTabWidget(
                     courses: courses,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
-                  NumberPaginator(numberPages: 1),
+                  const NumberPaginator(numberPages: 1),
                 ],
               ),
             ),

@@ -24,9 +24,9 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
     List<Widget> list = [];
     list.add(Text(
       "Recommended Tutors".tr,
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
     ));
-    list.add(SizedBox(
+    list.add(const SizedBox(
       height: 8,
     ));
 
@@ -42,7 +42,7 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
             filters: teacher.specialties!.split(','),
             description: teacher.bio ?? ''),
       );
-      list.add(SizedBox(
+      list.add(const SizedBox(
         height: 20,
       ));
     }

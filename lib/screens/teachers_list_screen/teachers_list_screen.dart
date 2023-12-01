@@ -59,18 +59,18 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
     return Scaffold(
       appBar: appBar(context),
-      endDrawer: DrawerWidget(),
+      endDrawer: const DrawerWidget(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
             left: screenWidth * 0.01,
             right: screenHeight * 0.01,
           ),
-          child: Container(
+          child: SizedBox(
             width: screenWidth,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              IncomingLessonWidget(
+              const IncomingLessonWidget(
                 totalTime: 31825,
               ),
               const SizedBox(
@@ -89,11 +89,11 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           handleSearch: handleSearch,
                           national: national,
                           handleNationalChange: handleNationalChange),
-                      SizedBox(
+                      const SizedBox(
                         height: 24,
                       ),
                       TeachersSuggestionWidget(teachers: teachers),
-                      SizedBox(
+                      const SizedBox(
                         height: 28,
                       ),
                       NumberPaginator(
@@ -102,7 +102,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           // handle page change...
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 120,
                       ),
                     ]),
