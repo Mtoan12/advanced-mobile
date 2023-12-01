@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,6 +60,7 @@ class _MyAppState extends State<MyApp> {
           locale: const Locale('en', 'US'),
           // fallbackLocale: Locale('vi', 'VN'),
           debugShowCheckedModeBanner: false,
+          scrollBehavior: MyCustomScrollBehavior(),
           title: 'Flutter Demo',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -70,4 +73,14 @@ class _MyAppState extends State<MyApp> {
           // routeInformationProvider: AppRouter().router.routeInformationProvider,
         ));
   }
+}
+
+class MyCustomScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.stylus,
+        PointerDeviceKind.unknown,
+      };
 }

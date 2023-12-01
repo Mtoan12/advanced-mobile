@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/widgets/TextINput.dart';
@@ -67,8 +66,8 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.grey.withOpacity(0.1)),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, left: 8),
+              child: const Padding(
+                padding: EdgeInsets.only(top: 8.0, bottom: 8.0, left: 8),
                 child: Text(
                   "Account",
                   style: TextStyle(fontWeight: FontWeight.w600),
