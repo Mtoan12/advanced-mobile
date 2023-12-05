@@ -20,13 +20,6 @@ class AppRouter {
 
   AppRouter(this.authProvider);
   GoRouter router = GoRouter(
-      // redirect: (BuildContext context, GoRouterState state) {
-      //   if (authProvider.user != null) {
-      //     return '/';
-      //   } else {
-      //     return null;
-      //   }
-      // },
       routes: [
         GoRoute(
           name: AppRouterConstant.loginRouteName,

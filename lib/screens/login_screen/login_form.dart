@@ -150,11 +150,16 @@ class _LoginFormState extends State<LoginForm> {
                 foregroundColor: Colors.white,
                 minimumSize: Size.fromHeight(screenHeight * 0.05),
               ),
-              onPressed: () {
+              onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  authProvider.login(
-                      email: emailEditingController.text,
-                      password: passwordEditingController.text);
+                  try {
+                    authProvider.login(
+                        email: emailEditingController.text,
+                        password: passwordEditingController.text);
+                  } catch (e) {
+                    print(e);
+                  }
+
                   // if (authRepository.user) {
                   //   context.goNamed(AppRouterConstant.teachersListRouteName);
                   // }

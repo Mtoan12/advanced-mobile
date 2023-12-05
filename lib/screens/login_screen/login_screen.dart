@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     var screenHeight = MediaQuery.of(context).size.height;
     AuthProvider authProvider = context.watch<AuthProvider>();
 
-    if (authProvider.user != null) {
+    if (authProvider.auth?.user != null) {
       context.goNamed(AppRouterConstant.teachersListRouteName);
     }
     return Scaffold(

@@ -1,9 +1,16 @@
+import 'package:lettutor/models/token/tokens.dart';
+import 'package:lettutor/models/user.dart';
+
 class Auth {
-  final String email;
-  final String password;
+  User user;
+  Tokens tokens;
 
   Auth({
-    required this.email,
-    required this.password,
-  });
+    required this.user,
+    required this.tokens,
+  }); 
+  
+  Auth.fromJson(Map<String, dynamic> json)
+      : user = User.fromJson(json['user']),
+        tokens = Tokens.fromJson(json['tokens']);
 }
