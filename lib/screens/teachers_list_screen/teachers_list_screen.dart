@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/teacher.dart';
-import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
-import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:provider/provider.dart';
 
 class TeachersListScreen extends StatefulWidget {
   const TeachersListScreen({super.key});

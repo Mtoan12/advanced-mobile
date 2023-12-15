@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/speciality.dart';
-import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/Input.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
-import 'package:provider/provider.dart';
 
 class FiltersTeachersWidget extends StatefulWidget {
   final String spec;
@@ -28,6 +27,20 @@ class FiltersTeachersWidget extends StatefulWidget {
 }
 
 class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
+  List<Specialty> specialties = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SearchTutorApi.getSpecialties().then((data) {
+      setState(() {
+        specialties = data;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -115,17 +128,13 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
           )),
           child: Padding(
               padding: const EdgeInsets.only(bottom: 28),
-              child: specialtiesWidget(context)),
+              child: specialtiesWidget(context, specialties)),
         )
       ],
     );
   }
 
-  Widget specialtiesWidget(BuildContext context) {
-    SpecialtiesProvider specialtiesProvider =
-        context.watch<SpecialtiesProvider>();
-    var specialities = specialtiesProvider.specialties;
-
+  Widget specialtiesWidget(BuildContext context, List<Specialty> specialties) {
     List<Widget> list = [];
     list.add(
       FilterItem(
@@ -136,7 +145,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
         active: widget.spec == "All",
       ),
     );
-    for (Specialty speciality in specialities) {
+    for (Specialty speciality in specialties) {
       list.add(
         FilterItem(
           onPressed: () {

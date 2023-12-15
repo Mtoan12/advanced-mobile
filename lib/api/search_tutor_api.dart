@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:lettutor/api/apis.dart';
 import 'package:lettutor/api/headers.dart';
 import 'package:lettutor/models/error_response.dart';
-import 'package:lettutor/models/filters.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,6 +37,34 @@ class SearchTutorApi {
       return searchTutorApi;
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
+      print("error: ${errorResponse.message}");
+      throw Exception(errorResponse.message);
+    }
+  }
+
+  static Future<List<Specialty>> getSpecialties() async {
+    List<Specialty> specialties = [];
+
+    var uri1 = Uri.parse(Apis.learnTopic);
+    var uri2 = Uri.parse(Apis.testPreparation);
+
+    final SharedPreferences predf = await SharedPreferences.getInstance();
+
+    var response1 = await http.get(uri1,
+        headers: headers(token: predf.getString("access_token")));
+
+    var response2 = await http.get(uri2,
+        headers: headers(token: predf.getString("access_token")));
+
+    dynamic data1 = json.decode(response1.body);
+    dynamic data2 = json.decode(response2.body);
+
+    if (response1.statusCode == 200 && response2.statusCode == 200) {
+      var data = data1 + data2;
+      specialties = data.map<Specialty>((e) => Specialty.fromJson(e)).toList();
+      return specialties;
+    } else {
+      var errorResponse = ErrorResponse.fromJson(data1);
       print("error: ${errorResponse.message}");
       throw Exception(errorResponse.message);
     }
