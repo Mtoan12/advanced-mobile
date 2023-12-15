@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
@@ -22,25 +23,24 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   String search = '';
   String national = '';
 
-  
+  List<Teacher> teachers = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SearchTutorApi.searchTutor().then((data) {
+      setState(() {
+        teachers = data.rows;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
-
-    TeachersListProvider teachersListProvider =
-        context.watch<TeachersListProvider>();
-
-    List<Teacher> teachers = teachersListProvider.teachers;
-
-    Utils utils = Utils();
-    teachers = utils.filterTeachers(
-        teachers: teachers,
-        national: national,
-        search: search,
-        specKey: specKeyActive);
-
     void changeSpecActive(String specKey) {
       setState(() {
         specKeyActive = specKey;
