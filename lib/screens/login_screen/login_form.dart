@@ -160,17 +160,18 @@ class _LoginFormState extends State<LoginForm> {
                     print(e);
                   }
 
-                  // if (authRepository.user) {
-                  //   context.goNamed(AppRouterConstant.teachersListRouteName);
-                  // }
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        authProvider.error,
-                        style: TextStyle(color: Colors.red[400]),
+                  print("faiedl: ${authProvider.error}");
+
+                  if (authProvider.error != '') {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          authProvider.error,
+                          style: TextStyle(color: Colors.red[400]),
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                 }
               },
               child: Text(
