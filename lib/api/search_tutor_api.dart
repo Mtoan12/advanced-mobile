@@ -31,14 +31,17 @@ class SearchTutorApi {
     String page = tutorsFilter.page;
     String perPage = tutorsFilter.perPage;
 
-    print(specialties[0]);
+    Map body = {
+      "filters": {
+        "specialties": specialties,
+      },
+      "page": page,
+      "perPage": perPage,
+      "search": search,
+    };
+
     var response = await http.post(uri,
-        body: {
-          "filter": json.encode(specialties),
-          "page": page,
-          "perPage": perPage,
-          "search": search,
-        },
+        body: json.encode(body),
         headers: headers(token: predf.getString("access_token")));
 
     dynamic data = json.decode(response.body);
