@@ -5,6 +5,7 @@ import 'package:lettutor/models/tutors_filter.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
@@ -34,8 +35,9 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
   fetchTeachers() {
     SearchTutorApi.searchTutor(tutorsFilter: tutorsFilter).then((data) {
+      List<Teacher> sortTeachers = Utils.sortTeachers(data.rows);
       setState(() {
-        teachers = data.rows;
+        teachers = sortTeachers;
       });
     });
   }

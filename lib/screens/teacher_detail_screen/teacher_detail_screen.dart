@@ -18,7 +18,9 @@ import 'package:number_paginator/number_paginator.dart';
 import 'package:provider/provider.dart';
 
 class TeacherDetailScreen extends StatefulWidget {
-  const TeacherDetailScreen({super.key});
+  final String id;
+
+  const TeacherDetailScreen({super.key, required this.id});
 
   @override
   State<TeacherDetailScreen> createState() => _TeacherDetailScreenState();
@@ -33,11 +35,10 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
     var screenWidth = MediaQuery.of(context).size.width;
     TutorProvider tutorProvider = context.watch<TutorProvider>();
 
-    Map<String, dynamic> qparams =
-        GoRouterState.of(context).uri.queryParameters;
-    String? id = qparams['id'] ?? '4d54d3d7-d2a9-42e5-97a2-5ed38af5789a';
+    String id = widget.id;
 
     Tutor? tutor = tutorProvider.getTutorById(id);
+    
 
     return Scaffold(
       appBar: appBar(context),
@@ -252,7 +253,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                     builder: (BuildContext context) {
                       DateTime now = DateTime.now();
                       bool isDisable = false;
-                      
+
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(

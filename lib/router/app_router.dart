@@ -19,91 +19,94 @@ class AppRouter {
   AuthProvider authProvider;
 
   AppRouter(this.authProvider);
-  GoRouter router = GoRouter(
-      routes: [
-        GoRoute(
-          name: AppRouterConstant.loginRouteName,
-          path: '/',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: LoginScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.registerRouteName,
-          path: '/register',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: RegisterScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.forgotPasswordRouteName,
-          path: '/forgot-password',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: ForgotPasswordScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.teachersListRouteName,
-          path: '/teachers-list',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: TeachersListScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.courseDetailRouteName,
-          path: '/course-detail',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: CourseDetailScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.coursesRouteName,
-          path: '/courses',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: CoursesScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.historyRouteName,
-          path: '/history',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: HistoryScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.lessonDetailRouteName,
-          path: '/lesson',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: LessonDetailScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.scheduleRouteName,
-          path: '/schedule',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: ScheduleScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.teacherDetailRouteName,
-          path: '/teacher-detail',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: TeacherDetailScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.videoCallRouteName,
-          path: '/video-call',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: VideoCallScreen());
-          },
-        ),
-        GoRoute(
-          name: AppRouterConstant.profileRouteName,
-          path: '/profile',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: ProfileScreen());
-          },
-        ),
-      ]);
+  GoRouter router = GoRouter(routes: [
+    GoRoute(
+      name: AppRouterConstant.loginRouteName,
+      path: '/',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: LoginScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.registerRouteName,
+      path: '/register',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: RegisterScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.forgotPasswordRouteName,
+      path: '/forgot-password',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: ForgotPasswordScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.teachersListRouteName,
+      path: '/teachers-list',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: TeachersListScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.courseDetailRouteName,
+      path: '/course-detail',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: CourseDetailScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.coursesRouteName,
+      path: '/courses',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: CoursesScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.historyRouteName,
+      path: '/history',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: HistoryScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.lessonDetailRouteName,
+      path: '/lesson',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: LessonDetailScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.scheduleRouteName,
+      path: '/schedule',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: ScheduleScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.teacherDetailRouteName,
+      path: '/teacher-detail',
+      pageBuilder: (context, state) {
+        String id = state.extra != null ? state.extra as String : '';
+        return MaterialPage(
+            child: TeacherDetailScreen(
+          id: id,
+        ));
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.videoCallRouteName,
+      path: '/video-call',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: VideoCallScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.profileRouteName,
+      path: '/profile',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: ProfileScreen());
+      },
+    ),
+  ]);
 }

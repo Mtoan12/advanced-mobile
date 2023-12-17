@@ -37,8 +37,8 @@ class TeacherCard extends StatelessWidget {
         context.watch<TeachersListProvider>();
 
     return GestureDetector(
-      onTap: () => context.goNamed(AppRouterConstant.teacherDetailRouteName,
-          queryParameters: {'id': id}),
+      onTap: () => context.pushNamed(AppRouterConstant.teacherDetailRouteName,
+          extra: id),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
