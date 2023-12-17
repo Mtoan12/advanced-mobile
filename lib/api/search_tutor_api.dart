@@ -6,6 +6,7 @@ import 'package:lettutor/models/error_response.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:http/http.dart' as http;
+import 'package:lettutor/models/tutors_filter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchTutorApi {
@@ -18,20 +19,29 @@ class SearchTutorApi {
   }
 
   static Future<SearchTutorApi> searchTutor(
-      {String? specialties, String page = '1', int perPage = 12}) async {
+      {required TutorsFilter tutorsFilter}) async {
     SearchTutorApi searchTutorApi;
     var uri = Uri.parse(Apis.searchTutor);
 
     final SharedPreferences predf = await SharedPreferences.getInstance();
 
+    List<String> specialties =
+        tutorsFilter.specialty.isNotEmpty ? [tutorsFilter.specialty] : [];
+    String search = tutorsFilter.search;
+    String page = tutorsFilter.page;
+    String perPage = tutorsFilter.perPage;
+
+    print(specialties[0]);
     var response = await http.post(uri,
         body: {
-          // "filter": json.encode(),
+          "filter": json.encode(specialties),
+          "page": page,
+          "perPage": perPage,
+          "search": search,
         },
         headers: headers(token: predf.getString("access_token")));
 
     dynamic data = json.decode(response.body);
-
     if (response.statusCode == 200) {
       searchTutorApi = SearchTutorApi.fromJson(data);
       return searchTutorApi;
