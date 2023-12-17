@@ -6,6 +6,7 @@ import 'package:lettutor/models/error_response.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:http/http.dart' as http;
+import 'package:lettutor/models/tutor.dart';
 import 'package:lettutor/models/tutors_filter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -78,6 +79,26 @@ class SearchTutorApi {
       return specialties;
     } else {
       var errorResponse = ErrorResponse.fromJson(data1);
+      print("error: ${errorResponse.message}");
+      throw Exception(errorResponse.message);
+    }
+  }
+
+  static Future<Tutor> getTutor(String id) async {
+    Tutor tutor;
+    var uri = Uri.parse(Apis.getTutorDetail(id));
+
+    final SharedPreferences predf = await SharedPreferences.getInstance();
+
+    var response = await http.get(uri,
+        headers: headers(token: predf.getString("access_token")));
+
+    dynamic data = json.decode(response.body);
+    if (response.statusCode == 200) {
+      tutor = Tutor.fromJson(data);
+      return tutor;
+    } else {
+      var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");
       throw Exception(errorResponse.message);
     }

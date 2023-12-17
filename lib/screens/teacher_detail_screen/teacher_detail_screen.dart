@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
 import 'package:lettutor/models/schedule/schedule_info.dart';
 import 'package:lettutor/models/tutor.dart';
-import 'package:lettutor/models/tutor_info.dart';
 import 'package:lettutor/provider/schedule_provider.dart';
-import 'package:lettutor/provider/tutor_provider.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_information.dart';
 import 'package:lettutor/utils/utils.dart';
@@ -29,16 +27,27 @@ class TeacherDetailScreen extends StatefulWidget {
 class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   Utils utils = Utils();
   TextEditingController noteController = TextEditingController();
+  Tutor tutor = Tutor();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    fetchTutorDetail();
+  }
+
+  fetchTutorDetail() async {
+    SearchTutorApi.getTutor(widget.id).then((data) {
+      setState(() {
+        tutor = data;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
-    TutorProvider tutorProvider = context.watch<TutorProvider>();
-
-    String id = widget.id;
-
-    Tutor? tutor = tutorProvider.getTutorById(id);
-    
 
     return Scaffold(
       appBar: appBar(context),
@@ -51,45 +60,43 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
           ),
           child: SizedBox(
             width: screenWidth,
-            child: tutor != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TeacherInformationWidget(
-                        user: tutor.user,
-                        rating: tutor.avgRating,
-                        bio: tutor.bio,
-                        isFavorite: tutor.isFavorite ?? false,
-                        videoUrl: tutor.video,
-                        education: tutor.education,
-                        languages: tutor.languages,
-                        specialties: tutor.specialties,
-                        experience: tutor.experience,
-                        courses: tutor.user?.courses ?? [],
-                        interests: tutor.interests,
-                        id: id,
-                      ),
-                      const CommentsWidget(),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      const NumberPaginator(numberPages: 1),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: table(context, tutor),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 120,
-                      ),
-                    ],
-                  )
-                : Container(),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TeacherInformationWidget(
+                  user: tutor.user,
+                  rating: tutor.avgRating,
+                  bio: tutor.bio,
+                  isFavorite: tutor.isFavorite ?? false,
+                  videoUrl: tutor.video,
+                  education: tutor.education,
+                  languages: tutor.languages,
+                  specialties: tutor.specialties,
+                  experience: tutor.experience,
+                  courses: tutor.user?.courses ?? [],
+                  interests: tutor.interests,
+                  id: widget.id,
+                ),
+                const CommentsWidget(),
+                const SizedBox(
+                  height: 30,
+                ),
+                const NumberPaginator(numberPages: 1),
+                const SizedBox(
+                  height: 40,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: table(context, tutor),
+                  ),
+                ),
+                const SizedBox(
+                  height: 120,
+                ),
+              ],
+            ),
           ),
         ),
       ),
