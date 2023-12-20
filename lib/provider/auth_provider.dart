@@ -39,7 +39,7 @@ class AuthProvider extends ChangeNotifier {
       setError(errorResponse.message);
     }
 
-    notifyListeners();
+    // notifyListeners();
   }
 
   void signUp({required String email, required String password}) async {

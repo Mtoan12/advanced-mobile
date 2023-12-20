@@ -12,6 +12,7 @@ class FiltersTeachersWidget extends StatefulWidget {
   final Function(String search) handleSearch;
   final String national;
   final Function(String national) handleNationalChange;
+  final List<Specialty> specialties;
 
   const FiltersTeachersWidget(
       {super.key,
@@ -20,29 +21,17 @@ class FiltersTeachersWidget extends StatefulWidget {
       required this.handleSearch,
       required this.search,
       required this.national,
-      required this.handleNationalChange});
+      required this.handleNationalChange,
+      required this.specialties});
 
   @override
   State<FiltersTeachersWidget> createState() => _FiltersTeachersWidgetState();
 }
 
 class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
-  List<Specialty> specialties = [];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    SearchTutorApi.getSpecialties().then((data) {
-      setState(() {
-        specialties = data;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    List<Specialty> specialties = widget.specialties;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

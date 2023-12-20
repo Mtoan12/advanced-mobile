@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +20,8 @@ class TeacherCard extends StatelessWidget {
   final List<String> filters;
   final String description;
 
+  final List<Specialty> specialties;
+
   const TeacherCard(
       {super.key,
       required this.imgUrl,
@@ -27,12 +31,11 @@ class TeacherCard extends StatelessWidget {
       required this.stars,
       required this.filters,
       required this.description,
-      required this.id});
+      required this.id,
+      required this.specialties});
 
   @override
   Widget build(BuildContext context) {
-    SpecialtiesProvider specialtiesProvider =
-        context.watch<SpecialtiesProvider>();
     TeachersListProvider teachersListProvider =
         context.watch<TeachersListProvider>();
 
@@ -94,8 +97,7 @@ class TeacherCard extends StatelessWidget {
                           spacing: 4,
                           children: filters.map((filter) {
                             return FilterItem(
-                              name:
-                                  specialtiesProvider.getSpecialtyName(filter),
+                              name: Utils.getSpecialtyName(specialties, filter),
                               active: true,
                               onPressed: () {},
                             );

@@ -1,4 +1,6 @@
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 
 class Utils {
@@ -80,5 +82,12 @@ class Utils {
     });
 
     return teachers;
+  }
+
+  static String getSpecialtyName(List<Specialty> specialties, String key) {
+    Specialty? find =
+        specialties.firstWhereOrNull((element) => element.key == key);
+
+    return find != null ? find.name! : '';
   }
 }

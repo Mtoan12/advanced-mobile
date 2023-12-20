@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/provider/auth_provider.dart';
 import 'package:lettutor/provider/course_provider.dart';
-import 'package:lettutor/provider/review_provider.dart';
 import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/provider/specialities_provider.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
-import 'package:lettutor/provider/tutor_provider.dart';
 import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  // runApp(const MyApp());
 }
 
 typedef LoginCallback = void Function(int _appState);
@@ -31,9 +30,6 @@ class _MyAppState extends State<MyApp> {
   AuthProvider authProvider = AuthProvider();
   UserProvider userProvider = UserProvider();
   TeachersListProvider teachersListProvider = TeachersListProvider();
-  SpecialtiesProvider specialtiesProvider = SpecialtiesProvider();
-  TutorProvider tutorProvider = TutorProvider();
-  ReviewProvider reviewProvider = ReviewProvider();
   ScheduleProvider scheduleProvider = ScheduleProvider();
   CourseProvider courseProvider = CourseProvider();
 
@@ -44,9 +40,6 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (context) => authProvider),
           ChangeNotifierProvider(create: (context) => userProvider),
           ChangeNotifierProvider(create: (context) => teachersListProvider),
-          Provider(create: (context) => specialtiesProvider),
-          ChangeNotifierProvider(create: (context) => tutorProvider),
-          ChangeNotifierProvider(create: (context) => reviewProvider),
           ChangeNotifierProvider(
             create: (context) => scheduleProvider,
           ),

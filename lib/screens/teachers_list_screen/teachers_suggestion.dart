@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/screens/teachers_list_screen/teacher_card.dart';
 
 class TeachersSuggestionWidget extends StatefulWidget {
   final List<Teacher> teachers;
-  const TeachersSuggestionWidget({super.key, required this.teachers});
+  final List<Specialty> specialties;
+  const TeachersSuggestionWidget(
+      {super.key, required this.teachers, required this.specialties});
 
   @override
   State<TeachersSuggestionWidget> createState() =>
@@ -40,7 +43,8 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
             national: teacher.country ?? '',
             stars: teacher.rating ?? 0,
             filters: teacher.specialties!.split(','),
-            description: teacher.bio ?? ''),
+            description: teacher.bio ?? '',
+            specialties: widget.specialties),
       );
       list.add(const SizedBox(
         height: 20,

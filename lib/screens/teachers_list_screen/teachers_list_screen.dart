@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/models/tutors_filter.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
@@ -23,6 +24,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   String national = '';
 
   List<Teacher> teachers = [];
+  List<Specialty> specialties = [];
   TutorsFilter tutorsFilter = TutorsFilter();
 
   @override
@@ -31,6 +33,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     super.initState();
 
     fetchTeachers();
+    fetchSpecialties();
   }
 
   fetchTeachers() {
@@ -38,6 +41,14 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
       List<Teacher> sortTeachers = Utils.sortTeachers(data.rows);
       setState(() {
         teachers = sortTeachers;
+      });
+    });
+  }
+
+  fetchSpecialties() {
+    SearchTutorApi.getSpecialties().then((data) {
+      setState(() {
+        specialties = data;
       });
     });
   }
@@ -98,11 +109,13 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           search: search,
                           handleSearch: handleSearch,
                           national: national,
-                          handleNationalChange: handleNationalChange),
+                          handleNationalChange: handleNationalChange,
+                          specialties: specialties),
                       const SizedBox(
                         height: 24,
                       ),
-                      TeachersSuggestionWidget(teachers: teachers),
+                      TeachersSuggestionWidget(
+                          teachers: teachers, specialties: specialties),
                       const SizedBox(
                         height: 28,
                       ),

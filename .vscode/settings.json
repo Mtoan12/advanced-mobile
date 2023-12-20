@@ -3,5 +3,6 @@
     "editor.inlineSuggest.showToolbar": "onHover",
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
