@@ -13,10 +13,6 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
 
-    if (authProvider.auth?.user == null) {
-      context.goNamed(AppRouterConstant.loginRouteName);
-    }
-
     UserProvider userProvider = context.watch<UserProvider>();
     User user = userProvider.user;
 

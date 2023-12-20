@@ -25,6 +25,7 @@ class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
           request: "",
           review: "",
           rating: 0,
+          createdAt: '2021-10-31T16:30:00.000Z',
         ),
         SizedBox(
           height: 20,
@@ -41,6 +42,7 @@ class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
           review:
               "Lesson status: Completed\nBehavior (⭐⭐⭐⭐⭐): aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\nListening:\nSpeaking (⭐⭐⭐⭐⭐):\nVocabulary (⭐⭐⭐⭐⭐):\nOverall comment: Good",
           rating: 5,
+          createdAt: '2021-10-31T16:30:00.000Z',
         )
       ],
     );

@@ -90,4 +90,34 @@ class Utils {
 
     return find != null ? find.name! : '';
   }
+
+  static String formatTimeDifference(int minutesDifference) {
+    if (minutesDifference < 1) {
+      return "just now";
+    } else if (minutesDifference == 1) {
+      return "1 minute ago";
+    } else if (minutesDifference < 60) {
+      return "$minutesDifference minutes ago";
+    } else if (minutesDifference < 24 * 60) {
+      // Calculate hours and remaining minutes
+      int hours = minutesDifference ~/ 60;
+      int remainingMinutes = minutesDifference % 60;
+
+      if (hours == 1) {
+        return "1 hour ago";
+      } else {
+        return "$hours hours ago";
+      }
+    } else {
+      // Calculate days, hours, and remaining minutes
+      int days = minutesDifference ~/ (24 * 60);
+      int remainingHours = (minutesDifference % (24 * 60)) ~/ 60;
+
+      if (days == 1) {
+        return "1 day ago";
+      } else {
+        return "$days days ago";
+      }
+    }
+  }
 }

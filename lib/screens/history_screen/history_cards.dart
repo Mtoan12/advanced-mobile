@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/api/booking_api.dart';
 import 'package:lettutor/models/schedule.dart';
-import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/screens/history_screen/history_card.dart';
 import 'package:lettutor/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class HistoryCardsWidget extends StatefulWidget {
   const HistoryCardsWidget({super.key});
@@ -14,11 +13,23 @@ class HistoryCardsWidget extends StatefulWidget {
 
 class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
   Utils utils = Utils();
+  List<Schedule> historySchedules = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    BookingApi.getBookingList(inFuture: 0, sortBy: "desc", perPage: 20)
+        .then((value) {
+      setState(() {
+        historySchedules = value.rows;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
-    List<Schedule> historySchedules = scheduleProvider.getHistorySchedules();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: historySchedules
@@ -42,6 +53,7 @@ class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
                   request: schedule.studentRequest ?? '',
                   review: schedule.tutorReview ?? '',
                   rating: 0,
+                  createdAt: schedule.createdAt ?? '',
                 ),
               ))
           .toList(),

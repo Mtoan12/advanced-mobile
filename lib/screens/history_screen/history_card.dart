@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/utils/utils.dart';
 
 class HistoryCardWidget extends StatefulWidget {
   final String date;
@@ -11,6 +12,7 @@ class HistoryCardWidget extends StatefulWidget {
   final String request;
   final String review;
   final int rating;
+  final String createdAt;
 
   const HistoryCardWidget({
     super.key,
@@ -23,6 +25,7 @@ class HistoryCardWidget extends StatefulWidget {
     required this.request,
     required this.review,
     required this.rating,
+    required this.createdAt,
   });
 
   @override
@@ -32,6 +35,12 @@ class HistoryCardWidget extends StatefulWidget {
 class HistoryCardWidgetState extends State<HistoryCardWidget> {
   @override
   Widget build(BuildContext context) {
+    DateTime createTime = DateTime.parse(widget.createdAt);
+    DateTime now = DateTime.now();
+
+    Duration difference = now.difference(createTime);
+    int minutesDifference = difference.inMinutes;
+    String timeDiff = Utils.formatTimeDifference(minutesDifference);
     List<Widget> starsWidget = [];
     for (var i = 0; i < widget.rating; i++) {
       starsWidget.add(Icon(
@@ -50,7 +59,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
             widget.date,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
-          Text(widget.updateTime),
+          Text(timeDiff),
           const SizedBox(
             height: 20,
           ),
