@@ -7,9 +7,16 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ReviewApi {
-  static Future<Reviews> getTutorReviews(
+  String message;
+  Reviews data;
+
+  ReviewApi.fromJson(Map<String, dynamic> json)
+      : message = json['message'],
+        data = Reviews.fromJson(json['data']);
+
+  static Future<ReviewApi> getTutorReviews(
       {required String tutorId, int page = 1, int perPage = 12}) async {
-    Reviews reviews;
+    ReviewApi reviewApi;
     var uri = Uri.parse(Apis.getTutorReviews(tutorId, page, perPage));
 
     final SharedPreferences predf = await SharedPreferences.getInstance();
@@ -18,11 +25,9 @@ class ReviewApi {
     dynamic data = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      reviews = Reviews.fromJson(data);
-      for (var element in reviews.rows) {
-        print(element);
-      }
-      return reviews;
+      reviewApi = ReviewApi.fromJson(data);
+      print(reviewApi.data.rows[0].firstInfo?.name);
+      return reviewApi;
     } else {
       throw Exception("Error: ${data['message']}");
     }

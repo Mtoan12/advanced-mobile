@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/api/review_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
+import 'package:lettutor/models/review.dart';
 import 'package:lettutor/models/reviews.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
@@ -31,7 +32,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   TextEditingController noteController = TextEditingController();
 
   Tutor tutor = Tutor();
-  Reviews reviews = Reviews();
+  List<Review> reviews = [];
 
   @override
   void initState() {
@@ -55,9 +56,9 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
 
   fetchReviews(int page, int perPage) async {
     ReviewApi.getTutorReviews(tutorId: widget.id, page: page, perPage: perPage)
-        .then((data) {
+        .then((res) {
       setState(() {
-        reviews = data;
+        reviews = res.data.rows;
       });
     });
   }
@@ -95,7 +96,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                   interests: tutor.interests,
                   id: widget.id,
                 ),
-                CommentsWidget(comments: reviews.rows),
+                CommentsWidget(comments: reviews),
                 const SizedBox(
                   height: 30,
                 ),

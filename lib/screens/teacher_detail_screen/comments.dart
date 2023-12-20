@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/review.dart';
-import 'package:lettutor/provider/review_provider.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/comment.dart';
-import 'package:provider/provider.dart';
 
 class CommentsWidget extends StatefulWidget {
   final List<Review> comments;

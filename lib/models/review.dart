@@ -35,3 +35,4 @@ class Review {
     firstInfo = User.fromJson(json['firstInfo']);
   }
 }
+
