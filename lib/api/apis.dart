@@ -24,4 +24,8 @@ class Apis {
       String sortBy = 'asc'}) {
     return "${baseUrl}booking/list/student?page=$page&perPage=$perPage&inFuture=$inFuture&orderBy=$orderBy&sortBy=$sortBy";
   }
+
+  static getCourseList({int page = 1, int size = 100}) {
+    return "${baseUrl}course?page=$page&size=$size";
+  }
 }

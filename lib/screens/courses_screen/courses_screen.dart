@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/api/course_api.dart';
 import 'package:lettutor/models/course_detail.dart';
-import 'package:lettutor/provider/course_provider.dart';
 import 'package:lettutor/screens/courses_screen/course_tab.dart';
 import 'package:lettutor/screens/courses_screen/courses_filters.dart';
 import 'package:lettutor/screens/courses_screen/courses_tabs.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:provider/provider.dart';
 
 class CoursesScreen extends StatefulWidget {
   const CoursesScreen({super.key});
@@ -19,11 +18,22 @@ class CoursesScreen extends StatefulWidget {
 }
 
 class CoursesScreenState extends State<CoursesScreen> {
+  List<CourseDetail> courses = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    CourseApi.getCourseList().then((value) {
+      setState(() {
+        courses = value.rows;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    CourseProvider courseProvider = context.watch<CourseProvider>();
-    List<CourseDetail> courses = courseProvider.courses;
-
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
