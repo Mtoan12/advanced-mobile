@@ -1,34 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor/provider/course_provider.dart';
+import 'package:lettutor/api/course_api.dart';
+import 'package:lettutor/models/course_detail.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_card.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_info.dart';
 import 'package:lettutor/screens/course_detail_screen/course_topics.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 
 class CourseDetailScreen extends StatefulWidget {
-  const CourseDetailScreen({super.key});
+  final String id;
+  const CourseDetailScreen({super.key, required this.id});
 
   @override
   State<CourseDetailScreen> createState() => CourseDetailScreenState();
 }
 
 class CourseDetailScreenState extends State<CourseDetailScreen> {
+  CourseDetail course = CourseDetail(
+    id: "",
+    name: "",
+    description: "",
+    imageUrl: "",
+    level: "",
+    reason: "",
+    purpose: "",
+    otherDetails: "",
+    defaultPrice: 0,
+    coursePrice: 0,
+    courseType: "",
+    sectionType: "",
+    visible: false,
+    displayOrder: 0,
+    createdAt: "",
+    updatedAt: "",
+    topics: [],
+    categories: [],
+  );
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    CourseApi.getCourseDetail(widget.id).then((value) {
+      setState(() {
+        course = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
 
-    Map<String, dynamic> qparams =
-        GoRouterState.of(context).uri.queryParameters;
-    String id = qparams['id'] ?? '964bed84-6450-49ee-92d5-e8c565864bd9';
-
-    CourseProvider courseProvider = context.watch<CourseProvider>();
-    var course = courseProvider.getCourseById(id);
-    var courseTopics = course?.topics ?? [];
+    var courseTopics = course.topics ?? [];
 
     Utils utils = Utils();
 
@@ -48,17 +74,17 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CourseDetailCardWidget(
-                      desc: course?.description ?? "",
-                      imgUrl: course?.imageUrl ?? "",
-                      name: course?.name ?? ""),
+                      desc: course.description ?? "",
+                      imgUrl: course.imageUrl ?? "",
+                      name: course.name ?? ""),
                   const SizedBox(
                     height: 40,
                   ),
                   CourseDetailInfoWidget(
-                    content1: course?.reason ?? "",
-                    content2: course?.purpose ?? "",
-                    level: utils.levelsMap(course?.level ?? ""),
-                    numberTopic: course?.topics.length ?? 0,
+                    content1: course.reason ?? "",
+                    content2: course.purpose ?? "",
+                    level: utils.levelsMap(course.level ?? ""),
+                    numberTopic: course.topics.length ?? 0,
                   ),
                   const SizedBox(
                     height: 24,

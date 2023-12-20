@@ -35,4 +35,23 @@ class CourseApi {
       throw Exception(data['message']);
     }
   }
+
+  static Future<CourseDetail> getCourseDetail(String id) async {
+    CourseDetail courseDetail;
+    var uri = Uri.parse('${Apis.baseUrl}course/$id');
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var response = await http.get(
+      uri,
+      headers: headers(token: prefs.getString("access_token")),
+    );
+
+    dynamic data = json.decode(response.body);
+    if (response.statusCode == 200) {
+      courseDetail = CourseDetail.fromJson(data['data']);
+      return courseDetail;
+    } else {
+      throw Exception(data['message']);
+    }
+  }
 }

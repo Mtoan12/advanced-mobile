@@ -61,8 +61,10 @@ class CourseDetail {
       createdAt: json['createdAt'] ?? '',
       updatedAt: json['updatedAt'] ?? '',
       topics: List<Topic>.from(json['topics'].map((x) => Topic.fromJson(x))),
-      categories: List<Category>.from(
-          json['categories'].map((x) => Category.fromJson(x))),
+      categories: json['categories'] != null
+          ? List<Category>.from(
+              json['categories'].map((x) => Category.fromJson(x)))
+          : [],
     );
   }
 }

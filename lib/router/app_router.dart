@@ -52,7 +52,11 @@ class AppRouter {
       name: AppRouterConstant.courseDetailRouteName,
       path: '/course-detail',
       pageBuilder: (context, state) {
-        return const MaterialPage(child: CourseDetailScreen());
+        String id = state.extra != null ? state.extra as String : '';
+        return MaterialPage(
+            child: CourseDetailScreen(
+          id: id,
+        ));
       },
     ),
     GoRoute(

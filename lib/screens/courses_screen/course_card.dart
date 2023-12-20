@@ -30,7 +30,7 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
     return GestureDetector(
       onTap: () {
         context.pushNamed(AppRouterConstant.courseDetailRouteName,
-            queryParameters: {'id': widget.id});
+            extra: widget.id);
       },
       child: Container(
         width: double.maxFinite,
@@ -80,7 +80,9 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
                       style: const TextStyle(fontSize: 14),
                     ),
                     Text(
-                      "${widget.numberLessons > 0 ? " - ${widget.numberLessons} Lessons" : ""}",
+                      widget.numberLessons > 0
+                          ? " - ${widget.numberLessons} Lessons"
+                          : "",
                       style: const TextStyle(
                         fontSize: 14,
                       ),
