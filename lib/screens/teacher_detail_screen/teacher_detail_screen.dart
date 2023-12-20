@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lettutor/api/review_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/review.dart';
-import 'package:lettutor/models/reviews.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
 import 'package:lettutor/models/schedule/schedule_info.dart';

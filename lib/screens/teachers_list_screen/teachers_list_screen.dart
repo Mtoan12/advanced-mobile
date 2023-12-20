@@ -82,9 +82,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
             width: screenWidth,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const IncomingLessonWidget(
-                totalTime: 31825,
-              ),
+              const IncomingLessonWidget(),
               const SizedBox(
                 height: 32,
               ),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
+import 'package:lettutor/api/total_time_api.dart';
+import 'package:lettutor/models/total_time.dart';
 import 'package:lettutor/utils/utils.dart';
 
 class IncomingLessonWidget extends StatefulWidget {
-  final int totalTime;
-  const IncomingLessonWidget({super.key, required this.totalTime});
+  const IncomingLessonWidget({super.key});
 
   @override
   State<IncomingLessonWidget> createState() => _IncomingLessonWidgetState();
@@ -13,6 +14,23 @@ class IncomingLessonWidget extends StatefulWidget {
 
 class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
   Utils utils = Utils();
+
+  TotalTime totalTime = TotalTime(total: 0);
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    fetchTotalTime();
+  }
+
+  fetchTotalTime() {
+    TotalTimeApi.getTotalTime().then((data) {
+      setState(() {
+        totalTime = data;
+      });
+    });
+  }
 
   var jitsiMeet = JitsiMeet();
   void join() {
@@ -110,8 +128,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                  'Total lesson time is ${utils.convertTime(widget.totalTime)}',
+              Text('Total lesson time is ${utils.convertTime(totalTime.total)}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
