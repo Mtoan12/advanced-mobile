@@ -7,12 +7,21 @@ class Apis {
   static String learnTopic = "${baseUrl}learn-topic";
   static String testPreparation = "${baseUrl}test-preparation";
   static String totalTime = '${baseUrl}call/total';
-  
+
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";
   }
 
   static getTutorReviews(String id, int page, int perPage) {
     return "${baseUrl}feedback/v2/$id?page=$page&perPage=$perPage";
+  }
+
+  static getBookingList(
+      {int page = 1,
+      int perPage = 12,
+      int inFuture = 1,
+      String orderBy = 'meeting',
+      String sortBy = 'asc'}) {
+    return "${baseUrl}booking/list/student?page=$page&perPage=$perPage&inFuture=$inFuture&orderBy=$orderBy&sortBy=$sortBy";
   }
 }

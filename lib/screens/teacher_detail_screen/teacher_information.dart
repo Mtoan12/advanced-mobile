@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/course.dart';
+import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/user.dart';
-import 'package:lettutor/provider/specialities_provider.dart';
-import 'package:lettutor/provider/tutor_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:lettutor/widgets/video_player.dart';
-import 'package:provider/provider.dart';
 
 class TeacherInformationWidget extends StatefulWidget {
   String? bio;
@@ -46,12 +46,22 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
   bool value1 = false;
   bool value2 = false;
   bool value3 = false;
+  List<Specialty> specialtiesList = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SearchTutorApi.getSpecialties().then((data) {
+      setState(() {
+        specialtiesList = data;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    SpecialtiesProvider specialtiesProvider =
-        context.watch<SpecialtiesProvider>();
-    TutorProvider tutorProvider = context.watch<TutorProvider>();
-
     List<String> educations = widget.education.toString().split(",");
     List<String> languages = widget.languages.toString().split(",");
     List<String> specialties = widget.specialties.toString().split(",");
@@ -112,7 +122,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => tutorProvider.toggleLikeTeacher(widget.id!),
+              onTap: () => {},
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -349,7 +359,7 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                       spacing: 4,
                       children: specialties.map((item) {
                         return FilterItem(
-                          name: specialtiesProvider.getSpecialtyName(item),
+                          name: Utils.getSpecialtyName(specialtiesList, item),
                           active: true,
                           onPressed: () {},
                         );

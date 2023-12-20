@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lettutor/provider/schedule_provider.dart';
+import 'package:lettutor/api/booking_api.dart';
+import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/screens/schedule_screen/schedule_card.dart';
 import 'package:lettutor/utils/utils.dart';
-import 'package:provider/provider.dart';
 
 class TeacherBooksWidget extends StatefulWidget {
   const TeacherBooksWidget({super.key});
@@ -13,13 +13,22 @@ class TeacherBooksWidget extends StatefulWidget {
 
 class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
   Utils utils = Utils();
+  List<Schedule> schedules = [];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    BookingApi.getBookingList().then((value) {
+      setState(() {
+        schedules = value.rows;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
-    // var schedules = scheduleProvider.schedules;
-    var schedules = scheduleProvider.getUpcomingSchedules();
-
     return Column(
       children: schedules
           .map((schedule) => Padding(
