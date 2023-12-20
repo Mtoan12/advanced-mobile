@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/api/review_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
+import 'package:lettutor/models/reviews.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
 import 'package:lettutor/models/schedule/schedule_info.dart';
@@ -27,19 +29,35 @@ class TeacherDetailScreen extends StatefulWidget {
 class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   Utils utils = Utils();
   TextEditingController noteController = TextEditingController();
+
   Tutor tutor = Tutor();
+  Reviews reviews = Reviews();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     fetchTutorDetail();
+
+    const int PAGE = 1;
+    const int PERPAGE = 12;
+    fetchReviews(PAGE, PERPAGE);
   }
 
   fetchTutorDetail() async {
     SearchTutorApi.getTutor(widget.id).then((data) {
       setState(() {
         tutor = data;
+      });
+    });
+  }
+
+  fetchReviews(int page, int perPage) async {
+    ReviewApi.getTutorReviews(tutorId: widget.id, page: page, perPage: perPage)
+        .then((data) {
+      setState(() {
+        reviews = data;
       });
     });
   }
@@ -77,7 +95,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                   interests: tutor.interests,
                   id: widget.id,
                 ),
-                const CommentsWidget(),
+                CommentsWidget(comments: reviews.rows),
                 const SizedBox(
                   height: 30,
                 ),

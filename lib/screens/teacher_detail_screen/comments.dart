@@ -6,7 +6,8 @@ import 'package:lettutor/widgets/comment.dart';
 import 'package:provider/provider.dart';
 
 class CommentsWidget extends StatefulWidget {
-  const CommentsWidget({super.key});
+  final List<Review> comments;
+  const CommentsWidget({super.key, required this.comments});
 
   @override
   State<CommentsWidget> createState() => _CommentsWidgetState();
@@ -14,10 +15,10 @@ class CommentsWidget extends StatefulWidget {
 
 class _CommentsWidgetState extends State<CommentsWidget> {
   Utils utils = Utils();
+
   @override
   Widget build(BuildContext context) {
-    ReviewProvider reviewProvider = context.watch<ReviewProvider>();
-    List<Review> comments = reviewProvider.reviews;
+    List<Review> comments = widget.comments;
 
     return Align(
       alignment: Alignment.centerLeft,

@@ -10,4 +10,8 @@ class Apis {
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";
   }
+
+  static getTutorReviews(String id, int page, int perPage) {
+    return "${baseUrl}feedback/v2/$id?page=$page&perPage=$perPage";
+  }
 }
