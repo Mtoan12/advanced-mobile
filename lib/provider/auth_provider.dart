@@ -18,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void login({required String email, required String password}) async {
+  Future login({required String email, required String password}) async {
     var uri = Uri.parse(Apis.login);
     var response = await http.post(uri, body: {
       'email': email,
@@ -32,11 +32,12 @@ class AuthProvider extends ChangeNotifier {
       print("login successfully: ${auth!.user.name}");
       final SharedPreferences predf = await SharedPreferences.getInstance();
       predf.setString('access_token', auth!.tokens.access.token);
-      setError("");
+      return auth;
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");
       setError(errorResponse.message);
+      return 'error: ${errorResponse.message}';
     }
 
     // notifyListeners();

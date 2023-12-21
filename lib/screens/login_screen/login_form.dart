@@ -152,26 +152,26 @@ class _LoginFormState extends State<LoginForm> {
               ),
               onPressed: () async {
                 if (_formKey.currentState!.validate()) {
-                  try {
-                    authProvider.login(
-                        email: emailEditingController.text,
-                        password: passwordEditingController.text);
-                  } catch (e) {
-                    print(e);
-                  }
-
-                  print("faiedl: ${authProvider.error}");
-
-                  if (authProvider.error != '') {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          authProvider.error,
-                          style: TextStyle(color: Colors.red[400]),
-                        ),
-                      ),
-                    );
-                  }
+                  authProvider
+                      .login(
+                          email: emailEditingController.text,
+                          password: passwordEditingController.text)
+                      .then((value) {
+                    if (value is String) {
+                      if (value.contains("error")) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              value,
+                              style: TextStyle(color: Colors.red[400]),
+                            ),
+                          ),
+                        );
+                      }
+                    } else {
+                      context.goNamed(AppRouterConstant.teachersListRouteName);
+                    }
+                  });
                 }
               },
               child: Text(
