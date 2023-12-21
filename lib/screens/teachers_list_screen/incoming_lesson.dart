@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
+import 'package:lettutor/api/booking_api.dart';
 import 'package:lettutor/api/total_time_api.dart';
+import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/total_time.dart';
 import 'package:lettutor/utils/utils.dart';
 
@@ -16,18 +18,28 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
   Utils utils = Utils();
 
   TotalTime totalTime = TotalTime(total: 0);
+  List<Schedule> schedules = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     fetchTotalTime();
+    fetchUpcommingCourses();
   }
 
   fetchTotalTime() {
     TotalTimeApi.getTotalTime().then((data) {
       setState(() {
         totalTime = data;
+      });
+    });
+  }
+
+  fetchUpcommingCourses() {
+    BookingApi.getBookingList(perPage: 1).then((data) {
+      setState(() {
+        schedules = data.rows;
       });
     });
   }
@@ -51,6 +63,9 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+    if (schedules.isEmpty) {
+      return Container();
+    }
 
     return Container(
         width: screenWidth,
@@ -84,47 +99,56 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Wrap(
+              schedules.isEmpty
+                  ? const Text("You have no upcoming lesson.",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500))
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Thu, 26 Oct 23 03:30 - 03:55".tr,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500)),
-                        const SizedBox(
-                          width: 2,
+                        Expanded(
+                          child: Wrap(
+                            children: [
+                              Text(
+                                  "${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)} - 03:55"
+                                      .tr,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500)),
+                              const SizedBox(
+                                width: 2,
+                              ),
+                              Text("(starts in 81:48:36)".tr,
+                                  style: TextStyle(
+                                      color: Colors.yellow[200],
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500))
+                            ],
+                          ),
                         ),
-                        Text("(starts in 81:48:36)".tr,
-                            style: TextStyle(
-                                color: Colors.yellow[200],
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500))
+                        ElevatedButton(
+                            onPressed: () {
+                              join();
+                            },
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.smart_display,
+                                    color: Colors.blue[400]),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                Text(
+                                  "Enter lesson room".tr,
+                                  style: TextStyle(color: Colors.blue[400]),
+                                )
+                              ],
+                            ))
                       ],
                     ),
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        join();
-                      },
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Icon(Icons.smart_display, color: Colors.blue[400]),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Text(
-                            "Enter lesson room".tr,
-                            style: TextStyle(color: Colors.blue[400]),
-                          )
-                        ],
-                      ))
-                ],
-              ),
               const SizedBox(
                 height: 16,
               ),

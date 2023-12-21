@@ -172,9 +172,16 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                           acceptEmptyDate: true,
                           initialDate: birthday,
                           onDateSaved: (value) {
+                            print("birthday $value");
                             setState(() {
                               birthday = value;
                             });
+                          },
+                          onDateSubmitted: (value) => {
+                            print("birthday $value"),
+                            setState(() {
+                              birthday = value;
+                            })
                           },
                           firstDate: DateTime(1900),
                           lastDate: DateTime(2100),

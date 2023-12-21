@@ -17,6 +17,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
+
+    if (authProvider.auth == null) {
+      context.goNamed(AppRouterConstant.loginRouteName);
+    }
+    
     User user = authProvider.auth!.user;
 
     return Drawer(

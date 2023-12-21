@@ -151,6 +151,15 @@ class Utils {
       return levelsBack[level]!;
     }
   }
+
+  static String convertTimeStamp(int timeStamp) {
+    print("timestamp $timeStamp");
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
+
+    final dateFormat = DateFormat('E, d MMM yy HH:mm');
+    String result = dateFormat.format(dateTime);
+    return result;
+  }
 }
 
 /* 
