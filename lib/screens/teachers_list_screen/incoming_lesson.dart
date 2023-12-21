@@ -112,7 +112,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                           child: Wrap(
                             children: [
                               Text(
-                                  "${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)} - 03:55"
+                                  "${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)} - ${schedules[0].scheduleDetailInfo!.scheduleInfo!.endTime!}}"
                                       .tr,
                                   style: const TextStyle(
                                       color: Colors.white,
