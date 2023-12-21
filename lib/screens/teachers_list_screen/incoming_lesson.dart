@@ -6,6 +6,7 @@ import 'package:lettutor/api/total_time_api.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/total_time.dart';
 import 'package:lettutor/utils/utils.dart';
+import 'package:lettutor/widgets/count_down.dart';
 
 class IncomingLessonWidget extends StatefulWidget {
   const IncomingLessonWidget({super.key});
@@ -112,8 +113,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                           child: Wrap(
                             children: [
                               Text(
-                                  "${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)} - ${schedules[0].scheduleDetailInfo!.scheduleInfo!.endTime!}}"
-                                      .tr,
+                                  "${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)} - ${Utils.convertTimeStamp(schedules[0].scheduleDetailInfo!.scheduleInfo!.endTimestamp!).split(' ').last}",
                                   style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 18,
@@ -121,11 +121,11 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                               const SizedBox(
                                 width: 2,
                               ),
-                              Text("(starts in 81:48:36)".tr,
-                                  style: TextStyle(
-                                      color: Colors.yellow[200],
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w500))
+                              CountdownWidget(
+                                  timestampInMilliseconds: schedules[0]
+                                      .scheduleDetailInfo!
+                                      .scheduleInfo!
+                                      .startTimestamp!)
                             ],
                           ),
                         ),
