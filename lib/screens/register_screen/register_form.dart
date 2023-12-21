@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lettutor/provider/auth_provider.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 import 'package:provider/provider.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -134,17 +136,34 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  authProvider.signUp(
-                      email: emailEditingController.text,
-                      password: passwordEditingController.text);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        authProvider.error,
-                        style: TextStyle(color: Colors.red[400]),
-                      ),
-                    ),
-                  );
+                  authProvider
+                      .signUp(
+                          email: emailEditingController.text,
+                          password: passwordEditingController.text)
+                      .then((value) {
+                    if (value is String) {
+                      if (value.contains("error")) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              value,
+                              style: TextStyle(color: Colors.red[400]),
+                            ),
+                          ),
+                        );
+                      } else {
+                        context.goNamed(AppRouterConstant.loginRouteName);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              value,
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        );
+                      }
+                    }
+                  });
                 }
               },
               child: Text(

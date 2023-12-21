@@ -39,12 +39,10 @@ class AuthProvider extends ChangeNotifier {
       setError(errorResponse.message);
       return 'error: ${errorResponse.message}';
     }
-
-    // notifyListeners();
   }
 
-  void signUp({required String email, required String password}) async {
-    var uri = Uri.parse(Apis.login);
+  Future signUp({required String email, required String password}) async {
+    var uri = Uri.parse(Apis.register);
     var response = await http.post(uri, body: {
       'email': email,
       'password': password,
@@ -53,15 +51,16 @@ class AuthProvider extends ChangeNotifier {
     dynamic data = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      auth = Auth.fromJson(data);
-      print("login successfully: ${auth!.user.name}");
-      setError("");
+      print("register successfully: $data");
+      String message =
+          "Sign up successful. Please check your email tc verify the account";
+      return message;
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");
       setError(errorResponse.message);
+      return 'error: ${errorResponse.message}';
     }
-    notifyListeners();
   }
 
   void forgotPassword({required String email}) {
