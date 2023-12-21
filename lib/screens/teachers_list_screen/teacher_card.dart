@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lettutor/api/tutor_api.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/provider/teachers_list_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
@@ -9,7 +10,7 @@ import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:provider/provider.dart';
 
-class TeacherCard extends StatelessWidget {
+class TeacherCard extends StatefulWidget {
   final String id;
   final String imgUrl;
   final bool hasLiked;
@@ -34,13 +35,27 @@ class TeacherCard extends StatelessWidget {
       required this.specialties});
 
   @override
-  Widget build(BuildContext context) {
-    TeachersListProvider teachersListProvider =
-        context.watch<TeachersListProvider>();
+  State<TeacherCard> createState() => _TeacherCardState();
+}
 
+class _TeacherCardState extends State<TeacherCard> {
+  bool hasLiked = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    setState(() {
+      hasLiked = widget.hasLiked;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(AppRouterConstant.teacherDetailRouteName,
-          extra: id),
+          extra: widget.id),
       child: Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -70,10 +85,10 @@ class TeacherCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage: NetworkImage(imgUrl),
+                    backgroundImage: NetworkImage(widget.imgUrl),
                   ),
                   Text(
-                    name,
+                    widget.name,
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.w500),
                   ),
@@ -81,22 +96,23 @@ class TeacherCard extends StatelessWidget {
                     children: [
                       // SvgPicture.network(
                       //     "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${national}.svg"),
-                      Text(national,
+                      Text(widget.national,
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w400)),
                     ],
                   ),
-                  StarsWidget(rating: stars),
+                  StarsWidget(rating: widget.stars),
                   const SizedBox(
                     height: 24,
                   ),
-                  filters.isNotEmpty
+                  widget.filters.isNotEmpty
                       ? Wrap(
                           runSpacing: 8,
                           spacing: 4,
-                          children: filters.map((filter) {
+                          children: widget.filters.map((filter) {
                             return FilterItem(
-                              name: Utils.getSpecialtyName(specialties, filter),
+                              name: Utils.getSpecialtyName(
+                                  widget.specialties, filter),
                               active: true,
                               onPressed: () {},
                             );
@@ -106,7 +122,7 @@ class TeacherCard extends StatelessWidget {
                     height: 24,
                   ),
                   Text(
-                    description,
+                    widget.description,
                     style: const TextStyle(
                       fontSize: 14,
                     ),
@@ -141,7 +157,11 @@ class TeacherCard extends StatelessWidget {
                   right: 0,
                   child: TextButton(
                     onPressed: () {
-                      teachersListProvider.toggleLikeTeacher(id);
+                      TutorApi.like(widget.id).then((value) {
+                        setState(() {
+                          hasLiked = !hasLiked;
+                        });
+                      });
                     },
                     child: Icon(
                       hasLiked ? Icons.favorite : Icons.favorite_border,

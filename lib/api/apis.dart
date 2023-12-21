@@ -8,6 +8,7 @@ class Apis {
   static String testPreparation = "${baseUrl}test-preparation";
   static String totalTime = '${baseUrl}call/total';
   static String userInfo = '${baseUrl}user/info';
+  static String manageFavoriteTutor = '${baseUrl}user/manageFavoriteTutor';
 
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";

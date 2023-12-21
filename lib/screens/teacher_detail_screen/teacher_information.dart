@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
+import 'package:lettutor/api/tutor_api.dart';
 import 'package:lettutor/models/course.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/user.dart';
@@ -47,6 +48,17 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
   bool value2 = false;
   bool value3 = false;
   List<Specialty> specialtiesList = [];
+  bool isFavorite = false;
+
+  @override
+  void didUpdateWidget(covariant TeacherInformationWidget oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+
+    setState(() {
+      isFavorite = widget.isFavorite;
+    });
+  }
 
   @override
   void initState() {
@@ -122,19 +134,23 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
-              onTap: () => {},
+              onTap: () => {
+                TutorApi.like(widget.id!).then((value) {
+                  setState(() {
+                    isFavorite = !isFavorite;
+                  });
+                })
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  widget.isFavorite
+                  isFavorite
                       ? Icon(Icons.favorite, color: Colors.red[400])
                       : const Icon(Icons.favorite_border, color: Colors.blue),
                   Text(
                     "Favorite",
                     style: TextStyle(
-                        color: widget.isFavorite
-                            ? Colors.red[400]
-                            : Colors.blue[500],
+                        color: isFavorite ? Colors.red[400] : Colors.blue[500],
                         fontWeight: FontWeight.w500),
                   )
                 ],
