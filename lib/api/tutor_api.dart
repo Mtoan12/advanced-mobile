@@ -28,4 +28,28 @@ class TutorApi {
       throw Exception('Failed to like tutor');
     }
   }
+
+  static Future report(String tutorId, String content) async {
+
+    var uri = Uri.parse(Apis.report);
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    Map body = {
+      'tutorId': tutorId,
+      'content': content,
+    };
+
+    var response = await http.post(uri,
+        body: json.encode(body),
+        headers: headers(token: prefs.getString('access_token')));
+
+    if (response.statusCode == 200) {
+      print('report tutor success');
+      return response;
+    } else {
+      print('report tutor failed');
+      throw Exception('Failed to report tutor');
+    }
+  }
 }

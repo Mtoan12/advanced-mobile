@@ -6,6 +6,7 @@ import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/utils/utils.dart';
+import 'package:lettutor/widgets/TextInput.dart';
 import 'package:lettutor/widgets/stars.dart';
 import 'package:lettutor/widgets/video_player.dart';
 
@@ -44,11 +45,9 @@ class TeacherInformationWidget extends StatefulWidget {
 }
 
 class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
-  bool value1 = false;
-  bool value2 = false;
-  bool value3 = false;
   List<Specialty> specialtiesList = [];
   bool isFavorite = false;
+  TextEditingController reportController = TextEditingController();
 
   @override
   void didUpdateWidget(covariant TeacherInformationWidget oldWidget) {
@@ -192,45 +191,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                             const SizedBox(
                               height: 8,
                             ),
-                            Column(
-                              children: [
-                                CheckboxListTile(
-                                  title:
-                                      const Text("This tutor is annoying me"),
-                                  value: value1,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      value1 = newValue!;
-                                    });
-                                  },
-                                  controlAffinity: ListTileControlAffinity
-                                      .leading, //  <-- leading Checkbox
-                                ),
-                                CheckboxListTile(
-                                  title: const Text(
-                                      "This profile is pretending be someone or is fake"),
-                                  value: value2,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      value2 = newValue!;
-                                    });
-                                  },
-                                  controlAffinity: ListTileControlAffinity
-                                      .leading, //  <-- leading Checkbox
-                                ),
-                                CheckboxListTile(
-                                  title:
-                                      const Text("Inappropriate profile photo"),
-                                  value: value3,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      value3 = newValue!;
-                                    });
-                                  },
-                                  controlAffinity: ListTileControlAffinity
-                                      .leading, //  <-- leading Checkbox
-                                ),
-                              ],
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextInput(
+                                    controller: reportController,
+                                    placeHolder:
+                                        "Please let us know details about your problem",
+                                    maxLine: 4,
+                                  )
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 16,
@@ -267,7 +239,18 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                                       ),
                                     ),
                                     child: const Text('Submit'),
-                                    onPressed: () => Navigator.pop(context),
+                                    onPressed: () {
+                                      TutorApi.report(
+                                              widget.id!, reportController.text)
+                                          .then((value) {
+                                        Navigator.pop(context);
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                          content: Text("Report success"),
+                                          duration: Duration(seconds: 1),
+                                        ));
+                                      });
+                                    },
                                   ),
                                 ],
                               ),
