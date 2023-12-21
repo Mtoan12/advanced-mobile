@@ -26,7 +26,6 @@ class ReviewApi {
 
     if (response.statusCode == 200) {
       reviewApi = ReviewApi.fromJson(data);
-      print(reviewApi.data.rows[0].firstInfo?.name);
       return reviewApi;
     } else {
       throw Exception("Error: ${data['message']}");

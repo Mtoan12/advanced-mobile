@@ -6,15 +6,18 @@ import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:provider/provider.dart';
 
-class DrawerWidget extends StatelessWidget {
+class DrawerWidget extends StatefulWidget {
   const DrawerWidget({super.key});
 
   @override
+  State<DrawerWidget> createState() => _DrawerWidgetState();
+}
+
+class _DrawerWidgetState extends State<DrawerWidget> {
+  @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
-
-    UserProvider userProvider = context.watch<UserProvider>();
-    User user = userProvider.user;
+    User user = authProvider.auth!.user;
 
     return Drawer(
       child: ListView(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/user_provider.dart';
-import 'package:lettutor/widgets/TextINput.dart';
+import 'package:lettutor/utils/utils.dart';
+import 'package:lettutor/widgets/TextInput.dart';
 import 'package:provider/provider.dart';
 
 class ProfileFormWidget extends StatefulWidget {
@@ -42,7 +43,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
     if (widget.user.level == '') {
       dropdownValue = "Pre A1 (Beginner)";
     } else {
-      dropdownValue = widget.user.level!;
+      dropdownValue = Utils.levelMap(widget.user.level!);
     }
   }
 
@@ -111,6 +112,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                         child: TextInput(
                           controller: emailEditingController,
                           placeHolder: "Enter your email",
+                          readOnly: true,
                         ),
                       ),
                     ],
@@ -151,6 +153,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                         child: TextInput(
                           controller: phoneEditingController,
                           placeHolder: "Enter your phone number",
+                          readOnly: true,
                         ),
                       ),
                     ],
@@ -264,7 +267,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                   const SizedBox(
                     height: 12,
                   ),
-                  Container(
+                  SizedBox(
                       width: double.maxFinite,
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(

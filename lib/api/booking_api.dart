@@ -31,7 +31,6 @@ class BookingApi {
         headers: headers(token: prefs.getString("access_token")));
 
     dynamic data = json.decode(response.body);
-    print("data:::::$data");
     if (response.statusCode == 200) {
       bookingApi = BookingApi.fromJson(data['data']);
       return bookingApi;

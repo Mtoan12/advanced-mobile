@@ -2,12 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:lettutor/api/user_api.dart';
 import 'package:lettutor/models/user.dart';
-import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/screens/profile_screen/profile_form.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
-import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -18,11 +17,31 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   File? image;
+  User? user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    UserApi.getUser().then((value) {
+      setState(() {
+        user = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
-    UserProvider userProvider = context.watch<UserProvider>();
-    User user = userProvider.user;
+
+    if (user == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Scaffold(
         appBar: appBar(context),
@@ -60,14 +79,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: CircleAvatar(
                             radius: 50,
-                            backgroundImage:
-                                NetworkImage(userProvider.user.avatar!)),
+                            backgroundImage: NetworkImage(user!.avatar!)),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       Text(
-                        userProvider.user.name ?? "",
+                        user!.name ?? "",
                         style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -76,12 +94,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text('Account ID: ${userProvider.user.id}'),
+                      Text('Account ID: ${user!.id}'),
                       const SizedBox(
                         height: 48,
                       ),
                       ProfileFormWidget(
-                        user: user,
+                        user: user!,
                       ),
                     ],
                   ),

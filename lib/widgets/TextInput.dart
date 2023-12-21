@@ -6,15 +6,18 @@ class TextInput extends StatelessWidget {
     required this.controller,
     this.placeHolder,
     this.maxLine,
+    this.readOnly,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String? placeHolder;
   final int? maxLine;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly ?? false,
       maxLines: maxLine,
       controller: controller,
       keyboardType: TextInputType.text,
