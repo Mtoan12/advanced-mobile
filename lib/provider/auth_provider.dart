@@ -63,8 +63,23 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  void forgotPassword({required String email}) {
-    notifyListeners();
+  Future forgotPassword({required String email}) async {
+    var uri = Uri.parse("${Apis.baseUrl}user/forgotPassword");
+    var response = await http.post(uri, body: {
+      'email': email,
+    });
+    dynamic data = json.decode(response.body);
+    print(data);
+    if (response.statusCode == 200) {
+      String message = "Please check your email to reset password";
+
+      return message;
+    } else {
+      var errorResponse = ErrorResponse.fromJson(data);
+      print("error: ${errorResponse.message}");
+
+      return "error: ${data['message']}";
+    }
   }
 
   void logout() {

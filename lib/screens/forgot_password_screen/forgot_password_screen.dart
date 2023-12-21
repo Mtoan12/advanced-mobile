@@ -24,7 +24,7 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = context.watch<AuthProvider>();
-    
+
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
@@ -144,13 +144,34 @@ class ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               ),
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  authProvider.forgotPassword(
+                                  authProvider
+                                      .forgotPassword(
                                     email: emailEditingController.text,
-                                  );
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('Processing Data')),
-                                  );
+                                  )
+                                      .then((value) {
+                                    if (value is String) {
+                                      if (value.contains("error")) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                            value,
+                                            style: TextStyle(
+                                                color: Colors.red[400]),
+                                          ),
+                                        ));
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                          content: Text(
+                                            value,
+                                            style: TextStyle(
+                                                color: Colors.green[400]),
+                                          ),
+                                        ));
+                                        Navigator.pop(context);
+                                      }
+                                    }
+                                  });
                                 }
                               },
                               child: Text(

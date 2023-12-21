@@ -3,6 +3,7 @@ class Apis {
 
   static String login = "${baseUrl}auth/login";
   static String register = "${baseUrl}auth/register";
+  static String forgot = "${baseUrl}user/forgotPassword";
   static String searchTutor = "${baseUrl}tutor/search";
   static String learnTopic = "${baseUrl}learn-topic";
   static String testPreparation = "${baseUrl}test-preparation";
