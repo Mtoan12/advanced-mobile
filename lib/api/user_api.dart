@@ -44,12 +44,14 @@ class UserApi {
       "country": country,
       "birthday": dateFormat.format(birthday),
       "level": Utils.levelMap(level),
+      'studySchedule': studySchedule
     };
 
     var response = await http.put(url,
         headers: headers(token: prefs.getString("access_token")),
         body: json.encode(body));
-
+    print("body ${json.encode(body)}");
+    print("response: ${response.body}");
     dynamic data = json.decode(response.body);
     if (response.statusCode == 200) {
       user = User.fromJson(data['user']);

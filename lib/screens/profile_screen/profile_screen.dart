@@ -31,6 +31,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  void updateUser(
+      {required String name,
+      required String country,
+      required DateTime birthday,
+      required String level,
+      required String studySchedule}) async {
+    UserApi.updateUser(
+      name: name,
+      country: country,
+      birthday: birthday,
+      level: level,
+      studySchedule: studySchedule,
+    ).then((value) {
+      setState(() {
+        user = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -100,6 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       ProfileFormWidget(
                         user: user!,
+                        updateUser: updateUser,
                       ),
                     ],
                   ),

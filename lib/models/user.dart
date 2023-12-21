@@ -51,7 +51,7 @@ class User {
     // tutorInfo =
     //     json['tutorInfo'] != null ? Tutor.fromJson(json['tutorInfo']) : null;
     // requireNote = json['requireNote'] ?? '';
-    // studySchedule = json['studySchedule'] ?? '';
+    studySchedule = json['studySchedule'] ?? '';
     // avgRating = json['avgRating'] ?? 0;
     // testPreparations = json['testPreparations'] ?? '';
   }

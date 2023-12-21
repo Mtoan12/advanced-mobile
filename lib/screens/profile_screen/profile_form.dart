@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/models/user.dart';
-import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/TextInput.dart';
-import 'package:provider/provider.dart';
 
 class ProfileFormWidget extends StatefulWidget {
   final User user;
-  const ProfileFormWidget({super.key, required this.user});
+  final Function updateUser;
+  const ProfileFormWidget(
+      {super.key, required this.user, required this.updateUser});
 
   @override
   State<ProfileFormWidget> createState() => _ProfileFormWidgetState();
@@ -37,7 +37,6 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
     phoneEditingController.text = widget.user.phone ?? "";
     wantToLearnEditingController.text = widget.user.requireNote ?? "";
     studyScheduleEditingController.text = widget.user.studySchedule ?? "";
-
     birthday = widget.user.birthday ?? DateTime.now();
 
     if (widget.user.level == '') {
@@ -55,8 +54,6 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    UserProvider userProvider = context.watch<UserProvider>();
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -282,15 +279,13 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                             String studySchedule =
                                 studyScheduleEditingController.text;
 
-                            userProvider.updateProfile(
-                                name: name,
-                                email: email,
-                                country: country,
-                                phone: phone,
-                                birthday: birthday,
-                                level: dropdownValue,
-                                requireNote: requiredNote,
-                                studySchedule: studySchedule);
+                            widget.updateUser(
+                              name: name,
+                              country: country,
+                              birthday: birthday,
+                              level: dropdownValue,
+                              studySchedule: studySchedule,
+                            );
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Saved')),
                             );
