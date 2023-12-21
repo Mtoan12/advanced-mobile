@@ -131,7 +131,16 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              join();
+                              String token = schedules[0]
+                                  .studentMeetingLink!
+                                  .split("=")[1];
+                              Utils.joinMeeting(
+                                  schedules[0].userId!,
+                                  schedules[0]
+                                      .scheduleDetailInfo!
+                                      .scheduleInfo!
+                                      .tutorId!,
+                                  token);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,

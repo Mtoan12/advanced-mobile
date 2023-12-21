@@ -2,6 +2,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
+import 'package:jitsi_meet_fix/feature_flag/feature_flag.dart';
+import 'package:jitsi_meet_fix/feature_flag/feature_flag_enum.dart';
+import 'package:jitsi_meet_fix/feature_flag/feature_flag_helper.dart';
+import 'package:jitsi_meet_fix/jitsi_meet.dart';
+import 'package:jitsi_meet_fix/room_name_constraint.dart';
+import 'package:jitsi_meet_fix/room_name_constraint_type.dart';
 
 class Utils {
   List<Teacher> filterTeachers(
@@ -159,6 +165,26 @@ class Utils {
     final dateFormat = DateFormat('E, d MMM yy HH:mm');
     String result = dateFormat.format(dateTime);
     return result;
+  }
+
+  static joinMeeting(String userId, String tutorId, String token) async {
+    try {
+      print("feoifnefneafcnaefnefo");
+      FeatureFlag featureFlag = FeatureFlag();
+      featureFlag.welcomePageEnabled = false;
+      featureFlag.resolution = FeatureFlagVideoResolution
+          .MD_RESOLUTION; // Limit video resolution to 360p
+
+      var options = JitsiMeetingOptions(
+        room: "$userId-$tutorId",
+      )
+        ..serverURL = "https://meet.lettutor.com/"
+        ..token = token;
+
+      await JitsiMeet.joinMeeting(options);
+    } catch (error) {
+      print("error: $error");
+    }
   }
 }
 

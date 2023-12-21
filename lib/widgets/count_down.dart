@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:intl/intl.dart';
+
+import 'package:flutter/material.dart';
 
 class CountdownWidget extends StatefulWidget {
   final int timestampInMilliseconds;
@@ -13,7 +13,7 @@ class CountdownWidget extends StatefulWidget {
 
 class _CountdownWidgetState extends State<CountdownWidget> {
   late Timer _timer;
-  late Duration _remainingTime;
+  late Duration _remainingTime = Duration();
 
   @override
   void initState() {
