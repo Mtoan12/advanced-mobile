@@ -156,7 +156,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               side: const BorderSide(width: 1, color: Colors.blue)),
           onPressed: () {
             setState(() {
-              widget.changeSpecActive("All");
+              widget.changeSpecActive("");
               widget.handleSearch("");
               widget.handleNationalChange("");
             });
