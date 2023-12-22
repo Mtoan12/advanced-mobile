@@ -2,6 +2,7 @@ class AppRouterConstant {
   static String loginRouteName = "login";
   static String registerRouteName = "register";
   static String forgotPasswordRouteName = "fotgotPassword";
+  static String resetPasswordRouteName = "password";
   static String teachersListRouteName = "teachersList";
   static String courseDetailRouteName = "courseDetail";
   static String coursesRouteName = "courses";

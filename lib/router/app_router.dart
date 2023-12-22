@@ -42,6 +42,13 @@ class AppRouter {
       },
     ),
     GoRoute(
+      name: AppRouterConstant.resetPasswordRouteName,
+      path: '/password',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: ForgotPasswordScreen());
+      },
+    ),
+    GoRoute(
       name: AppRouterConstant.teachersListRouteName,
       path: '/teachers-list',
       pageBuilder: (context, state) {

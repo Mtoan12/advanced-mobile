@@ -2,12 +2,6 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
-import 'package:jitsi_meet_fix/feature_flag/feature_flag.dart';
-import 'package:jitsi_meet_fix/feature_flag/feature_flag_enum.dart';
-import 'package:jitsi_meet_fix/feature_flag/feature_flag_helper.dart';
-import 'package:jitsi_meet_fix/jitsi_meet.dart';
-import 'package:jitsi_meet_fix/room_name_constraint.dart';
-import 'package:jitsi_meet_fix/room_name_constraint_type.dart';
 
 class Utils {
   List<Teacher> filterTeachers(
@@ -107,7 +101,6 @@ class Utils {
     } else if (minutesDifference < 24 * 60) {
       // Calculate hours and remaining minutes
       int hours = minutesDifference ~/ 60;
-      int remainingMinutes = minutesDifference % 60;
 
       if (hours == 1) {
         return "1 hour ago";
@@ -117,7 +110,6 @@ class Utils {
     } else {
       // Calculate days, hours, and remaining minutes
       int days = minutesDifference ~/ (24 * 60);
-      int remainingHours = (minutesDifference % (24 * 60)) ~/ 60;
 
       if (days == 1) {
         return "1 day ago";
@@ -168,23 +160,23 @@ class Utils {
   }
 
   static joinMeeting(String userId, String tutorId, String token) async {
-    try {
-      print("feoifnefneafcnaefnefo");
-      FeatureFlag featureFlag = FeatureFlag();
-      featureFlag.welcomePageEnabled = false;
-      featureFlag.resolution = FeatureFlagVideoResolution
-          .MD_RESOLUTION; // Limit video resolution to 360p
+    // try {
+    //   print("feoifnefneafcnaefnefo");
+    //   FeatureFlag featureFlag = FeatureFlag();
+    //   featureFlag.welcomePageEnabled = false;
+    //   featureFlag.resolution = FeatureFlagVideoResolution
+    //       .MD_RESOLUTION; // Limit video resolution to 360p
 
-      var options = JitsiMeetingOptions(
-        room: "$userId-$tutorId",
-      )
-        ..serverURL = "https://meet.lettutor.com/"
-        ..token = token;
+    //   var options = JitsiMeetingOptions(
+    //     room: "$userId-$tutorId",
+    //   )
+    //     ..serverURL = "https://meet.lettutor.com/"
+    //     ..token = token;
 
-      await JitsiMeet.joinMeeting(options);
-    } catch (error) {
-      print("error: $error");
-    }
+    //   await JitsiMeet.joinMeeting(options);
+    // } catch (error) {
+    //   print("error: $error");
+    // }
   }
 }
 

@@ -125,8 +125,28 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
     ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
     List<TableRow> rows = [];
     List<Widget> header = [];
-    header.addAll([
-      Container(
+
+    header.add(Container(
+      height: 64,
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        border: const Border(
+          right: BorderSide(
+            color: Colors.black,
+            width: 1,
+          ),
+        ),
+      ),
+      child: const Align(
+        alignment: Alignment.center,
+        child: Text(
+          "Time",
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
+      ),
+    ));
+    for (int i = 0; i < 7; i++) {
+      header.add(Container(
         height: 64,
         decoration: BoxDecoration(
           color: Colors.grey[100],
@@ -137,64 +157,16 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
             ),
           ),
         ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
+        child: Align(
           alignment: Alignment.center,
-          child: Text("01/12"),
+          child: Text(
+            utils.convertDate(DateTime.now().add(Duration(days: i)).toString()),
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
         ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("02/12"),
-        ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("03/12"),
-        ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("04/12"),
-        ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("05/12"),
-        ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("06/12"),
-        ),
-      ),
-      Container(
-        height: 64,
-        color: Colors.white,
-        child: const Align(
-          alignment: Alignment.center,
-          child: Text("07/12"),
-        ),
-      ),
-    ]);
+      ));
+    }
+
     rows.add(TableRow(children: header));
     List<String> times = [
       "00:00 - 00:25",
@@ -265,6 +237,9 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
             )),
       ));
       for (var j = 0; j < 7; j++) {
+        DateTime now = DateTime.now();
+        String date = utils.convertDate(DateTime(now.year, now.month, now.day + j).toString());
+        String time = times[i];
         row.add(Container(
           height: 64,
           color: Colors.white,

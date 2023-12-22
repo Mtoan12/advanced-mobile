@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/models/user.dart';
 import 'package:lettutor/provider/auth_provider.dart';
-import 'package:lettutor/provider/user_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:provider/provider.dart';
 
