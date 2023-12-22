@@ -20,7 +20,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     if (authProvider.auth == null) {
       context.goNamed(AppRouterConstant.loginRouteName);
     }
-    
+
     User user = authProvider.auth!.user;
 
     return Drawer(

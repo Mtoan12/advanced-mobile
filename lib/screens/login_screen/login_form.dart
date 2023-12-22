@@ -115,13 +115,6 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(
             height: screenHeight * 0.015,
           ),
-          // Align(
-          //   alignment: Alignment.centerLeft,
-          //   child: Text(
-          //     authProvider.error,
-          //     style: TextStyle(color: Colors.red[400]),
-          //   ),
-          // ),
           SizedBox(
             height: screenHeight * 0.015,
           ),

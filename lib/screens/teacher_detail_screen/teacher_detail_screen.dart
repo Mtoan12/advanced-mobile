@@ -56,6 +56,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   fetchReviews(int page, int perPage) async {
     ReviewApi.getTutorReviews(tutorId: widget.id, page: page, perPage: perPage)
         .then((res) {
+      print("res::::::: ${res.message}");
       setState(() {
         reviews = res.data.rows;
       });
@@ -238,7 +239,8 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
       ));
       for (var j = 0; j < 7; j++) {
         DateTime now = DateTime.now();
-        String date = utils.convertDate(DateTime(now.year, now.month, now.day + j).toString());
+        String date = utils
+            .convertDate(DateTime(now.year, now.month, now.day + j).toString());
         String time = times[i];
         row.add(Container(
           height: 64,

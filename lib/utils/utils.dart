@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
+import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
 
 class Utils {
   List<Teacher> filterTeachers(
@@ -160,23 +161,18 @@ class Utils {
   }
 
   static joinMeeting(String userId, String tutorId, String token) async {
-    // try {
-    //   print("feoifnefneafcnaefnefo");
-    //   FeatureFlag featureFlag = FeatureFlag();
-    //   featureFlag.welcomePageEnabled = false;
-    //   featureFlag.resolution = FeatureFlagVideoResolution
-    //       .MD_RESOLUTION; // Limit video resolution to 360p
-
-    //   var options = JitsiMeetingOptions(
-    //     room: "$userId-$tutorId",
-    //   )
-    //     ..serverURL = "https://meet.lettutor.com/"
-    //     ..token = token;
-
-    //   await JitsiMeet.joinMeeting(options);
-    // } catch (error) {
-    //   print("error: $error");
-    // }
+    var jitsiMeet = JitsiMeet();
+    var options = JitsiMeetConferenceOptions(
+        serverURL: "https://meet.lettutor.com",
+        room: "$userId-$tutorId",
+        configOverrides: {
+          "startWithAudioMuted": false,
+          "startWithVideoMuted": false,
+          "subject": "Jitsi with Flutter",
+        },
+        featureFlags: {"unsaferoomwarning.enabled": false},
+        token: token);
+    jitsiMeet.join(options);
   }
 }
 

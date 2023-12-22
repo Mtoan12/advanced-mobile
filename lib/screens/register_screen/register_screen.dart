@@ -27,6 +27,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       context.goNamed(AppRouterConstant.teachersListRouteName);
     }
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -63,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Image.network(
+                    child: Image.asset(
                       "assets/images/login_banner.png",
                       height: screenHeight * 0.25,
                     ),

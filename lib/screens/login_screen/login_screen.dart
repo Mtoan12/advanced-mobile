@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     var screenHeight = MediaQuery.of(context).size.height;
     AuthProvider authProvider = context.watch<AuthProvider>();
 
-    if (authProvider.auth?.user != null) {
+    if (authProvider.auth != null) {
       context.goNamed(AppRouterConstant.teachersListRouteName);
     }
     return Scaffold(
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: Image.network(
+                    child: Image.asset(
                       "assets/images/login_banner.png",
                       height: screenHeight * 0.25,
                     ),
