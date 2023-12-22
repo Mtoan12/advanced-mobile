@@ -28,11 +28,10 @@ class Review {
     bookingId = json['bookingId'];
     firstId = json['firstId'];
     secondId = json['secondId'];
-    rating = json['rating'];
+    rating = json['rating'] + 0.0;
     content = json['content'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     firstInfo = User.fromJson(json['firstInfo']);
   }
 }
-
