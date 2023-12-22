@@ -152,7 +152,7 @@ class Utils {
   }
 
   static String convertTimeStamp(int timeStamp) {
-    timeStamp += 8 * 60 * 60 * 1000;
+    // timeStamp += 8 * 60 * 60 * 1000;
     DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
 
     final dateFormat = DateFormat('E, d MMM yy HH:mm');

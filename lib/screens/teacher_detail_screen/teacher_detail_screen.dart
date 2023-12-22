@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lettutor/api/review_api.dart';
+import 'package:lettutor/api/schedule_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/review.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/schedule/schedule_detail_info.dart';
 import 'package:lettutor/models/schedule/schedule_info.dart';
+import 'package:lettutor/models/schedule_of_tutor.dart';
 import 'package:lettutor/models/tutor.dart';
 import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
@@ -32,6 +34,8 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
 
   Tutor tutor = Tutor();
   List<Review> reviews = [];
+  List<ScheduleOfTutor> schedules = [];
+  List<String> bookTimes = [];
 
   @override
   void initState() {
@@ -43,6 +47,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
     const int PAGE = 1;
     const int PERPAGE = 12;
     fetchReviews(PAGE, PERPAGE);
+    fetchScheduleOfTutor();
   }
 
   fetchTutorDetail() async {
@@ -53,10 +58,20 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
     });
   }
 
+  fetchScheduleOfTutor() async {
+    ScheduleApi.getSchedulesOfTutor(widget.id).then((data) {
+      setState(() {
+        schedules = data;
+        bookTimes = schedules
+            .map((e) => Utils.convertTimeStamp(e.startTimestamp))
+            .toList();
+      });
+    });
+  }
+
   fetchReviews(int page, int perPage) async {
     ReviewApi.getTutorReviews(tutorId: widget.id, page: page, perPage: perPage)
         .then((res) {
-      print("res::::::: ${res.message}");
       setState(() {
         reviews = res.data.rows;
       });
@@ -242,186 +257,220 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
         String date = utils
             .convertDate(DateTime(now.year, now.month, now.day + j).toString());
         String time = times[i];
-        row.add(Container(
-          height: 64,
-          color: Colors.white,
-          child: Align(
-            alignment: Alignment.center,
-            child: ButtonWidget(
-                text: "Book",
-                onPressed: () {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      DateTime now = DateTime.now();
-                      bool isDisable = false;
 
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 360,
-                          // width: screenWidth,
-                          color: Colors.white,
-                          child: Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                const Text(
-                                  "Booking Detail",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 20),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Wrap(
-                                  children: [
-                                    const SizedBox(
-                                      width: 16,
-                                    ),
-                                    const Text("Booking Time: ",
+        ScheduleOfTutor? scheduleOfTutor =
+            ScheduleApi.getScheduleOfTutor(schedules, date, time);
+
+        if (scheduleOfTutor != null) {
+          print("book: ${scheduleOfTutor.isBooked}");
+          row.add(Container(
+            height: 64,
+            color: Colors.white,
+            child: Align(
+              alignment: Alignment.center,
+              child: scheduleOfTutor.isBooked
+                  ? const Text(
+                      "Booked",
+                      style: TextStyle(color: Colors.green),
+                    )
+                  : ButtonWidget(
+                      text: "Book",
+                      onPressed: () {
+                        showModalBottomSheet<void>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            DateTime now = DateTime.now();
+                            bool isDisable = false;
+
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                height: 360,
+                                // width: screenWidth,
+                                color: Colors.white,
+                                child: Center(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      const Text(
+                                        "Booking Detail",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w700)),
-                                    Text(
-                                      "${times[i]} ${utils.convertDate(DateTime(now.year, now.month, now.day + j).toString())}",
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const Text("Note",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700)),
-                                        TextInput(
-                                          controller: noteController,
-                                          maxLine: 6,
-                                        )
-                                      ],
-                                    ),
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 20),
+                                      ),
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Wrap(
+                                        children: [
+                                          const SizedBox(
+                                            width: 16,
+                                          ),
+                                          const Text("Booking Time: ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700)),
+                                          Text(
+                                            "${times[i]} ${utils.convertDate(DateTime(now.year, now.month, now.day + j).toString())}",
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const Text("Note",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w700)),
+                                              TextInput(
+                                                controller: noteController,
+                                                maxLine: 6,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: ButtonWidget(
+                                          text: "Book",
+                                          isDisable: isDisable,
+                                          onPressed: () {
+                                            ScheduleInfo scheduleInfo =
+                                                ScheduleInfo(
+                                                    date: DateTime(
+                                                            now.year,
+                                                            now.month,
+                                                            now.day + j)
+                                                        .toString(),
+                                                    startTimestamp: 0,
+                                                    endTimestamp: 0,
+                                                    id: "",
+                                                    tutorId: tutor.user!.id,
+                                                    startTime:
+                                                        times[i].split('-')[0],
+                                                    endTime:
+                                                        times[i].split('-')[1],
+                                                    isDeleted: false,
+                                                    createdAt: DateTime.now()
+                                                        .toString(),
+                                                    updatedAt: DateTime.now()
+                                                        .toString(),
+                                                    tutorInfo:
+                                                        tutor.user!.tutorInfo);
+
+                                            ScheduleDetailInfo
+                                                newScheduleDetailInfo =
+                                                ScheduleDetailInfo(
+                                                    id: "",
+                                                    subject: "",
+                                                    grade: "",
+                                                    location: "",
+                                                    duration: "",
+                                                    price: "",
+                                                    studentNote:
+                                                        noteController.text,
+                                                    tutorNote: "",
+                                                    color: "",
+                                                    background: "",
+                                                    status: "",
+                                                    lessonPlanId: "",
+                                                    studentRequest:
+                                                        noteController.text,
+                                                    createdAt: DateTime.now()
+                                                        .toString(),
+                                                    updatedAt: DateTime.now()
+                                                        .toString(),
+                                                    deletedAt: DateTime.now()
+                                                        .toString(),
+                                                    recordUrl: "",
+                                                    lessonPlanNote: "",
+                                                    learningMethod: "",
+                                                    lessonPlanNoteItem: "",
+                                                    lessonPlanIdItem: "",
+                                                    recordUrlItem: "",
+                                                    durationItem: "",
+                                                    scheduleInfo: scheduleInfo);
+                                            Schedule newSchedule = Schedule(
+                                                createdAtTimeStamp:
+                                                    DateTime.now().millisecond,
+                                                updatedAtTimeStamp:
+                                                    DateTime.now().millisecond,
+                                                id: "",
+                                                userId: tutor.user!.id,
+                                                scheduleDetailId: "",
+                                                tutorMeetingLink: "",
+                                                studentMeetingLink: "",
+                                                googleMeetLink: "",
+                                                studentRequest:
+                                                    noteController.text,
+                                                tutorReview: "",
+                                                scoreByTutor: "",
+                                                createdAt:
+                                                    DateTime.now().toString(),
+                                                updatedAt:
+                                                    DateTime.now().toString(),
+                                                recordUrl: "",
+                                                cancelReasonId: "",
+                                                lessonPlanId: "",
+                                                cancelNote: "",
+                                                calendarId: "",
+                                                isDeleted: false,
+                                                isTrial: false,
+                                                convertedLesson: 1,
+                                                scheduleDetailInfo:
+                                                    newScheduleDetailInfo);
+
+                                            scheduleProvider
+                                                .addSchedule(newSchedule);
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                  content: Text('Booked')),
+                                            );
+                                            // setState(() {
+                                            //   isDisable = true;
+                                            // });
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: ButtonWidget(
-                                    text: "Book",
-                                    isDisable: isDisable,
-                                    onPressed: () {
-                                      ScheduleInfo scheduleInfo = ScheduleInfo(
-                                          date: DateTime(now.year, now.month,
-                                                  now.day + j)
-                                              .toString(),
-                                          startTimestamp: 0,
-                                          endTimestamp: 0,
-                                          id: "",
-                                          tutorId: tutor.user!.id,
-                                          startTime: times[i].split('-')[0],
-                                          endTime: times[i].split('-')[1],
-                                          isDeleted: false,
-                                          createdAt: DateTime.now().toString(),
-                                          updatedAt: DateTime.now().toString(),
-                                          tutorInfo: tutor.user!.tutorInfo);
-
-                                      ScheduleDetailInfo newScheduleDetailInfo =
-                                          ScheduleDetailInfo(
-                                              id: "",
-                                              subject: "",
-                                              grade: "",
-                                              location: "",
-                                              duration: "",
-                                              price: "",
-                                              studentNote: noteController.text,
-                                              tutorNote: "",
-                                              color: "",
-                                              background: "",
-                                              status: "",
-                                              lessonPlanId: "",
-                                              studentRequest:
-                                                  noteController.text,
-                                              createdAt:
-                                                  DateTime.now().toString(),
-                                              updatedAt:
-                                                  DateTime.now().toString(),
-                                              deletedAt:
-                                                  DateTime.now().toString(),
-                                              recordUrl: "",
-                                              lessonPlanNote: "",
-                                              learningMethod: "",
-                                              lessonPlanNoteItem: "",
-                                              lessonPlanIdItem: "",
-                                              recordUrlItem: "",
-                                              durationItem: "",
-                                              scheduleInfo: scheduleInfo);
-                                      Schedule newSchedule = Schedule(
-                                          createdAtTimeStamp:
-                                              DateTime.now().millisecond,
-                                          updatedAtTimeStamp:
-                                              DateTime.now().millisecond,
-                                          id: "",
-                                          userId: tutor.user!.id,
-                                          scheduleDetailId: "",
-                                          tutorMeetingLink: "",
-                                          studentMeetingLink: "",
-                                          googleMeetLink: "",
-                                          studentRequest: noteController.text,
-                                          tutorReview: "",
-                                          scoreByTutor: "",
-                                          createdAt: DateTime.now().toString(),
-                                          updatedAt: DateTime.now().toString(),
-                                          recordUrl: "",
-                                          cancelReasonId: "",
-                                          lessonPlanId: "",
-                                          cancelNote: "",
-                                          calendarId: "",
-                                          isDeleted: false,
-                                          isTrial: false,
-                                          convertedLesson: 1,
-                                          scheduleDetailInfo:
-                                              newScheduleDetailInfo);
-
-                                      scheduleProvider.addSchedule(newSchedule);
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(content: Text('Booked')),
-                                      );
-                                      // setState(() {
-                                      //   isDisable = true;
-                                      // });
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                }),
-          ),
-        ));
+                              ),
+                            );
+                          },
+                        );
+                      }),
+            ),
+          ));
+        } else {
+          row.add(Container(
+            height: 64,
+            color: Colors.white,
+          ));
+        }
       }
       rows.add(TableRow(children: row));
     }

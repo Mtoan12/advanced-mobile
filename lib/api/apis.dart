@@ -32,4 +32,8 @@ class Apis {
   static getCourseList({int page = 1, int size = 100}) {
     return "${baseUrl}course?page=$page&size=$size";
   }
+
+  static getScheduleList(String tutorId) {
+    return "${baseUrl}schedule?tutorId=$tutorId&page=0";
+  }
 }

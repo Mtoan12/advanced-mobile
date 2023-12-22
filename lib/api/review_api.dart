@@ -23,7 +23,6 @@ class ReviewApi {
     var response = await http.get(uri,
         headers: headers(token: predf.getString("access_token")));
     dynamic data = json.decode(response.body);
-    print("data: $data");
     if (response.statusCode == 200) {
       reviewApi = ReviewApi.fromJson(data);
       return reviewApi;
