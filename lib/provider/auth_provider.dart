@@ -36,7 +36,6 @@ class AuthProvider extends ChangeNotifier {
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");
-      setError(errorResponse.message);
       return 'error: ${errorResponse.message}';
     }
   }
@@ -58,7 +57,6 @@ class AuthProvider extends ChangeNotifier {
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");
-      setError(errorResponse.message);
       return 'error: ${errorResponse.message}';
     }
   }
