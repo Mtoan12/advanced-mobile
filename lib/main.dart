@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/provider/auth_provider.dart';
-import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
 
@@ -23,16 +22,12 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   AuthProvider authProvider = AuthProvider();
-  ScheduleProvider scheduleProvider = ScheduleProvider();
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => authProvider),
-          ChangeNotifierProvider(
-            create: (context) => scheduleProvider,
-          ),
         ],
         child: MaterialApp.router(
           // builder: DevicePreview.appBuilder,

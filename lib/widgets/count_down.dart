@@ -13,7 +13,7 @@ class CountdownWidget extends StatefulWidget {
 
 class _CountdownWidgetState extends State<CountdownWidget> {
   late Timer _timer;
-  late Duration _remainingTime = Duration();
+  late Duration _remainingTime = const Duration();
 
   @override
   void initState() {
@@ -27,8 +27,8 @@ class _CountdownWidgetState extends State<CountdownWidget> {
       DateTime now = DateTime.now();
 
       // Convert timestamp to DateTime
-      DateTime targetDateTime = DateTime.fromMillisecondsSinceEpoch(
-          widget.timestampInMilliseconds + 8 * 60 * 60 * 1000);
+      DateTime targetDateTime =
+          DateTime.fromMillisecondsSinceEpoch(widget.timestampInMilliseconds);
 
       // Check if the target time is in the past
       if (now.isAfter(targetDateTime)) {

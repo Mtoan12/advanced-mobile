@@ -11,7 +11,7 @@ class Apis {
   static String userInfo = '${baseUrl}user/info';
   static String manageFavoriteTutor = '${baseUrl}user/manageFavoriteTutor';
   static String report = '${baseUrl}report';
-
+  static String booking = '${baseUrl}booking';
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";
   }

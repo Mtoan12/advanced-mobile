@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lettutor/api/booking_api.dart';
 import 'package:lettutor/api/review_api.dart';
 import 'package:lettutor/api/schedule_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/review.dart';
-import 'package:lettutor/models/schedule.dart';
-import 'package:lettutor/models/schedule/schedule_detail_info.dart';
-import 'package:lettutor/models/schedule/schedule_info.dart';
 import 'package:lettutor/models/schedule_of_tutor.dart';
 import 'package:lettutor/models/tutor.dart';
-import 'package:lettutor/provider/schedule_provider.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_information.dart';
 import 'package:lettutor/utils/utils.dart';
@@ -17,7 +14,6 @@ import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/button.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:provider/provider.dart';
 
 class TeacherDetailScreen extends StatefulWidget {
   final String id;
@@ -138,7 +134,6 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   }
 
   Widget table(BuildContext context, Tutor tutor) {
-    ScheduleProvider scheduleProvider = context.watch<ScheduleProvider>();
     List<TableRow> rows = [];
     List<Widget> header = [];
 
@@ -262,7 +257,6 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
             ScheduleApi.getScheduleOfTutor(schedules, date, time);
 
         if (scheduleOfTutor != null) {
-          print("book: ${scheduleOfTutor.isBooked}");
           row.add(Container(
             height: 64,
             color: Colors.white,
@@ -353,102 +347,22 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                                           text: "Book",
                                           isDisable: isDisable,
                                           onPressed: () {
-                                            ScheduleInfo scheduleInfo =
-                                                ScheduleInfo(
-                                                    date: DateTime(
-                                                            now.year,
-                                                            now.month,
-                                                            now.day + j)
-                                                        .toString(),
-                                                    startTimestamp: 0,
-                                                    endTimestamp: 0,
-                                                    id: "",
-                                                    tutorId: tutor.user!.id,
-                                                    startTime:
-                                                        times[i].split('-')[0],
-                                                    endTime:
-                                                        times[i].split('-')[1],
-                                                    isDeleted: false,
-                                                    createdAt: DateTime.now()
-                                                        .toString(),
-                                                    updatedAt: DateTime.now()
-                                                        .toString(),
-                                                    tutorInfo:
-                                                        tutor.user!.tutorInfo);
-
-                                            ScheduleDetailInfo
-                                                newScheduleDetailInfo =
-                                                ScheduleDetailInfo(
-                                                    id: "",
-                                                    subject: "",
-                                                    grade: "",
-                                                    location: "",
-                                                    duration: "",
-                                                    price: "",
-                                                    studentNote:
-                                                        noteController.text,
-                                                    tutorNote: "",
-                                                    color: "",
-                                                    background: "",
-                                                    status: "",
-                                                    lessonPlanId: "",
-                                                    studentRequest:
-                                                        noteController.text,
-                                                    createdAt: DateTime.now()
-                                                        .toString(),
-                                                    updatedAt: DateTime.now()
-                                                        .toString(),
-                                                    deletedAt: DateTime.now()
-                                                        .toString(),
-                                                    recordUrl: "",
-                                                    lessonPlanNote: "",
-                                                    learningMethod: "",
-                                                    lessonPlanNoteItem: "",
-                                                    lessonPlanIdItem: "",
-                                                    recordUrlItem: "",
-                                                    durationItem: "",
-                                                    scheduleInfo: scheduleInfo);
-                                            Schedule newSchedule = Schedule(
-                                                createdAtTimeStamp:
-                                                    DateTime.now().millisecond,
-                                                updatedAtTimeStamp:
-                                                    DateTime.now().millisecond,
-                                                id: "",
-                                                userId: tutor.user!.id,
-                                                scheduleDetailId: "",
-                                                tutorMeetingLink: "",
-                                                studentMeetingLink: "",
-                                                googleMeetLink: "",
-                                                studentRequest:
-                                                    noteController.text,
-                                                tutorReview: "",
-                                                scoreByTutor: "",
-                                                createdAt:
-                                                    DateTime.now().toString(),
-                                                updatedAt:
-                                                    DateTime.now().toString(),
-                                                recordUrl: "",
-                                                cancelReasonId: "",
-                                                lessonPlanId: "",
-                                                cancelNote: "",
-                                                calendarId: "",
-                                                isDeleted: false,
-                                                isTrial: false,
-                                                convertedLesson: 1,
-                                                scheduleDetailInfo:
-                                                    newScheduleDetailInfo);
-
-                                            scheduleProvider
-                                                .addSchedule(newSchedule);
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              const SnackBar(
-                                                  content: Text('Booked')),
-                                            );
+                                            BookingApi.booking(
+                                                    scheduleOfTutor
+                                                        .scheduleDetails[0].id,
+                                                    noteController.text)
+                                                .then((value) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                    content: Text('Booked')),
+                                              );
+                                              fetchScheduleOfTutor();
+                                              Navigator.pop(context);
+                                            });
                                             // setState(() {
                                             //   isDisable = true;
                                             // });
-                                            Navigator.pop(context);
                                           },
                                         ),
                                       ),
