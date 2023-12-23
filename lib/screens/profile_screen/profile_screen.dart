@@ -98,7 +98,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         },
                         child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: NetworkImage(user!.avatar!)),
+                            backgroundImage: image == null
+                                ? NetworkImage(user!.avatar!)
+                                : Image.file(
+                                    image!,
+                                    fit: BoxFit.cover,
+                                  ).image),
                       ),
                       const SizedBox(
                         height: 10,
@@ -134,8 +139,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final selectedFile =
         await ImagePicker().pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      image = File(selectedFile!.path);
+    UserApi.uploadAvatar(File(selectedFile!.path)).then((value) {
+      if (value != null) {
+        setState(() {
+          image = File(selectedFile.path);
+        });
+      }
     });
   }
 }

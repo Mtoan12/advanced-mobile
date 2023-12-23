@@ -7,7 +7,6 @@ import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/stars.dart';
-import 'package:provider/provider.dart';
 
 class TeacherCard extends StatefulWidget {
   final String id;

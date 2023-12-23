@@ -12,6 +12,7 @@ class Apis {
   static String manageFavoriteTutor = '${baseUrl}user/manageFavoriteTutor';
   static String report = '${baseUrl}report';
   static String booking = '${baseUrl}booking';
+  static String uploadAvatar = '${baseUrl}user/uploadAvatar';
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";
   }

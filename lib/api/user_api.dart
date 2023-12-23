@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -57,6 +58,27 @@ class UserApi {
       return user;
     } else {
       throw Exception(data['message']);
+    }
+  }
+
+  static Future uploadAvatar(File avatar) async {
+    // request: avatar: binary multipart/form-data
+
+    var url = Uri.parse(Apis.uploadAvatar);
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    var request = http.MultipartRequest('POST', url);
+    request.files.add(await http.MultipartFile.fromPath('avatar', avatar.path));
+    request.headers.addAll({
+      "Authorization": "Bearer ${prefs.getString("access_token")}",
+      "Content-Type": "multipart/form-data"
+    });
+
+    var response = await request.send();
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception(response.reasonPhrase);
     }
   }
 }
