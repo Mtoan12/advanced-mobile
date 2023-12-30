@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
+import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/teacher_card.dart';
+import 'package:provider/provider.dart';
 
 class TeachersSuggestionWidget extends StatefulWidget {
   final List<Teacher> teachers;
@@ -22,6 +24,7 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
   }
 
   Widget mainWidgets(BuildContext context) {
+    TeacherProvider teacherProvider = context.watch<TeacherProvider>();
     var teachers = widget.teachers;
 
     List<Widget> list = [];
@@ -36,15 +39,16 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
     for (Teacher teacher in teachers) {
       list.add(
         TeacherCard(
-            id: teacher.id ?? '',
-            imgUrl: teacher.avatar ?? '',
-            hasLiked: teacher.isFavoriteTutor ?? false,
-            name: teacher.name ?? '',
-            national: teacher.country ?? '',
-            stars: teacher.rating ?? 0,
-            filters: teacher.specialties!.split(','),
-            description: teacher.bio ?? '',
-            specialties: widget.specialties),
+          id: teacher.id ?? '',
+          imgUrl: teacher.avatar ?? '',
+          // hasLiked: teacherProvider.isLikedTeacher(teacher.id ?? ''),
+          name: teacher.name ?? '',
+          national: teacher.country ?? '',
+          stars: teacher.rating ?? 0,
+          filters: teacher.specialties!.split(','),
+          description: teacher.bio ?? '',
+          specialties: widget.specialties,
+        ),
       );
       list.add(const SizedBox(
         height: 20,

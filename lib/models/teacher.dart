@@ -1,5 +1,5 @@
 class Teacher {
-  String? id;
+  late String id;
   String? avatar;
   String? country;
   String? name;
@@ -13,7 +13,7 @@ class Teacher {
   int? price;
 
   Teacher({
-    this.id,
+    this.id = '',
     this.avatar,
     this.country,
     this.name,

@@ -3,27 +3,29 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/api/tutor_api.dart';
 import 'package:lettutor/models/speciality.dart';
+import 'package:lettutor/models/teacher.dart';
+import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/stars.dart';
+import 'package:provider/provider.dart';
 
 class TeacherCard extends StatefulWidget {
   final String id;
   final String imgUrl;
-  final bool hasLiked;
+  // final bool hasLiked;
   final String name;
   final String national;
   final double stars;
   final List<String> filters;
   final String description;
-
   final List<Specialty> specialties;
 
   const TeacherCard(
       {super.key,
       required this.imgUrl,
-      required this.hasLiked,
+      // required this.hasLiked,
       required this.name,
       required this.national,
       required this.stars,
@@ -37,20 +39,11 @@ class TeacherCard extends StatefulWidget {
 }
 
 class _TeacherCardState extends State<TeacherCard> {
-  bool hasLiked = false;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    setState(() {
-      hasLiked = widget.hasLiked;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    TeacherProvider teacherProvider = context.watch<TeacherProvider>();
+    bool hasLiked = teacherProvider.isLikedTeacher(widget.id);
+
     return GestureDetector(
       onTap: () => context.pushNamed(AppRouterConstant.teacherDetailRouteName,
           extra: widget.id),
@@ -156,9 +149,11 @@ class _TeacherCardState extends State<TeacherCard> {
                   child: TextButton(
                     onPressed: () {
                       TutorApi.like(widget.id).then((value) {
-                        setState(() {
-                          hasLiked = !hasLiked;
-                        });
+                        if (teacherProvider.isLikedTeacher(widget.id)) {
+                          teacherProvider.unlikeTeacher(widget.id);
+                        } else {
+                          teacherProvider.likeTeacher(widget.id);
+                        }
                       });
                     },
                     child: Icon(
