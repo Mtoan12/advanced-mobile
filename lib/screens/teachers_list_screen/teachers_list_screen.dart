@@ -35,7 +35,20 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     super.initState();
 
     fetchTeachers();
+    fetchLikedTeachers();
     fetchSpecialties();
+  }
+
+  fetchLikedTeachers() {
+    SearchTutorApi.searchTutor(tutorsFilter: TutorsFilter(perPage: "12"))
+        .then((data) {
+      List<Teacher> sortTeachers = Utils.sortTeachers(data.rows);
+
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        Provider.of<TeacherProvider>(context, listen: false)
+            .getLikedTeachers(sortTeachers);
+      });
+    });
   }
 
   fetchTeachers() {
@@ -44,12 +57,12 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
       setState(() {
         teachers = sortTeachers;
       });
-    }).then((value) => {
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            Provider.of<TeacherProvider>(context, listen: false)
-                .getLikedTeachers(teachers);
-          })
-        });
+    }).then((value) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        Provider.of<TeacherProvider>(context, listen: false)
+            .getLikedTeachers(teachers);
+      });
+    });
   }
 
   fetchSpecialties() {

@@ -6,11 +6,12 @@ class TeacherProvider extends ChangeNotifier {
 
   void getLikedTeachers(List<Teacher> teachers) {
     for (Teacher teacher in teachers) {
-      if (teacher.isFavoriteTutor == true) {
+      if (teacher.isFavoriteTutor == true &&
+          !likedTeacherIds.contains(teacher.id)) {
         likedTeacherIds.add(teacher.id);
       }
     }
-    
+
     notifyListeners();
   }
 

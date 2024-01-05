@@ -5,7 +5,9 @@ import 'package:lettutor/api/schedule_api.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/models/review.dart';
 import 'package:lettutor/models/schedule_of_tutor.dart';
+import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/models/tutor.dart';
+import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/screens/teacher_detail_screen/comments.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_information.dart';
 import 'package:lettutor/utils/utils.dart';
@@ -14,6 +16,7 @@ import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/button.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
+import 'package:provider/provider.dart';
 
 class TeacherDetailScreen extends StatefulWidget {
   final String id;
@@ -51,6 +54,13 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
       setState(() {
         tutor = data;
       });
+
+      Teacher teacher = Teacher(
+          id: data.user?.id ?? "", isFavoriteTutor: data.isFavorite ?? false);
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        Provider.of<TeacherProvider>(context, listen: false)
+            .getLikedTeachers([teacher]);
+      });
     });
   }
 
@@ -78,6 +88,15 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
+    TeacherProvider teacherProvider = context.watch<TeacherProvider>();
+
+    if (tutor.user == null) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
 
     return Scaffold(
       appBar: appBar(context),
@@ -97,7 +116,7 @@ class _TeacherDetailScreenState extends State<TeacherDetailScreen> {
                   user: tutor.user,
                   rating: tutor.avgRating,
                   bio: tutor.bio,
-                  isFavorite: tutor.isFavorite ?? false,
+                  isFavorite: teacherProvider.isLikedTeacher(tutor.user!.id!),
                   videoUrl: tutor.video,
                   education: tutor.education,
                   languages: tutor.languages,

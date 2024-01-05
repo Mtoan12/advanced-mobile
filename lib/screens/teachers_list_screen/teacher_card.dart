@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/api/tutor_api.dart';
 import 'package:lettutor/models/speciality.dart';
-import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';

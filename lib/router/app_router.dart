@@ -49,12 +49,16 @@ class AppRouter {
       },
     ),
     GoRoute(
-      name: AppRouterConstant.teachersListRouteName,
-      path: '/teachers-list',
-      pageBuilder: (context, state) {
-        return const MaterialPage(child: TeachersListScreen());
-      },
-    ),
+        name: AppRouterConstant.teachersListRouteName,
+        path: '/teachers-list',
+        pageBuilder: (context, state) {
+          return CustomTransitionPage<void>(
+              key: UniqueKey(),
+              child: const TeachersListScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) =>
+                      FadeTransition(opacity: animation, child: child));
+        }),
     GoRoute(
       name: AppRouterConstant.courseDetailRouteName,
       path: '/course-detail',

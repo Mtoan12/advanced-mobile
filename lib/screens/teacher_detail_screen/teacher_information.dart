@@ -4,6 +4,7 @@ import 'package:lettutor/api/tutor_api.dart';
 import 'package:lettutor/models/course.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/user.dart';
+import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/TextInput.dart';
@@ -73,6 +74,8 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    TeacherProvider teacherProvider = TeacherProvider();
+
     List<String> educations = widget.education.toString().split(",");
     List<String> languages = widget.languages.toString().split(",");
     List<String> specialties = widget.specialties.toString().split(",");
@@ -138,6 +141,9 @@ class _TeacherInformationWidgetState extends State<TeacherInformationWidget> {
                   setState(() {
                     isFavorite = !isFavorite;
                   });
+                  teacherProvider.isLikedTeacher(widget.id!)
+                      ? teacherProvider.unlikeTeacher(widget.id!)
+                      : teacherProvider.likeTeacher(widget.id!);
                 })
               },
               child: Column(
