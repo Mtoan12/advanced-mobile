@@ -3,10 +3,12 @@ class TutorsFilter {
   String search;
   String page;
   String perPage;
+  bool isLiked;
 
   TutorsFilter(
       {this.specialty = '',
       this.search = '',
       this.page = '1',
-      this.perPage = '12'});
+      this.perPage = '12',
+      this.isLiked = false});
 }

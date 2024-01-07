@@ -24,6 +24,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   String specKeyActive = 'All';
   String search = '';
   String national = '';
+  bool showLikedList = false;
 
   List<Teacher> teachers = [];
   List<Specialty> specialties = [];
@@ -54,6 +55,12 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   fetchTeachers() {
     SearchTutorApi.searchTutor(tutorsFilter: tutorsFilter).then((data) {
       List<Teacher> sortTeachers = Utils.sortTeachers(data.rows);
+
+      if (showLikedList) {
+        sortTeachers =
+            sortTeachers.where((element) => element.isFavoriteTutor!).toList();
+      }
+
       setState(() {
         teachers = sortTeachers;
       });
@@ -94,6 +101,14 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
       fetchTeachers();
     }
 
+    void handleShowLiked() {
+      setState(() {
+        showLikedList = !showLikedList;
+      });
+      tutorsFilter.isLiked = showLikedList;
+      fetchTeachers();
+    }
+
     void handleNationalChange(String national) {
       setState(() {
         this.national = national;
@@ -131,6 +146,27 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                           national: national,
                           handleNationalChange: handleNationalChange,
                           specialties: specialties),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          handleShowLiked();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.blue,
+                          backgroundColor:
+                              showLikedList ? Colors.blue[50] : Colors.white,
+                          side: const BorderSide(color: Colors.blue),
+                          textStyle: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: showLikedList
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
+                        ),
+                        child: const Text('Liked teachers'),
+                      ),
                       const SizedBox(
                         height: 24,
                       ),
