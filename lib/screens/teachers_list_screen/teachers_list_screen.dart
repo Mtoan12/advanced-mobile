@@ -25,14 +25,16 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   String search = '';
   String national = '';
   bool showLikedList = false;
+  int numberOfPage = 1;
 
   List<Teacher> teachers = [];
   List<Specialty> specialties = [];
   TutorsFilter tutorsFilter = TutorsFilter();
 
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     fetchTeachers();
@@ -63,6 +65,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
       setState(() {
         teachers = sortTeachers;
+        numberOfPage = data.count ~/ double.parse(tutorsFilter.perPage) + 1;
       });
     }).then((value) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -115,10 +118,23 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
       });
     }
 
+    void handleChangePage(String page) {
+      setState(() {
+        tutorsFilter.page = page;
+      });
+      fetchTeachers();
+      _scrollController.animateTo(
+        _scrollController.position.minScrollExtent,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
+
     return Scaffold(
       appBar: appBar(context),
       endDrawer: const DrawerWidget(),
       body: SingleChildScrollView(
+        controller: _scrollController,
         child: Padding(
           padding: EdgeInsets.only(
             left: screenWidth * 0.01,
@@ -176,9 +192,11 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                         height: 28,
                       ),
                       NumberPaginator(
-                        numberPages: 1,
+                        numberPages: numberOfPage,
+                        showNextButton: false,
+                        showPrevButton: false,
                         onPageChange: (int index) {
-                          // handle page change...
+                          handleChangePage((index + 1).toString());
                         },
                       ),
                       const SizedBox(
