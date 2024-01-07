@@ -25,13 +25,6 @@ class _TeachersSuggestionWidgetState extends State<TeachersSuggestionWidget> {
     var teachers = widget.teachers;
 
     List<Widget> list = [];
-    list.add(Text(
-      "Recommended Tutors".tr,
-      style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
-    ));
-    list.add(const SizedBox(
-      height: 8,
-    ));
 
     for (Teacher teacher in teachers) {
       list.add(

@@ -25,7 +25,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
   String search = '';
   String national = '';
   bool showLikedList = false;
-  int numberOfPage = 1;
+  int teacherNumbers = 0;
 
   List<Teacher> teachers = [];
   List<Specialty> specialties = [];
@@ -65,7 +65,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
       setState(() {
         teachers = sortTeachers;
-        numberOfPage = data.count ~/ double.parse(tutorsFilter.perPage) + 1;
+        teacherNumbers = data.count;
       });
     }).then((value) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -186,13 +186,33 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       const SizedBox(
                         height: 24,
                       ),
+                      const Text(
+                        "Recommended Tutors",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        teachers.isEmpty
+                            ? "No tutors found"
+                            : "We found $teacherNumbers tutors for you",
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
                       TeachersSuggestionWidget(
                           teachers: teachers, specialties: specialties),
                       const SizedBox(
                         height: 28,
                       ),
                       NumberPaginator(
-                        numberPages: numberOfPage,
+                        numberPages: teacherNumbers ~/
+                                double.parse(tutorsFilter.perPage) +
+                            1,
                         showNextButton: false,
                         showPrevButton: false,
                         onPageChange: (int index) {
