@@ -13,6 +13,7 @@ class Apis {
   static String report = '${baseUrl}report';
   static String booking = '${baseUrl}booking';
   static String uploadAvatar = '${baseUrl}user/uploadAvatar';
+  static String scheduleDetail = '${baseUrl}booking/schedule-detail';
   static getTutorDetail(String id) {
     return "${baseUrl}tutor/$id";
   }

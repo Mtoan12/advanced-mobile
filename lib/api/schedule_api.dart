@@ -38,4 +38,27 @@ class ScheduleApi {
     });
     return scheduleOfTutor;
   }
+
+  static Future cancelSchedule(String scheduleDetailId, String note) async {
+    var uri = Uri.parse(Apis.scheduleDetail);
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    var body = jsonEncode({
+      "scheduleDetailId": scheduleDetailId,
+      "cancelInfo": {
+        "cancelReasonId": 1,
+        "note": note,
+      },
+    });
+    var response = await http.delete(uri,
+        headers: headers(token: prefs.getString("access_token")), body: body);
+
+    dynamic data = json.decode(response.body);
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      throw Exception(data['message']);
+    }
+  }
 }

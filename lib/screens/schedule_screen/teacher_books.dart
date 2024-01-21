@@ -46,6 +46,15 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
     }).then((value) => widget.handleScrollToTop());
   }
 
+  void fetchBookingList() {
+    BookingApi.getBookingList(page: page, perPage: perPage).then((value) {
+      setState(() {
+        schedules = value.rows;
+        scheduleNumbers = value.count;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -55,6 +64,8 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
               .map((schedule) => Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
                     child: ScheduleCardWidget(
+                        fetchBookingList: fetchBookingList,
+                        scheduleDetailId: schedule.id ?? '',
                         startTimestamp: schedule.scheduleDetailInfo
                                 ?.scheduleInfo?.startTimestamp ??
                             0,

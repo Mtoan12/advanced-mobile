@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/api/schedule_api.dart';
 import 'package:lettutor/utils/utils.dart';
 
 class ScheduleCardWidget extends StatefulWidget {
+  final Function fetchBookingList;
+  final String scheduleDetailId;
   final String date;
   final int lessonsQuantity;
   final String imgUrl;
@@ -20,7 +23,9 @@ class ScheduleCardWidget extends StatefulWidget {
       required this.request,
       required this.date,
       required this.lessonsQuantity,
-      required this.startTimestamp});
+      required this.startTimestamp,
+      required this.scheduleDetailId,
+      required this.fetchBookingList});
 
   @override
   State<ScheduleCardWidget> createState() => _ScheduleCardWidgetState();
@@ -100,7 +105,47 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                                   foregroundColor: Colors.red,
                                   side: const BorderSide(
                                       width: 1, color: Colors.red)),
-                              onPressed: () {},
+                              onPressed: () async {
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      String note = "";
+                                      return AlertDialog(
+                                        title: const Text("Cancel schedule"),
+                                        content: TextField(
+                                          onChanged: (value) {
+                                            note = value;
+                                          },
+                                          decoration: const InputDecoration(
+                                              hintText: "Notes"),
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text("Later")),
+                                          TextButton(
+                                              onPressed: () {
+                                                ScheduleApi.cancelSchedule(
+                                                        widget.scheduleDetailId,
+                                                        note)
+                                                    .then((value) => {
+                                                          if (value
+                                                                  .statusCode ==
+                                                              200)
+                                                            {
+                                                              widget
+                                                                  .fetchBookingList(),
+                                                            }
+                                                        });
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text("Submit")),
+                                        ],
+                                      );
+                                    });
+                              },
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
