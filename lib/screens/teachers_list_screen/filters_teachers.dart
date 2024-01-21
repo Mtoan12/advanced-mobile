@@ -127,7 +127,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
     list.add(
       FilterItem(
         onPressed: () {
-          widget.changeSpecActive("All");
+          widget.changeSpecActive("");
         },
         name: "All".tr,
         active: widget.spec == "All",

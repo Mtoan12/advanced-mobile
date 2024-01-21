@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/utils/utils.dart';
 
 class ScheduleCardWidget extends StatefulWidget {
   final String date;
@@ -9,6 +10,7 @@ class ScheduleCardWidget extends StatefulWidget {
   final String national;
   final String time;
   final String request;
+  final int startTimestamp;
   const ScheduleCardWidget(
       {super.key,
       required this.imgUrl,
@@ -17,7 +19,8 @@ class ScheduleCardWidget extends StatefulWidget {
       required this.time,
       required this.request,
       required this.date,
-      required this.lessonsQuantity});
+      required this.lessonsQuantity,
+      required this.startTimestamp});
 
   @override
   State<ScheduleCardWidget> createState() => _ScheduleCardWidgetState();
@@ -90,22 +93,24 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(widget.time),
-                      TextButton(
-                          style: TextButton.styleFrom(
-                              foregroundColor: Colors.red,
-                              side: const BorderSide(
-                                  width: 1, color: Colors.red)),
-                          onPressed: () {},
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.cancel),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              Text("Cancel".tr),
-                            ],
-                          ))
+                      Utils.checkIfInTwoHours(widget.startTimestamp)
+                          ? Container()
+                          : TextButton(
+                              style: TextButton.styleFrom(
+                                  foregroundColor: Colors.red,
+                                  side: const BorderSide(
+                                      width: 1, color: Colors.red)),
+                              onPressed: () {},
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const Icon(Icons.cancel),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text("Cancel".tr),
+                                ],
+                              ))
                     ],
                   ),
                   const SizedBox(

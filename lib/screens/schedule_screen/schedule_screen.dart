@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/screens/schedule_screen/latest_book.dart';
 import 'package:lettutor/screens/schedule_screen/teacher_books.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
@@ -15,6 +16,12 @@ class ScheduleScreen extends StatefulWidget {
 }
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  void handleScrollToTop() {
+    Utils.scrollToTop(_scrollController);
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -23,6 +30,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         appBar: appBar(context),
         endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: EdgeInsets.only(
               left: screenWidth * 0.05,
@@ -80,13 +88,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   const SizedBox(
                     height: 36,
                   ),
-                  const TeacherBooksWidget(),
-                  const SizedBox(
-                    height: 36,
-                  ),
-                  const NumberPaginator(numberPages: 1),
-                  const SizedBox(
-                    height: 48,
+                  TeacherBooksWidget(
+                    handleScrollToTop: handleScrollToTop,
                   ),
                 ],
               ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/screens/history_screen/history_cards.dart';
+import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
-import 'package:number_paginator/number_paginator.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
@@ -14,6 +14,14 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class HistoryScreenState extends State<HistoryScreen> {
+  String page = '1';
+
+  final ScrollController _scrollController = ScrollController();
+
+  void handleScrollToTop() {
+    Utils.scrollToTop(_scrollController);
+  }
+
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
@@ -22,6 +30,7 @@ class HistoryScreenState extends State<HistoryScreen> {
         appBar: appBar(context),
         endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: EdgeInsets.only(
               left: screenWidth * 0.05,
@@ -75,11 +84,9 @@ class HistoryScreenState extends State<HistoryScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const HistoryCardsWidget(),
-                  const SizedBox(
-                    height: 24,
+                  HistoryCardsWidget(
+                    handleScrollToTop: handleScrollToTop,
                   ),
-                  const NumberPaginator(numberPages: 1),
                 ],
               ),
             ),

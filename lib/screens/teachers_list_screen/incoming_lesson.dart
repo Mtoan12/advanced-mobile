@@ -48,9 +48,9 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
-    if (schedules.isEmpty) {
-      return Container();
-    }
+    // if (schedules.isEmpty) {
+    //   return Container();
+    // }
 
     return Container(
         width: screenWidth,

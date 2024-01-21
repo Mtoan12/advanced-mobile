@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lettutor/models/speciality.dart';
@@ -173,6 +174,21 @@ class Utils {
         featureFlags: {"unsaferoomwarning.enabled": false},
         token: token);
     jitsiMeet.join(options);
+  }
+
+  static scrollToTop(ScrollController scrollController) {
+    scrollController.animateTo(
+      scrollController.position.minScrollExtent,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  static checkIfInTwoHours(int timeStamp) {
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
+    DateTime now = DateTime.now();
+
+    return dateTime.difference(now).inHours <= 2;
   }
 }
 

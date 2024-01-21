@@ -19,6 +19,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
     if (authProvider.auth == null) {
       context.goNamed(AppRouterConstant.loginRouteName);
+      return const SizedBox();
     }
 
     User user = authProvider.auth!.user;
