@@ -83,7 +83,7 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
                                 ?.tutorInfo?.country ??
                             '',
                         time:
-                            "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}",
+                            "${Utils.addTimeZone(schedule.scheduleDetailInfo?.scheduleInfo?.startTime, schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.timezone)} - ${Utils.addTimeZone(schedule.scheduleDetailInfo?.scheduleInfo?.endTime, schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.timezone)}",
                         request: schedule.studentRequest ?? ''),
                   ))
               .toList(),

@@ -190,15 +190,25 @@ class Utils {
 
     return dateTime.difference(now).inHours <= 2;
   }
+
+  static String _formatTwoDigits(int value) {
+    // Helper function to ensure two-digit formatting
+    return value.toString().padLeft(2, '0');
+  }
+
+  static String addTimeZone(String? time, int? timezone) {
+    // Parse the input time string
+    time = time ?? '00:00';
+    timezone = timezone ?? 0;
+    DateTime inputTime = DateTime.parse("2022-01-01 $time:00");
+
+    // Add hours
+    DateTime resultTime = inputTime.add(Duration(hours: timezone));
+
+    // Format the result time as a string
+    String resultTimeString =
+        "${_formatTwoDigits(resultTime.hour)}:${_formatTwoDigits(resultTime.minute)}";
+
+    return resultTimeString;
+  }
 }
-
-/* 
-  BEGINNER <-> Pre A1 (Beginner), 
-  HIGHER_BEGINNER <-> A1 (Higher Beginner), 
-  PRE_INTERMEDIATE <-> A2 (Pre-Intermediate), 
-  INTERMEDIATE <-> B1 (Intermediate), 
-  UPPER_INTERMEDIATE <-> B2 (Upper-Intermediate), 
-  ADVANCED <-> C1 (Advanced), 
-  PROFICIENCY <-> C2 (Proficiency)
-*/
-
