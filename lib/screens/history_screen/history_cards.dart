@@ -70,7 +70,7 @@ class _HistoryCardsWidgetState extends State<HistoryCardsWidget> {
                               ?.tutorInfo?.country ??
                           '',
                       lessonTime:
-                          "${schedule.scheduleDetailInfo?.scheduleInfo?.startTime} - ${schedule.scheduleDetailInfo?.scheduleInfo?.endTime}",
+                          "${Utils.addTimeZone(schedule.scheduleDetailInfo?.scheduleInfo?.startTime, schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.timezone)} - ${Utils.addTimeZone(schedule.scheduleDetailInfo?.scheduleInfo?.endTime, schedule.scheduleDetailInfo?.scheduleInfo?.tutorInfo?.timezone)}",
                       date: utils.convertDate(
                           schedule.scheduleDetailInfo?.scheduleInfo?.date ??
                               ''),
