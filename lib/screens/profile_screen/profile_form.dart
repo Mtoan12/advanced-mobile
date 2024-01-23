@@ -35,7 +35,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
     emailEditingController.text = widget.user.email ?? "";
     countryEditingController.text = widget.user.country ?? "";
     phoneEditingController.text = widget.user.phone ?? "";
-    wantToLearnEditingController.text = widget.user.requireNote ?? "";
+    // wantToLearnEditingController.text = widget.user.requireNote ?? "";
     studyScheduleEditingController.text = widget.user.studySchedule ?? "";
     birthday = widget.user.birthday ?? DateTime.now();
 
@@ -171,6 +171,7 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                         child: InputDatePickerFormField(
                           acceptEmptyDate: true,
                           initialDate: birthday,
+                          
                           onDateSaved: (value) {
                             print("birthday $value");
                             setState(() {
@@ -229,26 +230,26 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                   const SizedBox(
                     height: 12,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text("Want to learn",
-                          style: TextStyle(fontWeight: FontWeight.w600)),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: TextInput(
-                          controller: wantToLearnEditingController,
-                          placeHolder: "Want to learn",
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
+                  // Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   children: [
+                  //     const Text("Want to learn",
+                  //         style: TextStyle(fontWeight: FontWeight.w600)),
+                  //     const SizedBox(
+                  //       height: 10,
+                  //     ),
+                  //     SizedBox(
+                  //       width: double.infinity,
+                  //       child: TextInput(
+                  //         controller: wantToLearnEditingController,
+                  //         placeHolder: "Want to learn",
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // const SizedBox(
+                  //   height: 12,
+                  // ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -278,11 +279,9 @@ class _ProfileFormWidgetState extends State<ProfileFormWidget> {
                               backgroundColor: Colors.blue[700]),
                           onPressed: () {
                             String name = nameEditingController.text;
-                            String email = emailEditingController.text;
                             String country = countryEditingController.text;
-                            String phone = phoneEditingController.text;
-                            String requiredNote =
-                                wantToLearnEditingController.text;
+                            // String requiredNote =
+                            //     wantToLearnEditingController.text;
                             String studySchedule =
                                 studyScheduleEditingController.text;
 
