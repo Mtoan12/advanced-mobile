@@ -211,4 +211,27 @@ class Utils {
 
     return resultTimeString;
   }
+
+  static DateTime parseDateString(String inputDate) {
+    // Assuming inputDate is in the format 'yyyy-M-d'
+    List<String> parts = inputDate.split('-');
+
+    // Ensure parts have at least year, month, and day
+    if (parts.length < 3) {
+      throw const FormatException("Invalid date format");
+    }
+
+    // Pad month and day with leading zeros if necessary
+    String year = parts[0];
+    String month = parts[1].padLeft(2, '0');
+    String day = parts[2].padLeft(2, '0');
+
+    // Create a formatted date string
+    String formattedDate = '$year-$month-$day';
+
+    // Parse the formatted date
+    DateTime parsedDate = DateTime.parse(formattedDate);
+
+    return parsedDate;
+  }
 }
