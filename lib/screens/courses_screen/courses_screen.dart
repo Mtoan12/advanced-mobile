@@ -19,6 +19,10 @@ class CoursesScreen extends StatefulWidget {
 
 class CoursesScreenState extends State<CoursesScreen> {
   List<CourseDetail> courses = [];
+  int coursesNumber = 0;
+  int page = 1;
+  int perPage = 12;
+  String q = '';
 
   @override
   void initState() {
@@ -28,8 +32,39 @@ class CoursesScreenState extends State<CoursesScreen> {
     CourseApi.getCourseList().then((value) {
       setState(() {
         courses = value.rows;
+        coursesNumber = value.count;
       });
     });
+  }
+
+  void fetchCourses() {
+    CourseApi.getCourseList(page: page, perPage: perPage, q: q).then((value) {
+      setState(() {
+        courses = value.rows;
+        coursesNumber = value.count;
+      });
+    });
+  }
+
+  final ScrollController _scrollController = ScrollController();
+
+  void handleChangePage(int page) {
+    setState(() {
+      this.page = page;
+    });
+    fetchCourses();
+    _scrollController.animateTo(
+      _scrollController.position.minScrollExtent,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void handleSearch(String q) {
+    setState(() {
+      this.q = q;
+    });
+    fetchCourses();
   }
 
   @override
@@ -40,6 +75,7 @@ class CoursesScreenState extends State<CoursesScreen> {
         appBar: appBar(context),
         endDrawer: const DrawerWidget(),
         body: SingleChildScrollView(
+          controller: _scrollController,
           child: Padding(
             padding: EdgeInsets.only(
               left: screenWidth * 0.05,
@@ -102,7 +138,15 @@ class CoursesScreenState extends State<CoursesScreen> {
                   const SizedBox(
                     height: 24,
                   ),
-                  const NumberPaginator(numberPages: 1),
+                  NumberPaginator(
+                    numberPages:
+                        coursesNumber ~/ double.parse(perPage.toString()) + 1,
+                    showNextButton: false,
+                    showPrevButton: false,
+                    onPageChange: (int index) {
+                      handleChangePage(index + 1);
+                    },
+                  ),
                 ],
               ),
             ),

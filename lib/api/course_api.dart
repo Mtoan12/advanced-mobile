@@ -17,9 +17,9 @@ class CourseApi {
             .toList();
 
   static Future<CourseApi> getCourseList(
-      {int page = 1, int perPage = 100}) async {
+      {int page = 1, int perPage = 12, String q = ''}) async {
     CourseApi courseApi;
-    var uri = Uri.parse('${Apis.baseUrl}course?page=$page&perPage=$perPage');
+    var uri = Uri.parse('${Apis.baseUrl}course?page=$page&size=$perPage&q=$q');
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     var response = await http.get(
