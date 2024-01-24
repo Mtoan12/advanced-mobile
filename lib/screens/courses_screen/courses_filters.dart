@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CoursesFiltersWidget extends StatefulWidget {
-  const CoursesFiltersWidget({super.key});
+  final Function handleSearch;
+
+  const CoursesFiltersWidget({super.key, required this.handleSearch});
 
   @override
   State<CoursesFiltersWidget> createState() => _CoursesFiltersWidgetState();
 }
 
 class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
+  String q = '';
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,6 +21,11 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
           children: [
             Flexible(
               child: TextField(
+                onChanged: (value) {
+                  setState(() {
+                    q = value;
+                  });
+                },
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 8.0, horizontal: 10),
@@ -39,7 +47,7 @@ class _CoursesFiltersWidgetState extends State<CoursesFiltersWidget> {
               child: IconButton(
                 icon: const Icon(Icons.search),
                 onPressed: () {
-                  // Xử lý sự kiện khi nhấn vào biểu tượng tìm kiếm
+                  widget.handleSearch(q);
                 },
               ),
             )

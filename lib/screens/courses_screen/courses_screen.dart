@@ -124,7 +124,9 @@ class CoursesScreenState extends State<CoursesScreen> {
                   const SizedBox(
                     height: 12,
                   ),
-                  const CoursesFiltersWidget(),
+                  CoursesFiltersWidget(
+                    handleSearch: handleSearch,
+                  ),
                   const SizedBox(
                     height: 24,
                   ),
