@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (context) => teacherProvider),
         ],
         child: MaterialApp.router(
+          
           // builder: DevicePreview.appBuilder,
           // translations: LocalizationService(),
           locale: const Locale('en', 'US'),
