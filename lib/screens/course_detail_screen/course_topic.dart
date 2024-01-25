@@ -5,8 +5,12 @@ import 'package:lettutor/router/app_router_constant.dart';
 class CourseTopicWidget extends StatefulWidget {
   final int number;
   final String name;
+  final String fileLink;
   const CourseTopicWidget(
-      {super.key, required this.number, required this.name});
+      {super.key,
+      required this.number,
+      required this.name,
+      required this.fileLink});
 
   @override
   State<CourseTopicWidget> createState() => _CourseTopicWidgetState();
@@ -30,7 +34,8 @@ class _CourseTopicWidgetState extends State<CourseTopicWidget> {
       },
       child: GestureDetector(
         onTap: () {
-          context.goNamed(AppRouterConstant.lessonDetailRouteName);
+          context.pushNamed(AppRouterConstant.lessonRouteName,
+              extra: widget.fileLink);
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
@@ -67,7 +72,7 @@ class _CourseTopicWidgetState extends State<CourseTopicWidget> {
                       style: const TextStyle(fontSize: 16),
                     ),
                     Text(
-                      "${widget.name}",
+                      widget.name,
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.w600),
                     ),

@@ -5,6 +5,7 @@ import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/course_detail_screen/course_detail_screen.dart';
 import 'package:lettutor/screens/courses_screen/courses_screen.dart';
 import 'package:lettutor/screens/history_screen/history_screen.dart';
+import 'package:lettutor/screens/lesson/lesson.dart';
 import 'package:lettutor/screens/lesson_detail_screen/lesson_detail_screen.dart';
 import 'package:lettutor/screens/login_screen/login_screen.dart';
 import 'package:lettutor/screens/forgot_password_screen/forgot_password_screen.dart';
@@ -85,13 +86,6 @@ class AppRouter {
       },
     ),
     GoRoute(
-      name: AppRouterConstant.lessonDetailRouteName,
-      path: '/lesson',
-      pageBuilder: (context, state) {
-        return const MaterialPage(child: LessonDetailScreen());
-      },
-    ),
-    GoRoute(
       name: AppRouterConstant.scheduleRouteName,
       path: '/schedule',
       pageBuilder: (context, state) {
@@ -121,6 +115,17 @@ class AppRouter {
       path: '/profile',
       pageBuilder: (context, state) {
         return const MaterialPage(child: ProfileScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.lessonRouteName,
+      path: '/lesson',
+      pageBuilder: (context, state) {
+        String fileLink = state.extra != null ? state.extra as String : '';
+        return MaterialPage(
+            child: Lesson(
+          fileLink: fileLink,
+        ));
       },
     ),
   ]);

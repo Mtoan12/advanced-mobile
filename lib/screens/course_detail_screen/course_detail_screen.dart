@@ -51,6 +51,11 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (course.id == "") {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
     var screenHeight = MediaQuery.of(context).size.height;
     var screenWidth = MediaQuery.of(context).size.width;
 

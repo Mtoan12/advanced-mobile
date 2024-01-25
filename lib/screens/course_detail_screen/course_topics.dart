@@ -36,6 +36,7 @@ class _CourseTopicsWidgetState extends State<CourseTopicsWidget> {
                   child: CourseTopicWidget(
                     number: ++number,
                     name: topic.name ?? "",
+                    fileLink: topic.nameFile ?? "",
                   ),
                 ),
               )
