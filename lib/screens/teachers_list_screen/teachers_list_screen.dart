@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/models/tutors_filter.dart';
@@ -166,29 +168,29 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                         height: 24,
                       ),
                       ElevatedButton(
-                        onPressed: () {
-                          handleShowLiked();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.blue,
-                          backgroundColor:
-                              showLikedList ? Colors.blue[50] : Colors.white,
-                          side: const BorderSide(color: Colors.blue),
-                          textStyle: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: showLikedList
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                          onPressed: () {
+                            handleShowLiked();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.blue,
+                            backgroundColor:
+                                showLikedList ? Colors.blue[50] : Colors.white,
+                            side: const BorderSide(color: Colors.blue),
+                            textStyle: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: showLikedList
+                                  ? FontWeight.bold
+                                  : FontWeight.normal,
+                            ),
                           ),
-                        ),
-                        child: const Text('Liked teachers'),
-                      ),
+                          child: Text(
+                              LocaleData.likedTeachers.getString(context))),
                       const SizedBox(
                         height: 24,
                       ),
-                      const Text(
-                        "Recommended Tutors",
-                        style: TextStyle(
+                      Text(
+                        LocaleData.recommendedTutors.getString(context),
+                        style: const TextStyle(
                             fontSize: 24, fontWeight: FontWeight.w600),
                       ),
                       const SizedBox(
@@ -196,7 +198,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       ),
                       Text(
                         teachers.isEmpty
-                            ? "No tutors found"
+                            ? LocaleData.noTutorFound.getString(context)
                             : "We found $teacherNumbers tutors for you",
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w500),

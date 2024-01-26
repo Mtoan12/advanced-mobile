@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/provider/auth_provider.dart';
 import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/provider/theme_provider.dart';
@@ -30,6 +32,14 @@ class _MyAppState extends State<MyApp> {
   final ThemeData lightTheme = ThemeData.light().copyWith();
   final ThemeData darkTheme = ThemeData.dark().copyWith();
 
+  final FlutterLocalization localization = FlutterLocalization.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    configureLocalization();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -40,7 +50,11 @@ class _MyAppState extends State<MyApp> {
         ],
         child: Consumer<ThemeProvider>(
             builder: (ctx, themeObject, _) => MaterialApp.router(
-                  theme: ThemeData.light(),
+                  supportedLocales: localization.supportedLocales,
+                  localizationsDelegates: localization.localizationsDelegates,
+                  theme: ThemeData.light().copyWith(
+                    textTheme: GoogleFonts.poppinsTextTheme(),
+                  ),
                   darkTheme: ThemeData.dark(),
                   themeMode: themeProvider.mode,
                   // builder: DevicePreview.appBuilder,
@@ -60,6 +74,17 @@ class _MyAppState extends State<MyApp> {
                   // routerDelegate: AppRouter().router.routerDelegate,
                   // routeInformationProvider: AppRouter().router.routeInformationProvider,
                 )));
+  }
+
+  void configureLocalization() {
+    localization.init(mapLocales: LOCALES, initLanguageCode: 'vi');
+    localization.onTranslatedLanguage = onTranslatedLanguage;
+  }
+
+  void onTranslatedLanguage(Locale? locale) {
+    setState(() {
+      // localization.setLocale(locale);
+    });
   }
 }
 

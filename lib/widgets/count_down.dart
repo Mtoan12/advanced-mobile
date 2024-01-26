@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
+import 'package:lettutor/localization/locales.dart';
 
 class CountdownWidget extends StatefulWidget {
   final int timestampInMilliseconds;
@@ -47,7 +49,7 @@ class _CountdownWidgetState extends State<CountdownWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        '(starts in: ${formatDuration(_remainingTime)})',
+        '(${LocaleData.timeRemainingLabel.getString(context)}: ${formatDuration(_remainingTime)})',
         style: TextStyle(
             color: Colors.yellow[200],
             fontSize: 18,

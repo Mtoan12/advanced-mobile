@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lettutor/provider/auth_provider.dart';
 import 'package:lettutor/provider/theme_provider.dart';
@@ -13,12 +14,24 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  bool isEnglish = true;
-
+  late FlutterLocalization _flutterLocalization;
+  late String _currentLocale;
   void toggleLanguage() {
-    setState(() {
-      isEnglish = !isEnglish;
-    });
+    if (_currentLocale == 'en') {
+      _setLocale('vi');
+    } else if (_currentLocale == 'vi') {
+      _setLocale('en');
+    } else {
+      return;
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _flutterLocalization = FlutterLocalization.instance;
+    _currentLocale = _flutterLocalization.currentLocale!.languageCode;
   }
 
   @override
@@ -35,7 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
             padding: const EdgeInsets.all(8.0),
             child: ListTile(
               leading: const Icon(Icons.language),
-              title: Text(isEnglish
+              title: Text(_currentLocale == 'en'
                   ? 'Change Language (English)'
                   : 'Thay đổi Ngôn ngữ (Vietnamese)'),
               onTap: toggleLanguage,
@@ -81,5 +94,19 @@ class _SettingScreenState extends State<SettingScreen> {
         ],
       ),
     );
+  }
+
+  void _setLocale(String value) {
+    if (value == 'en') {
+      _flutterLocalization.translate('en');
+    } else if (value == 'vi') {
+      _flutterLocalization.translate('vi');
+    } else {
+      return;
+    }
+
+    setState(() {
+      _currentLocale = value;
+    });
   }
 }

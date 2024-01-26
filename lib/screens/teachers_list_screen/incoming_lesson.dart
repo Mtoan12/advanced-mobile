@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/api/booking_api.dart';
 import 'package:lettutor/api/total_time_api.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/total_time.dart';
 import 'package:lettutor/utils/utils.dart';
@@ -75,7 +77,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                 height: 40,
               ),
               Text(
-                "Upcomming lesson".tr,
+                LocaleData.upcommingLesson.getString(context),
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28,
@@ -135,7 +137,7 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                                   width: 4,
                                 ),
                                 Text(
-                                  "Enter lesson room".tr,
+                                  LocaleData.enterLessonRoom.getString(context),
                                   style: TextStyle(color: Colors.blue[400]),
                                 )
                               ],
@@ -145,7 +147,8 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
               const SizedBox(
                 height: 16,
               ),
-              Text('Total lesson time is ${utils.convertTime(totalTime.total)}',
+              Text(
+                  '${LocaleData.totalTimeLabel.getString(context)} ${utils.convertTime(totalTime.total)}',
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/screens/teachers_list_screen/Input.dart';
 import 'package:lettutor/screens/teachers_list_screen/filter_item.dart';
@@ -35,7 +37,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Find a tutor".tr,
+          LocaleData.findATutor.getString(context),
           style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
         ),
         const SizedBox(
@@ -47,7 +49,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 160,
               height: 40,
               icon: const Icon(Icons.search_outlined),
-              placeHolder: "Enter tutor name...".tr,
+              placeHolder: LocaleData.enterTutorName.getString(context),
               value: widget.search,
               handleChange: widget.handleSearch,
             ),
@@ -60,51 +62,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
               width: 160,
               height: 40,
               icon: const Icon(Icons.arrow_drop_down),
-              placeHolder: "Select tutor nationality".tr,
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Text(
-          "Select available tutoring time:".tr,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-        ),
-        Wrap(
-          children: [
-            Input(
-              value: '',
-              handleChange: (String value) {},
-              width: 144,
-              height: 40,
-              icon: const Icon(
-                Icons.calendar_month,
-                color: Colors.grey,
-              ),
-              placeHolder: "Select a day".tr,
-            ),
-            const SizedBox(
-              width: 4,
-            ),
-            Input(
-              value: '',
-              handleChange: (String value) {},
-              width: 100,
-              height: 40,
-              icon: const Icon(null),
-              placeHolder: "Start time".tr,
-            ),
-            Input(
-              value: '',
-              handleChange: (String value) {},
-              width: 100,
-              height: 40,
-              icon: const Icon(
-                Icons.timelapse,
-                color: Colors.grey,
-              ),
-              placeHolder: "End Time".tr,
+              placeHolder: LocaleData.selectTutorNationality.getString(context),
             ),
           ],
         ),
@@ -161,7 +119,7 @@ class _FiltersTeachersWidgetState extends State<FiltersTeachersWidget> {
             });
           },
           child: Text(
-            'Reset Filters'.tr,
+            LocaleData.resetFilters.getString(context),
           )),
     ));
     return Wrap(
