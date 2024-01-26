@@ -4,7 +4,7 @@ class ThemeProvider with ChangeNotifier {
   ThemeMode _mode;
   ThemeMode get mode => _mode;
   ThemeProvider({
-    ThemeMode mode = ThemeMode.dark,
+    ThemeMode mode = ThemeMode.light,
   }) : _mode = mode;
 
   void toggleMode() {

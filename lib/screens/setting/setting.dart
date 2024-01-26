@@ -51,6 +51,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   value: isDarkMode,
                   onChanged: (value) {
                     themeProvider.toggleMode();
+                    context.goNamed(AppRouterConstant.teachersListRouteName);
                   },
                 )),
           ),
