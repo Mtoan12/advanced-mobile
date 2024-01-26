@@ -52,6 +52,7 @@ dependencies:
     syncfusion_flutter_pdfviewer: ^24.1.47
     flutter_localization: ^0.2.0
     sentry_flutter: ^7.15.0
+    fluttertoast: ^8.2.4
 
 dev_dependencies:
     flutter_test:

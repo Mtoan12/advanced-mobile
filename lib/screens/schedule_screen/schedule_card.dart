@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/api/schedule_api.dart';
+import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/utils/utils.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ScheduleCardWidget extends StatefulWidget {
   final Function fetchBookingList;
@@ -14,6 +16,7 @@ class ScheduleCardWidget extends StatefulWidget {
   final String time;
   final String request;
   final int startTimestamp;
+  final Schedule schedule;
   const ScheduleCardWidget(
       {super.key,
       required this.imgUrl,
@@ -25,7 +28,8 @@ class ScheduleCardWidget extends StatefulWidget {
       required this.lessonsQuantity,
       required this.startTimestamp,
       required this.scheduleDetailId,
-      required this.fetchBookingList});
+      required this.fetchBookingList,
+      required this.schedule});
 
   @override
   State<ScheduleCardWidget> createState() => _ScheduleCardWidgetState();
@@ -44,9 +48,8 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
             widget.date,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
-          Text(
-            "${widget.lessonsQuantity} buổi học",
-            style: const TextStyle(fontSize: 16),
+          const SizedBox(
+            height: 12,
           ),
           Container(
             decoration: const BoxDecoration(color: Colors.white),
@@ -228,7 +231,24 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                 style: TextButton.styleFrom(
                     foregroundColor: Colors.blue,
                     side: const BorderSide(width: 1, color: Colors.blue)),
-                onPressed: () {},
+                onPressed: () async {
+                  String token =
+                      widget.schedule.studentMeetingLink!.split("=")[1];
+                  await Utils.joinMeeting(
+                      widget.schedule.userId!,
+                      widget
+                          .schedule.scheduleDetailInfo!.scheduleInfo!.tutorId!,
+                      token);
+                  Fluttertoast.showToast(
+                      msg:
+                          "Your lesson will start in ${Utils.differentTime(widget.schedule.scheduleDetailInfo!.scheduleInfo!.startTimestamp!)}",
+                      toastLength: Toast.LENGTH_LONG,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:jitsi_meet_flutter_sdk/jitsi_meet_flutter_sdk.dart';
+import 'package:lettutor/widgets/count_down.dart';
 
 class Utils {
   List<Teacher> filterTeachers(
@@ -233,5 +234,20 @@ class Utils {
     DateTime parsedDate = DateTime.parse(formattedDate);
 
     return parsedDate;
+  }
+
+  static String differentTime(int timeStamp) {
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timeStamp);
+    DateTime now = DateTime.now();
+
+    Duration difference = dateTime.difference(now);
+    final durationFormat = DurationFormat();
+
+    if (difference.isNegative) {
+      return '0d 0h 0m 0s';
+    }
+
+    // Format the Duration using the DurationFormat
+    return durationFormat.format(difference);
   }
 }

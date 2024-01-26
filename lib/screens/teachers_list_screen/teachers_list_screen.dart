@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lettutor/api/search_tutor_api.dart';
 import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/models/speciality.dart';
 import 'package:lettutor/models/teacher.dart';
 import 'package:lettutor/models/tutors_filter.dart';
 import 'package:lettutor/provider/teacher_provider.dart';
+import 'package:lettutor/router/app_router_constant.dart';
 import 'package:lettutor/screens/teachers_list_screen/filters_teachers.dart';
 import 'package:lettutor/screens/teachers_list_screen/incoming_lesson.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_suggestion.dart';
@@ -14,6 +16,7 @@ import 'package:lettutor/widgets/appbar.dart';
 import 'package:lettutor/widgets/drawer.dart';
 import 'package:number_paginator/number_paginator.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class TeachersListScreen extends StatefulWidget {
   const TeachersListScreen({super.key});
@@ -58,6 +61,10 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
 
   fetchTeachers() {
     SearchTutorApi.searchTutor(tutorsFilter: tutorsFilter).then((data) {
+      if (data == '401') {
+        context.goNamed(AppRouterConstant.loginRouteName);
+        return;
+      }
       List<Teacher> sortTeachers = Utils.sortTeachers(data.rows);
 
       if (showLikedList) {

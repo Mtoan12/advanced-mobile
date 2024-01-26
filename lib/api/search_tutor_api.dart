@@ -19,8 +19,7 @@ class SearchTutorApi {
     rows = json['rows'].map<Teacher>((e) => Teacher.fromJson(e)).toList();
   }
 
-  static Future<SearchTutorApi> searchTutor(
-      {required TutorsFilter tutorsFilter}) async {
+  static Future searchTutor({required TutorsFilter tutorsFilter}) async {
     SearchTutorApi searchTutorApi;
     var uri = Uri.parse(Apis.searchTutor);
 
@@ -49,6 +48,8 @@ class SearchTutorApi {
     if (response.statusCode == 200) {
       searchTutorApi = SearchTutorApi.fromJson(data);
       return searchTutorApi;
+    } else if (response.statusCode == 401) {
+      return '401';
     } else {
       var errorResponse = ErrorResponse.fromJson(data);
       print("error: ${errorResponse.message}");

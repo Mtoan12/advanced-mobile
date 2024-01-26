@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/screens/schedule_screen/latest_book.dart';
 import 'package:lettutor/screens/schedule_screen/teacher_books.dart';
 import 'package:lettutor/utils/utils.dart';
@@ -50,7 +51,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     height: 12,
                   ),
                   Text(
-                    "Schedule".tr,
+                    LocaleData.schedule.getString(context),
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.w800),
                   ),

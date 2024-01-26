@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localization/flutter_localization.dart';
-import 'package:get/get.dart';
 import 'package:lettutor/api/booking_api.dart';
 import 'package:lettutor/api/total_time_api.dart';
 import 'package:lettutor/localization/locales.dart';
@@ -8,6 +7,7 @@ import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/models/total_time.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/count_down.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class IncomingLessonWidget extends StatefulWidget {
   const IncomingLessonWidget({super.key});
@@ -116,17 +116,26 @@ class _IncomingLessonWidgetState extends State<IncomingLessonWidget> {
                           ),
                         ),
                         ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               String token = schedules[0]
                                   .studentMeetingLink!
                                   .split("=")[1];
-                              Utils.joinMeeting(
+                              await Utils.joinMeeting(
                                   schedules[0].userId!,
                                   schedules[0]
                                       .scheduleDetailInfo!
                                       .scheduleInfo!
                                       .tutorId!,
                                   token);
+                              Fluttertoast.showToast(
+                                  msg:
+                                      "Your lesson will start in ${Utils.differentTime(schedules[0].scheduleDetailInfo!.scheduleInfo!.startTimestamp!)}",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,

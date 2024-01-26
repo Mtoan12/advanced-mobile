@@ -24,7 +24,7 @@ class AppRouter {
   GoRouter router = GoRouter(routes: [
     GoRoute(
       name: AppRouterConstant.loginRouteName,
-      path: '/',
+      path: '/login',
       pageBuilder: (context, state) {
         return const MaterialPage(child: LoginScreen());
       },
@@ -52,7 +52,7 @@ class AppRouter {
     ),
     GoRoute(
         name: AppRouterConstant.teachersListRouteName,
-        path: '/teachers-list',
+        path: '/',
         pageBuilder: (context, state) {
           return CustomTransitionPage<void>(
               key: UniqueKey(),

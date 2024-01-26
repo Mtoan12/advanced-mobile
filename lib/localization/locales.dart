@@ -72,6 +72,8 @@ mixin LocaleData {
   static const String listTopics = 'listTopics';
   static const String likedTeachers = 'likedTeachers';
   static const String noTutorFound = 'noTutorFound';
+  static const String found = 'found';
+  static const String tutors = 'tutors';
 
   static const Map<String, String> EN = {
     loginTitle: "Say hello to your English tutors",
@@ -142,6 +144,8 @@ mixin LocaleData {
     listTopics: "List Topics",
     likedTeachers: "Liked Teachers",
     noTutorFound: "No tutor found",
+    found: 'We found',
+    tutors: 'tutors for you',
   };
 
   static const Map<String, String> VI = {
@@ -214,5 +218,7 @@ mixin LocaleData {
     listTopics: "Danh sách chủ đề",
     likedTeachers: "Danh sách giáo viên yêu thích",
     noTutorFound: "Không tìm thấy giáo viên nào",
+    found: 'Tìm thấy',
+    tutors: 'giáo viên cho bạn',
   };
 }

@@ -64,6 +64,7 @@ class _TeacherBooksWidgetState extends State<TeacherBooksWidget> {
               .map((schedule) => Padding(
                     padding: const EdgeInsets.only(bottom: 24.0),
                     child: ScheduleCardWidget(
+                        schedule: schedule,
                         fetchBookingList: fetchBookingList,
                         scheduleDetailId: schedule.id ?? '',
                         startTimestamp: schedule.scheduleDetailInfo
