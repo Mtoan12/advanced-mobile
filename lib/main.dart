@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lettutor/provider/auth_provider.dart';
 import 'package:lettutor/provider/teacher_provider.dart';
+import 'package:lettutor/provider/theme_provider.dart';
 import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +25,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AuthProvider authProvider = AuthProvider();
   TeacherProvider teacherProvider = TeacherProvider();
+  ThemeProvider themeProvider = ThemeProvider();
+
+  final ThemeData lightTheme = ThemeData.light().copyWith();
+  final ThemeData darkTheme = ThemeData.dark().copyWith();
 
   @override
   Widget build(BuildContext context) {
@@ -31,26 +36,30 @@ class _MyAppState extends State<MyApp> {
         providers: [
           ChangeNotifierProvider(create: (context) => authProvider),
           ChangeNotifierProvider(create: (context) => teacherProvider),
+          ChangeNotifierProvider(create: (context) => themeProvider),
         ],
-        child: MaterialApp.router(
-          
-          // builder: DevicePreview.appBuilder,
-          // translations: LocalizationService(),
-          locale: const Locale('en', 'US'),
-          // fallbackLocale: Locale('vi', 'VN'),
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: MyCustomScrollBehavior(),
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-            fontFamily: GoogleFonts.poppins().fontFamily,
-          ),
-          routerConfig: AppRouter(authProvider).router,
-          // routeInformationParser: AppRouter().router.routeInformationParser,
-          // routerDelegate: AppRouter().router.routerDelegate,
-          // routeInformationProvider: AppRouter().router.routeInformationProvider,
-        ));
+        child: Consumer<ThemeProvider>(
+            builder: (ctx, themeObject, _) => MaterialApp.router(
+                  theme: ThemeData.light(),
+                  darkTheme: ThemeData.dark(),
+                  themeMode: themeProvider.mode,
+                  // builder: DevicePreview.appBuilder,
+                  // translations: LocalizationService(),
+                  locale: const Locale('en', 'US'),
+                  // fallbackLocale: Locale('vi', 'VN'),
+                  debugShowCheckedModeBanner: false,
+                  scrollBehavior: MyCustomScrollBehavior(),
+                  title: 'Flutter Demo',
+                  // theme: ThemeData(
+                  //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                  //   useMaterial3: true,
+                  //   fontFamily: GoogleFonts.poppins().fontFamily,
+                  // ),
+                  routerConfig: AppRouter(authProvider).router,
+                  // routeInformationParser: AppRouter().router.routeInformationParser,
+                  // routerDelegate: AppRouter().router.routerDelegate,
+                  // routeInformationProvider: AppRouter().router.routeInformationProvider,
+                )));
   }
 }
 

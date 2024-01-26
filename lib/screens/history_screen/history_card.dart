@@ -84,13 +84,16 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                       Text(
                         widget.name != '' ? widget.name : "Keegan",
                         style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
                       ),
                       Row(
                         children: [
                           Text(
                             widget.national != '' ? widget.national : "TN",
-                            style: const TextStyle(fontSize: 12),
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.black),
                           ),
                         ],
                       ),
@@ -128,7 +131,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                 padding: const EdgeInsets.all(16),
                 child: Text(
                   "${"Lesson Time".tr} ${widget.lessonTime}",
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16, color: Colors.black),
                 )),
           ),
           const SizedBox(
@@ -146,7 +149,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                       widget.request.isEmpty
                           ? "No request for lesson".tr
                           : "Request for lesson".tr,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12, color: Colors.black),
                     ),
                     SizedBox(
                       height: widget.request.isEmpty ? 0 : 20,
@@ -177,7 +180,7 @@ class HistoryCardWidgetState extends State<HistoryCardWidget> {
                       widget.review.isEmpty
                           ? "Tutor haven't reviewed yet".tr
                           : "Review from tutor".tr,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12, color: Colors.black),
                     ),
                     SizedBox(
                       height: widget.review.isEmpty ? 0 : 20,

@@ -61,7 +61,9 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
                 Text(
                   widget.name,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.w700),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black),
                 ),
                 const SizedBox(
                   height: 12,
@@ -77,7 +79,7 @@ class CourseCardWidgetState extends State<CourseCardWidget> {
                   children: [
                     Text(
                       widget.level,
-                      style: const TextStyle(fontSize: 14),
+                      style: const TextStyle(fontSize: 14, color: Colors.black),
                     ),
                     Text(
                       widget.numberLessons > 0

@@ -51,8 +51,10 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 "Why take this course".tr,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
               ),
             ),
           ],
@@ -68,9 +70,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 widget.content1,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
+                style: const TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
           ],
@@ -90,8 +90,10 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 "What will you be able to do".tr,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
               ),
             ),
           ],
@@ -107,9 +109,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 widget.content2,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
+                style: const TextStyle(fontSize: 16, color: Colors.black),
               ),
             ),
           ],
@@ -120,9 +120,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
         Text(
           "Experience Level".tr,
           style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-          ),
+              fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
         ),
         const SizedBox(
           height: 20,
@@ -139,8 +137,10 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 widget.level,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
               ),
             ),
           ],
@@ -151,9 +151,7 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
         Text(
           "Course Length".tr,
           style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w700,
-          ),
+              fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
         ),
         const SizedBox(
           height: 20,
@@ -170,8 +168,10 @@ class CourseDetailInfoWidgetState extends State<CourseDetailInfoWidget> {
             Expanded(
               child: Text(
                 "${widget.numberTopic} ${"Topics".tr}",
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black),
               ),
             ),
           ],

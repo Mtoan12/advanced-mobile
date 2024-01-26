@@ -69,11 +69,14 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                       Text(
                         widget.name != '' ? widget.name : "Keegan",
                         style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black),
                       ),
                       Text(
                         widget.national != '' ? widget.national : "TN",
-                        style: const TextStyle(fontSize: 12),
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.black),
                       ),
                       Text(
                         "Direct Message".tr,
@@ -97,7 +100,8 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(widget.time),
+                      Text(widget.time,
+                          style: const TextStyle(color: Colors.black)),
                       Utils.checkIfInTwoHours(widget.startTimestamp)
                           ? Container()
                           : TextButton(
@@ -178,7 +182,8 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                             ),
                             Text(
                               "Request for lesson".tr,
-                              style: const TextStyle(fontSize: 10),
+                              style: const TextStyle(
+                                  fontSize: 10, color: Colors.black),
                             ),
                           ],
                         ),
@@ -202,7 +207,10 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                       const SizedBox(
                         height: 12,
                       ),
-                      Text(widget.request),
+                      Text(
+                        widget.request,
+                        style: const TextStyle(color: Colors.black),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),

@@ -48,8 +48,10 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
             children: [
               Text(
                 widget.name,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.black),
               ),
               const SizedBox(
                 height: 12,
@@ -61,7 +63,7 @@ class CourseDetailCardWidgetState extends State<CourseDetailCardWidget> {
               const SizedBox(
                 height: 24,
               ),
-              Container(
+              SizedBox(
                   width: double.maxFinite,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(

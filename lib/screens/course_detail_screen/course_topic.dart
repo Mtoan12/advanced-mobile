@@ -69,12 +69,14 @@ class _CourseTopicWidgetState extends State<CourseTopicWidget> {
                   children: [
                     Text(
                       "${widget.number}.",
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16, color: Colors.black),
                     ),
                     Text(
                       widget.name,
                       style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
                     ),
                   ]),
             ),

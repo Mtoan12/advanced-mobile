@@ -72,6 +72,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               AppRouterConstant.historyRouteName),
           LinkWidget(context, Icons.school_outlined, "Courses",
               AppRouterConstant.coursesRouteName),
+          LinkWidget(context, Icons.settings, "Settings",
+              AppRouterConstant.settingRouteName,
+              isPush: true),
           LinkWidget(context, Icons.logout_outlined, "Logout", ''),
         ],
       ),
@@ -79,7 +82,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   }
 
   Widget LinkWidget(
-      BuildContext context, IconData icon, String title, String routeName) {
+      BuildContext context, IconData icon, String title, String routeName,
+      {bool? isPush = false}) {
     return ListTile(
       leading: Icon(
         icon,
@@ -96,6 +100,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           context.goNamed(AppRouterConstant.loginRouteName);
           return;
         }
+
+        if (isPush!) {
+          context.pushNamed(routeName);
+          return;
+        }
+
         context.goNamed(routeName);
       },
     );

@@ -12,6 +12,7 @@ import 'package:lettutor/screens/forgot_password_screen/forgot_password_screen.d
 import 'package:lettutor/screens/profile_screen/profile_screen.dart';
 import 'package:lettutor/screens/register_screen/register_screen.dart';
 import 'package:lettutor/screens/schedule_screen/schedule_screen.dart';
+import 'package:lettutor/screens/setting/setting.dart';
 import 'package:lettutor/screens/teacher_detail_screen/teacher_detail_screen.dart';
 import 'package:lettutor/screens/teachers_list_screen/teachers_list_screen.dart';
 import 'package:lettutor/screens/video_call_screen/video_call_screen.dart';
@@ -115,6 +116,13 @@ class AppRouter {
       path: '/profile',
       pageBuilder: (context, state) {
         return const MaterialPage(child: ProfileScreen());
+      },
+    ),
+    GoRoute(
+      name: AppRouterConstant.settingRouteName,
+      path: '/setting',
+      pageBuilder: (context, state) {
+        return const MaterialPage(child: SettingScreen());
       },
     ),
     GoRoute(

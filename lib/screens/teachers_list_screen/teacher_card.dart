@@ -80,7 +80,9 @@ class _TeacherCardState extends State<TeacherCard> {
                   Text(
                     widget.name,
                     style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.w500),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
                   ),
                   Row(
                     children: [
@@ -88,7 +90,9 @@ class _TeacherCardState extends State<TeacherCard> {
                       //     "https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/${national}.svg"),
                       Text(widget.national,
                           style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w400)),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black)),
                     ],
                   ),
                   StarsWidget(rating: widget.stars),
@@ -113,9 +117,7 @@ class _TeacherCardState extends State<TeacherCard> {
                   ),
                   Text(
                     widget.description,
-                    style: const TextStyle(
-                      fontSize: 14,
-                    ),
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                   const SizedBox(
                     height: 40,
