@@ -9,10 +9,21 @@ import 'package:lettutor/provider/teacher_provider.dart';
 import 'package:lettutor/provider/theme_provider.dart';
 import 'package:lettutor/router/app_router.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void main() {
-  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  runApp(const MyApp());
+Future<void> main() async {
+  await SentryFlutter.init(
+    (options) {
+      options.dsn =
+          'https://455da7c5e58de135ab78c388ba170c9e@o4506637028098049.ingest.sentry.io/4506637029277696';
+      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+      // We recommend adjusting this value in production.
+      options.tracesSampleRate = 1.0;
+    },
+    appRunner: () => runApp(const MyApp()),
+  );
+
+  // or define SENTRY_DSN via Dart environment variable (--dart-define)
 }
 
 typedef LoginCallback = void Function(int _appState);
