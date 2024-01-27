@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/api/schedule_api.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/models/schedule.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -82,7 +84,7 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                             const TextStyle(fontSize: 12, color: Colors.black),
                       ),
                       Text(
-                        "Direct Message".tr,
+                        LocaleData.directMessage.getString(context),
                         style: TextStyle(fontSize: 12, color: Colors.blue[500]),
                       )
                     ],
@@ -184,13 +186,13 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                               width: 4,
                             ),
                             Text(
-                              "Request for lesson".tr,
+                              LocaleData.requestForLesson.getString(context),
                               style: const TextStyle(
                                   fontSize: 10, color: Colors.black),
                             ),
                           ],
                         ),
-                        Text("Edit Request".tr,
+                        Text(LocaleData.editRequest.getString(context),
                             style: const TextStyle(
                                 fontSize: 10, color: Colors.blue))
                       ],
@@ -256,7 +258,8 @@ class _ScheduleCardWidgetState extends State<ScheduleCardWidget> {
                     const SizedBox(
                       width: 4,
                     ),
-                    Text("Go to meeting".tr, style: const TextStyle()),
+                    Text(LocaleData.goToMeeting.getString(context),
+                        style: const TextStyle()),
                   ],
                 )),
           )

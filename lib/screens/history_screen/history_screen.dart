@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/localization/locales.dart';
 import 'package:lettutor/screens/history_screen/history_cards.dart';
 import 'package:lettutor/utils/utils.dart';
 import 'package:lettutor/widgets/appbar.dart';
@@ -69,13 +71,11 @@ class HistoryScreenState extends State<HistoryScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "The following is a list of lessons you have attended"
-                                  .tr,
+                              LocaleData.historyDesc1.getString(context),
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "You can review the details of the lessons you have attended"
-                                  .tr,
+                              LocaleData.historyDesc2.getString(context),
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],

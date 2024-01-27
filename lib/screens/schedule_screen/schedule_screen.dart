@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lettutor/localization/locales.dart';
@@ -70,13 +71,13 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Here is a list of the sessions you have booked"
-                                  .tr,
+                              LocaleData.scheduleDescription1
+                                  .getString(context),
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
-                              "You can track when the meeting starts, join the meeting with one click or can cancel the meeting before 2 hours"
-                                  .tr,
+                              LocaleData.scheduleDescription2
+                                  .getString(context),
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],
@@ -85,7 +86,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const LatestBookWidget(),
+                  // const LatestBookWidget(),
                   const SizedBox(
                     height: 36,
                   ),

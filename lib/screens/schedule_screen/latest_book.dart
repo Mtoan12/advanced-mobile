@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localization/flutter_localization.dart';
 import 'package:get/get.dart';
+import 'package:lettutor/localization/locales.dart';
 
 class LatestBookWidget extends StatefulWidget {
   const LatestBookWidget({super.key});
@@ -16,7 +18,7 @@ class _LatestBookWidgetState extends State<LatestBookWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Latest Book".tr,
+          LocaleData.latestBook.getString(context),
           style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
         ),
         const SizedBox(
